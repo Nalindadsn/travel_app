@@ -105,7 +105,7 @@ export default function Search(props) {
     <Layout title="Search">
       <div className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative">
         <div className="col-span-1 bg-white   pb-6 shadow rounded overflow-hidden absolute lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
-          <div className="bg-gray-900 px-4 py-2 font-bold text-white">
+          <div className="bg-lime-500 px-4 py-2 font-bold text-white">
             FILTER
           </div>
           <div className="divide-gray-200 divide-y space-y-5 relative px-4">

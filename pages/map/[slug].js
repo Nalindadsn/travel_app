@@ -83,17 +83,6 @@ export default function ProductScreen(props) {
         <Link href="/">back to products</Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-2 bg-white p-2">
-        <div className="md:col-span-3" ref={lazyRoot}>
-          <Image
-            src={product.image}
-            alt={product.name}
-            lazyRoot={lazyRoot}
-            width={640}
-            height={640}
-            layout="responsive"
-            priority={42}
-          ></Image>
-        </div>
         <div>
           <h1 className="text-xl font-bold leading-none text-gray-900 dark:text-white pb-5">
             {product.name}
@@ -305,9 +294,6 @@ export default function ProductScreen(props) {
 
         <hr />
         {/* ////////////////////////////// */}
-      </div>
-      <div className="bg-white p-2">
-        <p>Description: {product.description}</p>{' '}
       </div>
       {session && !session.user.isAdmin ? (
         <form onSubmit={submitHandler} className="bg-white p-2 mt-4">

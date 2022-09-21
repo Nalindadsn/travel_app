@@ -79,15 +79,15 @@ export default function Layout({ title, children }) {
     <>
       <Head>
         <title>{title ? title + ' - Travel App' : 'Travel App'}</title>
-        <meta name="description" content="Ecommerce Website" />
+        <meta name="description" content="Travel App Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between ">
-        <header className="py-4 shadow-sm bg-gray-900 lg:bg-gray-900">
+        <header className="py-4 shadow-sm bg-lime-500 lg:bg-lime-500">
           <div className="container flex items-center justify-between">
             <Link href="/">
-              <a className="block w-32">Ecommerce</a>
+              <a className="block w-32">Travel App</a>
             </Link>
 
             <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
@@ -95,13 +95,13 @@ export default function Layout({ title, children }) {
                 <div className="inline-block relative w-44">
                   <select
                     onChange={categoryChangeHandler}
-                    className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2.5 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline"
+                    className="block appearance-none w-full bg-white border border-lime-400 hover:border-lime-500 px-4 py-2.5 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline"
                   >
                     <option value="">All</option>
                     <SelectCom />
                   </select>
 
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-lime-700">
                     <svg
                       className="fill-current h-4 w-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ export default function Layout({ title, children }) {
                   <div className="flex absolute inset-y-0 left-0 items-center  pointer-events-none"></div>
                   <input
                     id="simple-search"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-lime-50 border border-lime-300 text-lime-900 text-sm focus:ring-lime-500 focus:border-lime-500 block w-full  p-2.5  dark:bg-lime-700 dark:border-lime-600 dark:placeholder-lime-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
                     placeholder="Search..."
                     onChange={queryChangeHandler}
                     required
@@ -125,7 +125,7 @@ export default function Layout({ title, children }) {
                 </div>
                 <button
                   type="submit"
-                  className="p-2.5 ml-1 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="p-2.5 ml-1 text-sm font-medium text-white bg-lime-700 rounded-lg border border-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
                 >
                   <svg
                     className="w-5 h-5"
@@ -147,7 +147,7 @@ export default function Layout({ title, children }) {
 
             <div className="space-x-4 flex items-center max-auto">
               <Link href="/cart">
-                <a className="p-2 text-white hover:border-white hover:text-white border border-gray-900">
+                <a className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black">
                   My Fovourites
                   {cartItemsCount > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
@@ -160,7 +160,7 @@ export default function Layout({ title, children }) {
                 'Loading'
               ) : session?.user ? (
                 <Menu as="div" className="relative inline-block  z-50">
-                  <Menu.Button className="p-2 text-white hover:border-white hover:text-white border border-gray-900 ">
+                  <Menu.Button className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black ">
                     Hello, {session.user.name}
                   </Menu.Button>
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
@@ -200,7 +200,7 @@ export default function Layout({ title, children }) {
                 </Menu>
               ) : (
                 <Link href="/login">
-                  <a className="p-2 text-white hover:border-white hover:text-white border border-gray-900">
+                  <a className="p-2 text-white hover:border-white hover:text-white border border-lime-300">
                     Login
                   </a>
                 </Link>
@@ -210,7 +210,7 @@ export default function Layout({ title, children }) {
         </header>
 
         <header>
-          <nav className="bg-gray-800 hidden lg:block">
+          <nav className="bg-lime-600 hidden lg:block">
             <div className="container">
               <div className="flex">
                 <div className="px-8 py-1 bg-primary flex items-center cursor-pointer group relative">
@@ -220,7 +220,7 @@ export default function Layout({ title, children }) {
                   <span className="capitalize ml-2 text-white">
                     All categories
                   </span>
-                  <div className="absolute left-0 top-full w-full divide-gray-300 divide-dashed divide-y bg-white shadow-md py-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
+                  <div className="absolute left-0 top-full w-full divide-lime-300 divide-dashed divide-y bg-white shadow-md py-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
                     <NavCatCom />
                   </div>
                 </div>
@@ -228,22 +228,22 @@ export default function Layout({ title, children }) {
                 <div className="flex items-center justify-between flex-grow pl-12">
                   <div className="flex items-center space-x-1 text-base capitalize">
                     <Link href="/">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
+                      <a className="text-white hover:border-white hover:text-white border border-lime-300 px-2 transition">
                         Home
                       </a>
                     </Link>
                     <Link href="/search">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
+                      <a className="text-white hover:border-white hover:text-white border border-lime-300 px-2 transition">
                         Places
                       </a>
                     </Link>
                     <Link href="about">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
+                      <a className="text-white hover:border-white hover:text-white border border-lime-300 px-2 transition">
                         About us
                       </a>
                     </Link>
                     <Link href="contact">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
+                      <a className="text-white hover:border-white hover:text-white border border-lime-300 px-2 transition">
                         Contact us
                       </a>
                     </Link>
@@ -252,7 +252,7 @@ export default function Layout({ title, children }) {
                     'Loading'
                   ) : !session?.user ? (
                     <Link href="/register">
-                      <a className="ml-auto justify-self-end text-gray-200 hover:text-white transition">
+                      <a className="ml-auto justify-self-end text-lime-200 hover:text-white transition">
                         Register
                       </a>
                     </Link>

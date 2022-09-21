@@ -124,7 +124,7 @@ export default function ProductItem({ product, addToCartHandler }) {
 
         <div className="flex item-center justify-between mt-3">
           <button
-            className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded"
+            className="px-3 py-2 bg-lime-600 text-white text-xs font-bold uppercase rounded"
             type="button"
             onClick={() => addToCartHandler(product)}
           >

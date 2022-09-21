@@ -81,6 +81,7 @@ export default function ProductScreen(props) {
     <Layout title={product.name}>
       <div className="py-2">
         <Link href="/">back to products</Link>
+        <Link href={`/map/${product.slug}`}>Map View</Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-2 bg-white p-2">
         <div className="md:col-span-3" ref={lazyRoot}>
