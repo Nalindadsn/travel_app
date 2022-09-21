@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Layout from '../components/Layout';
 //import Pagination from '../components/Pagination';
 import Pagination from 'react-js-pagination';
@@ -24,17 +24,15 @@ export default function Search(props) {
     rating = 'all',
     sort = 'featured',
   } = router.query;
-  const { products, countProducts, categories, brands } = props;
+  const { products, countProducts, categories } = props;
 
   const filterSearch = ({
     page,
     category,
-    brand,
     sort,
     min,
     max,
     searchQuery,
-    price,
     rating,
   }) => {
     const path = router.pathname;
@@ -43,8 +41,6 @@ export default function Search(props) {
     if (searchQuery) query.searchQuery = searchQuery;
     if (sort) query.sort = sort;
     if (category) query.category = category;
-    if (brand) query.brand = brand;
-    if (price) query.price = price;
     if (rating) query.rating = rating;
     if (min) query.min ? query.min : query.min === 0 ? 0 : min;
     if (max) query.max ? query.max : query.max === 0 ? 0 : max;
@@ -76,9 +72,7 @@ export default function Search(props) {
   //   const pageHandler = (e, page) => {
   //     filterSearch({ page });
   //   };
-  const brandHandler = (e) => {
-    filterSearch({ brand: e.target.value, page: 1 });
-  };
+
   const sortHandler = (e) => {
     filterSearch({ sort: e.target.value, page: 1 });
   };
@@ -88,38 +82,13 @@ export default function Search(props) {
 
   const { state, dispatch } = useContext(Store);
 
-  const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(10000);
-
-  const priceHandlerA = (e) => {
-    e.preventDefault();
-    if (e.target.name === 'min') {
-      //alert('min');
-      setMinValue(e.target.value);
-      //alert(minValue);
-    }
-    if (e.target.name === 'max') {
-      //alert('max');
-
-      setMaxValue(e.target.value);
-      //alert(maxValue);
-    }
-    setTimeout(() => {
-      //router.push('/');
-      filterSearch({ price: minValue + '-' + maxValue, page: 1 });
-    }, 1000);
-  };
-
   const handlePagination = (pageNumber) => {
     setAPage(pageNumber);
     // window.location.href will reload entire page
     // router.push(`/?page=${pageNumber}`);
     filterSearch({ page: pageNumber });
   };
-  useEffect(() => {
-    setCategoriesIds([]);
-    //here you will have correct value in userInput
-  }, [minValue, maxValue]);
+
   const addToCartHandler = async (product) => {
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -199,93 +168,6 @@ export default function Search(props) {
 
             <div className="pt-4">
               <h3 className="text-gray-800 mb-3 uppercase font-medium">
-                Brands
-              </h3>
-              <div className="space-y-2">
-                <select
-                  value={brand}
-                  onChange={brandHandler}
-                  className="w-full"
-                >
-                  <option value="all">All</option>
-                  {brands &&
-                    brands.map((brand) => (
-                      <option key={brand} value={brand}>
-                        {brand}
-                      </option>
-                    ))}
-                </select>
-              </div>
-            </div>
-            <div className="pt-4">
-              <h3 className="text-gray-800 mb-3 uppercase font-medium">
-                PRICE
-              </h3>
-              <div className="space-y-2">
-                {/* <select
-                  value={price}
-                  onChange={priceHandler}
-                  className="w-full"
-                >
-                  <option value="all">All</option>
-                  {prices.map((price) => (
-                    <option key={price.value} value={price.value}>
-                      {price.name}
-                    </option>
-                  ))}
-                </select> */}
-
-                <form className="flex items-center" onSubmit={priceHandlerA}>
-                  <div className="relative w-full mr-1">
-                    <div className="flex absolute inset-y-0 left-0 items-center  pointer-events-none"></div>
-                    <input
-                      value={minValue}
-                      onChange={(e) => setMinValue(e.target.value)}
-                      type="number"
-                      name="min"
-                      id="simple-search"
-                      className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Min"
-                      required
-                    />
-                  </div>
-                  <div className="relative w-full">
-                    <div className="flex absolute inset-y-0 left-0 items-center  pointer-events-none"></div>
-                    <input
-                      id="simple-search"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Max"
-                      required
-                      value={maxValue}
-                      onChange={(e) => setMaxValue(e.target.value)}
-                      type="number"
-                      name="max"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="p-2.5 ml-1 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      ></path>
-                    </svg>
-                  </button>
-                </form>
-              </div>
-            </div>
-            <div className="pt-4">
-              <h3 className="text-gray-800 mb-3 uppercase font-medium">
                 RATING
               </h3>
               <div className="space-y-2">
@@ -318,8 +200,6 @@ export default function Search(props) {
               className="w-44 text-sm text-gray-600 px-4 py-3 border-gray-300 shadow-sm rounded focus:ring-primary focus:border-primary"
             >
               <option value="featured">Featured</option>
-              <option value="lowest">Price: Low to High</option>
-              <option value="highest">Price: High to Low</option>
               <option value="toprated">Customer Reviews</option>
               <option value="newest">Newest Arrivals</option>
             </select>

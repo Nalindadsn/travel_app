@@ -32,6 +32,8 @@ const productSchema = new mongoose.Schema(
 
     countInStock: { type: Number, required: true, default: 0 },
     description: { type: String, required: true },
+    latitude: { type: String, required: true, default: '7.8731' },
+    longitude: { type: String, required: true, default: '80.7718' },
 
     reviews: [reviewSchema],
   },

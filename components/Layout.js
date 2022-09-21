@@ -148,7 +148,7 @@ export default function Layout({ title, children }) {
             <div className="space-x-4 flex items-center max-auto">
               <Link href="/cart">
                 <a className="p-2 text-white hover:border-white hover:text-white border border-gray-900">
-                  Cart
+                  My Fovourites
                   {cartItemsCount > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
                       {cartItemsCount}
@@ -234,7 +234,7 @@ export default function Layout({ title, children }) {
                     </Link>
                     <Link href="/search">
                       <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
-                        Shop
+                        Places
                       </a>
                     </Link>
                     <Link href="about">
@@ -263,11 +263,6 @@ export default function Layout({ title, children }) {
               </div>
             </div>
           </nav>
-          <Link href="/search">
-            <a className="text-white bg-gray-900 hover:border-white hover:text-white border border-gray-800 px-2 transition">
-              Shop
-            </a>
-          </Link>
         </header>
         <main className="container m-auto mt-4 px-4  relative ">
           <Loading />
