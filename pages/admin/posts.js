@@ -138,7 +138,6 @@ export default function AdminProdcutsScreen() {
                   <tr>
                     <th className="px-5 text-left">ID</th>
                     <th className="p-5 text-left">NAME</th>
-                    <th className="p-5 text-left">PRICE</th>
                     <th className="p-5 text-left">CATEGORY</th>
                     <th className="p-5 text-left">COUNT</th>
                     <th className="p-5 text-left">RATING</th>
@@ -150,7 +149,6 @@ export default function AdminProdcutsScreen() {
                     <tr key={post._id} className="border-b">
                       <td className=" p-5 ">{post._id.substring(20, 24)}</td>
                       <td className=" p-5 ">{post.name}</td>
-                      <td className=" p-5 ">${post.price}</td>
                       <td className=" p-5 ">{post.category}</td>
                       <td className=" p-5 ">{post.countInStock}</td>
                       <td className=" p-5 ">{post.rating}</td>

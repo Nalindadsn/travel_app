@@ -19,8 +19,6 @@ export default function Search(props) {
   const {
     query = 'all',
     category = 'all',
-    brand = 'all',
-    price = 'all',
     rating = 'all',
     sort = 'featured',
   } = router.query;
@@ -216,21 +214,10 @@ export default function Search(props) {
             {posts.length === 0 ? 'No' : countposts} Results
             {query !== 'all' && query !== '' && ' : ' + query}
             {category !== 'all' && ' : ' + category}
-            {brand !== 'all' && ' : ' + brand}
-            {price !== 'all' && ' : Price ' + price}
             {rating !== 'all' && ' : Rating ' + rating + ' & up'}
             {(query !== 'all' && query !== '') ||
-            category !== 'all' ||
-            brand !== 'all' ||
-            rating !== 'all' ||
-            price !== 'all' ? (
-              <button
-                onClick={() => router.push('/search')}
-                className="ml-2 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xs text-xs px-1 py-0 text-center  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
-              >
-                X
-              </button>
-            ) : null}
+              category !== 'all' ||
+              rating !== 'all'}
           </div>
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-2 gap-6">
             {posts.map((post) => (
@@ -273,8 +260,6 @@ export async function getServerSideProps({ query }) {
   const pageSize = query.pageSize || PAGE_SIZE;
   const page = query.page || 1;
   const category = query.category || '';
-  const brand = query.brand || '';
-  const price = query.price || '';
   const rating = query.rating || '';
   const sort = query.sort || '';
   const searchQuery = query.query || '';
@@ -289,7 +274,6 @@ export async function getServerSideProps({ query }) {
         }
       : {};
   const categoryFilter = category && category !== 'all' ? { category } : {};
-  const brandFilter = brand && brand !== 'all' ? { brand } : {};
   const ratingFilter =
     rating && rating !== 'all'
       ? {
@@ -299,23 +283,10 @@ export async function getServerSideProps({ query }) {
         }
       : {};
   // 10-50
-  const priceFilter =
-    price && price !== 'all'
-      ? {
-          price: {
-            $gte: Number(price.split('-')[0]),
-            $lte: Number(price.split('-')[1]),
-          },
-        }
-      : {};
 
   const order =
     sort === 'featured'
       ? { featured: -1 }
-      : sort === 'lowest'
-      ? { price: 1 }
-      : sort === 'highest'
-      ? { price: -1 }
       : sort === 'toprated'
       ? { rating: -1 }
       : sort === 'newest'
@@ -323,13 +294,10 @@ export async function getServerSideProps({ query }) {
       : { _id: -1 };
 
   const categories = await Post.find().distinct('category');
-  const brands = await Post.find().distinct('brand');
   const postDocs = await Post.find(
     {
       ...queryFilter,
       ...categoryFilter,
-      ...priceFilter,
-      ...brandFilter,
       ...ratingFilter,
     },
     '-reviews'
@@ -342,8 +310,7 @@ export async function getServerSideProps({ query }) {
   const countposts = await Post.countDocuments({
     ...queryFilter,
     ...categoryFilter,
-    ...priceFilter,
-    ...brandFilter,
+
     ...ratingFilter,
   });
   await db.disconnect();
@@ -357,7 +324,6 @@ export async function getServerSideProps({ query }) {
       page,
       pages: Math.ceil(countposts / pageSize),
       categories,
-      brands,
     },
   };
 }

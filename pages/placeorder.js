@@ -15,16 +15,6 @@ export default function PlaceOrderScreen() {
   const { cart } = state;
   const { cartItems, shippingAddress, paymentMethod } = cart;
 
-  const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
-
-  const itemsPrice = round2(
-    cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
-  ); // 123.4567 => 123.46
-
-  const shippingPrice = itemsPrice > 200 ? 0 : 15;
-  const taxPrice = round2(itemsPrice * 0.15);
-  const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
-
   const router = useRouter();
   useEffect(() => {
     if (!paymentMethod) {
@@ -41,10 +31,6 @@ export default function PlaceOrderScreen() {
         orderItems: cartItems,
         shippingAddress,
         paymentMethod,
-        itemsPrice,
-        shippingPrice,
-        taxPrice,
-        totalPrice,
       });
       setLoading(false);
       dispatch({ type: 'CART_CLEAR_ITEMS' });
@@ -98,7 +84,6 @@ export default function PlaceOrderScreen() {
                   <tr>
                     <th className="px-5 text-left">Item</th>
                     <th className="    p-5 text-right">Quantity</th>
-                    <th className="  p-5 text-right">Price</th>
                     <th className="p-5 text-right">Subtotal</th>
                   </tr>
                 </thead>
@@ -119,11 +104,6 @@ export default function PlaceOrderScreen() {
                           </a>
                         </Link>
                       </td>
-                      <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">${item.price}</td>
-                      <td className="p-5 text-right">
-                        ${item.quantity * item.price}
-                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -140,25 +120,21 @@ export default function PlaceOrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>${itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Tax</div>
-                    <div>${taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
-                    <div>${shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>${totalPrice}</div>
                   </div>
                 </li>
                 <li>

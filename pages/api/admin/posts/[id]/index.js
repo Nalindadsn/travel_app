@@ -29,10 +29,8 @@ const putHandler = async (req, res) => {
   if (post) {
     post.name = req.body.name;
     post.slug = req.body.slug;
-    post.price = req.body.price;
     post.category = req.body.category;
     post.image = req.body.image;
-    post.brand = req.body.brand;
     post.countInStock = req.body.countInStock;
     post.description = req.body.description;
     await post.save();

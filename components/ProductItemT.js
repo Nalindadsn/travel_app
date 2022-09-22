@@ -122,11 +122,7 @@ export default function PostItem({ post, addToCartHandler }) {
           </p>
         </div>
 
-        <p className="mb-2">{post.brand}</p>
-
         <div className="flex item-center justify-between mt-3">
-          <h1 className="text-gray-700 font-bold text-xl">${post.price}</h1>
-
           <button
             className="px-3 py-2 bg-lime-600 text-white text-xs font-bold uppercase rounded"
             type="button"

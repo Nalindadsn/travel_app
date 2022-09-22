@@ -61,10 +61,8 @@ export default function AdminPostEditScreen() {
         dispatch({ type: 'FETCH_SUCCESS' });
         setValue('name', data.name);
         setValue('slug', data.slug);
-        setValue('price', data.price);
         setValue('image', data.image);
         setValue('category', data.category);
-        setValue('brand', data.brand);
         setValue('countInStock', data.countInStock);
         setValue('description', data.description);
       } catch (err) {
@@ -103,10 +101,8 @@ export default function AdminPostEditScreen() {
   const submitHandler = async ({
     name,
     slug,
-    price,
     category,
     image,
-    brand,
     countInStock,
     description,
   }) => {
@@ -115,10 +111,8 @@ export default function AdminPostEditScreen() {
       await axios.put(`/api/admin/posts/${postId}`, {
         name,
         slug,
-        price,
         category,
         image,
-        brand,
         countInStock,
         description,
       });
@@ -192,20 +186,6 @@ export default function AdminPostEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="price">Price</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="price"
-                  {...register('price', {
-                    required: 'Please enter price',
-                  })}
-                />
-                {errors.price && (
-                  <div className="text-red-500">{errors.price.message}</div>
-                )}
-              </div>
-              <div className="mb-4">
                 <label htmlFor="image">image</label>
                 <input
                   type="text"
@@ -244,20 +224,7 @@ export default function AdminPostEditScreen() {
                   <div className="text-red-500">{errors.category.message}</div>
                 )}
               </div>
-              <div className="mb-4">
-                <label htmlFor="brand">brand</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="brand"
-                  {...register('brand', {
-                    required: 'Please enter brand',
-                  })}
-                />
-                {errors.brand && (
-                  <div className="text-red-500">{errors.brand.message}</div>
-                )}
-              </div>
+
               <div className="mb-4">
                 <label htmlFor="countInStock">countInStock</label>
                 <input
