@@ -85,7 +85,7 @@ export default function Layout({ title, children }) {
       <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between ">
         <header className="py-4 shadow-sm bg-lime-500 lg:bg-lime-500">
-          <div className="container flex items-center justify-between">
+          <div className=" flex items-center justify-between">
             <Link href="/">
               <a className="block w-32">Travel App</a>
             </Link>
@@ -211,7 +211,7 @@ export default function Layout({ title, children }) {
 
         <header>
           <nav className="bg-lime-600 hidden lg:block">
-            <div className="container">
+            <div className="">
               <div className="flex">
                 <div className="px-8 py-1 bg-primary flex items-center cursor-pointer group relative">
                   <span className="text-white">
@@ -264,7 +264,7 @@ export default function Layout({ title, children }) {
             </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4 px-4  relative ">
+        <main className=" mt-4 px-4  relative ">
           <Loading />
           {children}
         </main>
