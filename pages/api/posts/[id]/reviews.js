@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react';
-import Product from '../../../../models/Product';
+import Post from '../../../../models/Post';
 import db from '../../../../utils/db';
 import mongoose from 'mongoose';
 const handler = async (req, res) => {
@@ -25,12 +25,12 @@ const getHandler = async (req, res) => {
   }
   //return res.status(401).send(session.user._id);
   await db.connect();
-  const product = await Product.findById(req.query.id);
+  const product = await Post.findById(req.query.id);
   await db.disconnect();
   if (product) {
     res.send(product.reviews);
   } else {
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: 'Post not found' });
   }
 };
 const postHandler = async (req, res) => {
@@ -43,7 +43,7 @@ const postHandler = async (req, res) => {
   await db.connect();
 
   // return 'test';
-  const product = await Product.findById(req.query.id);
+  const product = await Post.findById(req.query.id);
   // if (product) {
   //   return res.send({ message: product });
   // } else {
@@ -56,7 +56,7 @@ const postHandler = async (req, res) => {
     //   return res.send({ ar: 'test', message: existReview });
     // }
     if (existReview) {
-      await Product.updateOne(
+      await Post.updateOne(
         { _id: req.query.id, 'reviews._id': existReview._id },
         {
           $set: {
@@ -66,28 +66,28 @@ const postHandler = async (req, res) => {
         }
       );
 
-      const updatedProduct = await Product.findById(req.query.id);
-      updatedProduct.numReviews = updatedProduct.reviews.length;
+      const updatedPost = await Post.findById(req.query.id);
+      updatedPost.numReviews = updatedPost.reviews.length;
 
-      updatedProduct.numReviewsOne = updatedProduct.reviews.filter(
+      updatedPost.numReviewsOne = updatedPost.reviews.filter(
         (r) => r.rating == 1
       ).length;
-      updatedProduct.numReviewsTwo = updatedProduct.reviews.filter(
+      updatedPost.numReviewsTwo = updatedPost.reviews.filter(
         (r) => r.rating == 2
       ).length;
-      updatedProduct.numReviewsThree = updatedProduct.reviews.filter(
+      updatedPost.numReviewsThree = updatedPost.reviews.filter(
         (r) => r.rating == 3
       ).length;
-      updatedProduct.numReviewsFour = updatedProduct.reviews.filter(
+      updatedPost.numReviewsFour = updatedPost.reviews.filter(
         (r) => r.rating == 4
       ).length;
-      updatedProduct.numReviewsFive = updatedProduct.reviews.filter(
+      updatedPost.numReviewsFive = updatedPost.reviews.filter(
         (r) => r.rating == 5
       ).length;
-      updatedProduct.rating =
-        updatedProduct.reviews.reduce((a, c) => c.rating + a, 0) /
-        updatedProduct.reviews.length;
-      await updatedProduct.save();
+      updatedPost.rating =
+        updatedPost.reviews.reduce((a, c) => c.rating + a, 0) /
+        updatedPost.reviews.length;
+      await updatedPost.save();
 
       await db.disconnect();
       return res.send({ message: 'Review updated' });
@@ -128,17 +128,17 @@ const postHandler = async (req, res) => {
     }
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product Not Found' });
+    res.status(404).send({ message: 'Post Not Found' });
   }
 };
 
 export default handler;
-// // /api/products/:id/reviews
+// // /api/posts/:id/reviews
 // import mongoose from 'mongoose';
 // import nextConnect from 'next-connect';
 // import { onError } from '../../../../utils/error';
 // import db from '../../../../utils/db';
-// import Product from '../../../../models/Product';
+// import Post from '../../../../models/Post';
 // import { isAuth } from '../../../../utils/auth';
 
 // const handler = nextConnect({
@@ -147,22 +147,22 @@ export default handler;
 
 // handler.get(async (req, res) => {
 //   db.connect();
-//   const product = await Product.findById(req.query.id);
+//   const product = await Post.findById(req.query.id);
 //   db.disconnect();
 //   if (product) {
 //     res.send(product.reviews);
 //   } else {
-//     res.status(404).send({ message: 'Product not found' });
+//     res.status(404).send({ message: 'Post not found' });
 //   }
 // });
 
 // handler.use(isAuth).post(async (req, res) => {
 //   await db.connect();
-//   const product = await Product.findById(req.query.id);
+//   const product = await Post.findById(req.query.id);
 //   if (product) {
 //     const existReview = product.reviews.find((x) => x.user == req.user._id);
 //     if (existReview) {
-//       await Product.updateOne(
+//       await Post.updateOne(
 //         { _id: req.query.id, 'reviews._id': existReview._id },
 //         {
 //           $set: {
@@ -172,12 +172,12 @@ export default handler;
 //         }
 //       );
 
-//       const updatedProduct = await Product.findById(req.query.id);
-//       updatedProduct.numReviews = updatedProduct.reviews.length;
-//       updatedProduct.rating =
-//         updatedProduct.reviews.reduce((a, c) => c.rating + a, 0) /
-//         updatedProduct.reviews.length;
-//       await updatedProduct.save();
+//       const updatedPost = await Post.findById(req.query.id);
+//       updatedPost.numReviews = updatedPost.reviews.length;
+//       updatedPost.rating =
+//         updatedPost.reviews.reduce((a, c) => c.rating + a, 0) /
+//         updatedPost.reviews.length;
+//       await updatedPost.save();
 
 //       await db.disconnect();
 //       return res.send({ message: 'Review updated' });
@@ -201,7 +201,7 @@ export default handler;
 //     }
 //   } else {
 //     await db.disconnect();
-//     res.status(404).send({ message: 'Product Not Found' });
+//     res.status(404).send({ message: 'Post Not Found' });
 //   }
 // });
 

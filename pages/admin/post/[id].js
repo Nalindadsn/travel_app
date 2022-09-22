@@ -37,7 +37,7 @@ function reducer(state, action) {
       return state;
   }
 }
-export default function AdminProductEditScreen() {
+export default function AdminPostEditScreen() {
   const { query } = useRouter();
   const productId = query.id;
 
@@ -57,7 +57,7 @@ export default function AdminProductEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/products/${productId}`);
+        const { data } = await axios.get(`/api/admin/posts/${productId}`);
         dispatch({ type: 'FETCH_SUCCESS' });
         setValue('name', data.name);
         setValue('slug', data.slug);
@@ -112,7 +112,7 @@ export default function AdminProductEditScreen() {
   }) => {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
-      await axios.put(`/api/admin/products/${productId}`, {
+      await axios.put(`/api/admin/posts/${productId}`, {
         name,
         slug,
         price,
@@ -123,15 +123,15 @@ export default function AdminProductEditScreen() {
         description,
       });
       dispatch({ type: 'UPDATE_SUCCESS' });
-      toast.success('Product updated successfully');
-      router.push('/admin/products');
+      toast.success('Post updated successfully');
+      router.push('/admin/posts');
     } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: getError(err) });
       toast.error(getError(err));
     }
   };
   return (
-    <Layout title={`Edit Product ${productId}`}>
+    <Layout title={`Edit Post ${productId}`}>
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
@@ -142,8 +142,8 @@ export default function AdminProductEditScreen() {
               <Link href="/admin/orders">Orders</Link>
             </li>
             <li>
-              <Link href="/admin/products">
-                <a className="font-bold">Products</a>
+              <Link href="/admin/posts">
+                <a className="font-bold">posts</a>
               </Link>
             </li>
             <li>
@@ -161,7 +161,7 @@ export default function AdminProductEditScreen() {
               className="mx-auto max-w-screen-md"
               onSubmit={handleSubmit(submitHandler)}
             >
-              <h1 className="mb-4 text-xl">{`Edit Product ${productId}`}</h1>
+              <h1 className="mb-4 text-xl">{`Edit Post ${productId}`}</h1>
               <div className="mb-4">
                 <label htmlFor="name">Name</label>
                 <input
@@ -296,7 +296,7 @@ export default function AdminProductEditScreen() {
                 </button>
               </div>
               <div className="mb-4">
-                <Link href={`/admin/products`}>Back</Link>
+                <Link href={`/admin/posts`}>Back</Link>
               </div>
             </form>
           )}
@@ -305,4 +305,4 @@ export default function AdminProductEditScreen() {
     </Layout>
   );
 }
-AdminProductEditScreen.auth = { adminOnly: true };
+AdminPostEditScreen.auth = { adminOnly: true };

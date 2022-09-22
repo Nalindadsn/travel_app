@@ -1,9 +1,9 @@
-import Product from '../../../models/Product';
+import Post from '../../../models/Post';
 import db from '../../../utils/db';
 
 const handler = async (req, res) => {
   await db.connect();
-  const product = await Product.distinct('category');
+  const product = await Post.distinct('category');
   await db.disconnect();
   res.send(product);
 };

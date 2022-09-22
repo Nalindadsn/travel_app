@@ -79,7 +79,7 @@ function AdminUsersScreen() {
               <Link href="/admin/orders">Orders</Link>
             </li>
             <li>
-              <Link href="/admin/products">Products</Link>
+              <Link href="/admin/posts">posts</Link>
             </li>
             <li>
               <Link href="/admin/users">

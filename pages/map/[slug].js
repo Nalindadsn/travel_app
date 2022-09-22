@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
-import Product from '../../models/Product';
+import Post from '../../models/Post';
 import db from '../../utils/db';
 import { Store } from '../../utils/Store';
 import axios from 'axios';
 import Stars from '../../components/Stars';
 
-export default function ProductScreen(props) {
+export default function PostScreen(props) {
   const { data: session } = useSession();
   //console.log(session.user._id);
   const { product } = props;
@@ -403,7 +403,7 @@ export async function getServerSideProps(context) {
   const { slug } = params;
 
   await db.connect();
-  const product = await Product.findOne({ slug }, '-reviews').lean();
+  const product = await Post.findOne({ slug }, '-reviews').lean();
   await db.disconnect();
   return {
     props: {

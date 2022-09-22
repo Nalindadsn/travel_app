@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React from 'react';
-export default function ProductItem({ product, addToCartHandler }) {
+export default function PostItem({ product, addToCartHandler }) {
   return (
     <div className="card bg-white relateve">
       <Link href={`/product/${product.slug}`}>

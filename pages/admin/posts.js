@@ -11,7 +11,7 @@ function reducer(state, action) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true, error: '' };
     case 'FETCH_SUCCESS':
-      return { ...state, loading: false, products: action.payload, error: '' };
+      return { ...state, loading: false, posts: action.payload, error: '' };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
     case 'CREATE_REQUEST':
@@ -37,11 +37,11 @@ export default function AdminProdcutsScreen() {
   const router = useRouter();
 
   const [
-    { loading, error, products, loadingCreate, successDelete, loadingDelete },
+    { loading, error, posts, loadingCreate, successDelete, loadingDelete },
     dispatch,
   ] = useReducer(reducer, {
     loading: true,
-    products: [],
+    posts: [],
     error: '',
   });
 
@@ -51,10 +51,10 @@ export default function AdminProdcutsScreen() {
     }
     try {
       dispatch({ type: 'CREATE_REQUEST' });
-      const { data } = await axios.post(`/api/admin/products`);
+      const { data } = await axios.post(`/api/admin/posts`);
       dispatch({ type: 'CREATE_SUCCESS' });
-      toast.success('Product created successfully');
-      router.push(`/admin/product/${data.product._id}`);
+      toast.success('Post created successfully');
+      router.push(`/admin/post/${data.post._id}`);
     } catch (err) {
       dispatch({ type: 'CREATE_FAIL' });
       toast.error(getError(err));
@@ -64,7 +64,7 @@ export default function AdminProdcutsScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/products`);
+        const { data } = await axios.get(`/api/admin/posts`);
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -78,22 +78,22 @@ export default function AdminProdcutsScreen() {
     }
   }, [successDelete]);
 
-  const deleteHandler = async (productId) => {
+  const deleteHandler = async (postId) => {
     if (!window.confirm('Are you sure?')) {
       return;
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
-      await axios.delete(`/api/admin/products/${productId}`);
+      await axios.delete(`/api/admin/posts/${postId}`);
       dispatch({ type: 'DELETE_SUCCESS' });
-      toast.success('Product deleted successfully');
+      toast.success('Post deleted successfully');
     } catch (err) {
       dispatch({ type: 'DELETE_FAIL' });
       toast.error(getError(err));
     }
   };
   return (
-    <Layout title="Admin Products">
+    <Layout title="Admin posts">
       <div className="grid md:grid-cols-4 md:gap-5">
         <div className="bg-white p-2">
           <ul>
@@ -104,8 +104,8 @@ export default function AdminProdcutsScreen() {
               <Link href="/admin/orders">Orders</Link>
             </li>
             <li>
-              <Link href="/admin/products">
-                <a className="font-bold">Products</a>
+              <Link href="/admin/posts">
+                <a className="font-bold">posts</a>
               </Link>
             </li>
             <li>
@@ -115,7 +115,7 @@ export default function AdminProdcutsScreen() {
         </div>
         <div className="overflow-x-auto md:col-span-3 relative">
           <div className="flex justify-between">
-            <h1 className="mb-4 text-xl">Products</h1>
+            <h1 className="mb-4 text-xl">posts</h1>
             {loadingDelete && <div>Deleting item...</div>}
             <button
               disabled={loadingCreate}
@@ -146,23 +146,23 @@ export default function AdminProdcutsScreen() {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map((product) => (
-                    <tr key={product._id} className="border-b">
-                      <td className=" p-5 ">{product._id.substring(20, 24)}</td>
-                      <td className=" p-5 ">{product.name}</td>
-                      <td className=" p-5 ">${product.price}</td>
-                      <td className=" p-5 ">{product.category}</td>
-                      <td className=" p-5 ">{product.countInStock}</td>
-                      <td className=" p-5 ">{product.rating}</td>
+                  {posts.map((post) => (
+                    <tr key={post._id} className="border-b">
+                      <td className=" p-5 ">{post._id.substring(20, 24)}</td>
+                      <td className=" p-5 ">{post.name}</td>
+                      <td className=" p-5 ">${post.price}</td>
+                      <td className=" p-5 ">{post.category}</td>
+                      <td className=" p-5 ">{post.countInStock}</td>
+                      <td className=" p-5 ">{post.rating}</td>
                       <td className=" p-5 ">
-                        <Link href={`/admin/product/${product._id}`}>
+                        <Link href={`/admin/post/${post._id}`}>
                           <a type="button" className="default-button">
                             Edit
                           </a>
                         </Link>
                         &nbsp;
                         <button
-                          onClick={() => deleteHandler(product._id)}
+                          onClick={() => deleteHandler(post._id)}
                           className="default-button"
                           type="button"
                         >

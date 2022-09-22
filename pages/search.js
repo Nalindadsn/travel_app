@@ -5,8 +5,8 @@ import Layout from '../components/Layout';
 //import Pagination from '../components/Pagination';
 import Pagination from 'react-js-pagination';
 
-import ProductItem from '../components/ProductItem';
-import Product from '../models/Product';
+import PostItem from '../components/PostItem';
+import Post from '../models/Post';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
 
@@ -24,7 +24,7 @@ export default function Search(props) {
     rating = 'all',
     sort = 'featured',
   } = router.query;
-  const { products, countProducts, categories } = props;
+  const { posts, countposts, categories } = props;
 
   const filterSearch = ({
     page,
@@ -92,9 +92,9 @@ export default function Search(props) {
   const addToCartHandler = async (product) => {
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
+    const { data } = await axios.get(`/api/posts/${product._id}`);
     if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
+      window.alert('Sorry. Post is out of stock');
       return;
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
@@ -213,7 +213,7 @@ export default function Search(props) {
             </div>
           </div>
           <div>
-            {products.length === 0 ? 'No' : countProducts} Results
+            {posts.length === 0 ? 'No' : countposts} Results
             {query !== 'all' && query !== '' && ' : ' + query}
             {category !== 'all' && ' : ' + category}
             {brand !== 'all' && ' : ' + brand}
@@ -233,25 +233,25 @@ export default function Search(props) {
             ) : null}
           </div>
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-2 gap-6">
-            {products.map((product) => (
+            {posts.map((product) => (
               <div key={product._id} className="group rounded overflow-hidden">
                 <div>
-                  <ProductItem
+                  <PostItem
                     product={product}
                     key={product.slug}
                     addToCartHandler={addToCartHandler}
-                  ></ProductItem>
+                  ></PostItem>
                 </div>
               </div>
             ))}
           </div>
-          {products.length === 0 ? 'No' : countProducts} Results
+          {posts.length === 0 ? 'No' : countposts} Results
           {/* <Pagination pages="2" /> */}
           <div className="d-flex justify-content-center mt-5 " id="pgn">
             <Pagination
               activePage={aPage}
               itemsCountPerPage={PAGE_SIZE}
-              totalItemsCount={countProducts}
+              totalItemsCount={countposts}
               onChange={handlePagination}
               nextPageText={'Next'}
               prevPageText={'Prev'}
@@ -322,9 +322,9 @@ export async function getServerSideProps({ query }) {
       ? { createdAt: -1 }
       : { _id: -1 };
 
-  const categories = await Product.find().distinct('category');
-  const brands = await Product.find().distinct('brand');
-  const productDocs = await Product.find(
+  const categories = await Post.find().distinct('category');
+  const brands = await Post.find().distinct('brand');
+  const productDocs = await Post.find(
     {
       ...queryFilter,
       ...categoryFilter,
@@ -339,7 +339,7 @@ export async function getServerSideProps({ query }) {
     .limit(pageSize)
     .lean();
 
-  const countProducts = await Product.countDocuments({
+  const countposts = await Post.countDocuments({
     ...queryFilter,
     ...categoryFilter,
     ...priceFilter,
@@ -348,14 +348,14 @@ export async function getServerSideProps({ query }) {
   });
   await db.disconnect();
 
-  const products = productDocs.map(db.convertDocToObj);
+  const posts = productDocs.map(db.convertDocToObj);
 
   return {
     props: {
-      products,
-      countProducts,
+      posts,
+      countposts,
       page,
-      pages: Math.ceil(countProducts / pageSize),
+      pages: Math.ceil(countposts / pageSize),
       categories,
       brands,
     },

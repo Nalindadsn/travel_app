@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
-import Product from '../../models/Product';
+import Post from '../../models/Post';
 import db from '../../utils/db';
 import { Store } from '../../utils/Store';
 import axios from 'axios';
 import Stars from '../../components/Stars';
 
-export default function ProductScreen(props) {
+export default function Postscreen(props) {
   const { data: session } = useSession();
   //console.log(session.user._id);
   const { product } = props;
@@ -35,7 +35,7 @@ export default function ProductScreen(props) {
     setLoading(true);
     try {
       await axios.post(
-        `/api/products/${product._id}/reviews`,
+        `/api/posts/${product._id}/reviews`,
         {
           rating,
           comment,
@@ -57,7 +57,7 @@ export default function ProductScreen(props) {
   };
   const fetchReviews = useCallback(async () => {
     try {
-      const { data } = await axios.get(`/api/products/${product._id}/reviews`);
+      const { data } = await axios.get(`/api/posts/${product._id}/reviews`);
       setReviews(data);
     } catch (err) {
       //enqueueSnackbar(getError(err), { variant: 'error' });
@@ -80,7 +80,7 @@ export default function ProductScreen(props) {
   return (
     <Layout title={product.name}>
       <div className="py-2">
-        <Link href="/">back to products</Link>
+        <Link href="/">back to posts</Link>
         <Link href={`/map/${product.slug}`}>Map View</Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-2 bg-white p-2">
@@ -420,7 +420,7 @@ export async function getServerSideProps(context) {
   const { slug } = params;
 
   await db.connect();
-  const product = await Product.findOne({ slug }, '-reviews').lean();
+  const product = await Post.findOne({ slug }, '-reviews').lean();
   await db.disconnect();
   return {
     props: {

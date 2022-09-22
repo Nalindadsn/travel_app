@@ -14,7 +14,7 @@ const data = {
       isAdmin: false,
     },
   ],
-  products: [
+  posts: [
     {
       name: 'Free Shirt',
       slug: 'free-shirt',

@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react';
-import Product from '../../../../../models/Product';
+import Post from '../../../../../models/Post';
 import db from '../../../../../utils/db';
 const handler = async (req, res) => {
   const session = await getSession({ req });
@@ -19,13 +19,13 @@ const handler = async (req, res) => {
 };
 const getHandler = async (req, res) => {
   await db.connect();
-  const product = await Product.findById(req.query.id);
+  const product = await Post.findById(req.query.id);
   await db.disconnect();
   res.send(product);
 };
 const putHandler = async (req, res) => {
   await db.connect();
-  const product = await Product.findById(req.query.id);
+  const product = await Post.findById(req.query.id);
   if (product) {
     product.name = req.body.name;
     product.slug = req.body.slug;
@@ -37,22 +37,22 @@ const putHandler = async (req, res) => {
     product.description = req.body.description;
     await product.save();
     await db.disconnect();
-    res.send({ message: 'Product updated successfully' });
+    res.send({ message: 'Post updated successfully' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: 'Post not found' });
   }
 };
 const deleteHandler = async (req, res) => {
   await db.connect();
-  const product = await Product.findById(req.query.id);
+  const product = await Post.findById(req.query.id);
   if (product) {
     await product.remove();
     await db.disconnect();
-    res.send({ message: 'Product deleted successfully' });
+    res.send({ message: 'Post deleted successfully' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: 'Post not found' });
   }
 };
 export default handler;

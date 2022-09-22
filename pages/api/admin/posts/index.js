@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react';
-import Product from '../../../../models/Product';
+import Post from '../../../../models/Post';
 import db from '../../../../utils/db';
 const handler = async (req, res) => {
   const session = await getSession({ req });
@@ -17,7 +17,7 @@ const handler = async (req, res) => {
 };
 const postHandler = async (req, res) => {
   await db.connect();
-  const newProduct = new Product({
+  const newPost = new Post({
     name: 'sample name',
     slug: 'sample-name-' + Math.random(),
     image: '/images/shirt1.jpg',
@@ -30,14 +30,14 @@ const postHandler = async (req, res) => {
     numReviews: 0,
   });
 
-  const product = await newProduct.save();
+  const product = await newPost.save();
   await db.disconnect();
-  res.send({ message: 'Product created successfully', product });
+  res.send({ message: 'Post created successfully', product });
 };
 const getHandler = async (req, res) => {
   await db.connect();
-  const products = await Product.find({});
+  const posts = await Post.find({});
   await db.disconnect();
-  res.send(products);
+  res.send(posts);
 };
 export default handler;

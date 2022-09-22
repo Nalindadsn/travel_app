@@ -10,7 +10,7 @@ const reviewSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-const productSchema = new mongoose.Schema(
+const postschema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
@@ -42,6 +42,5 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-const Product =
-  mongoose.models.Product || mongoose.model('Product', productSchema);
-export default Product;
+const Post = mongoose.models.Post || mongoose.model('Post', postschema);
+export default Post;
