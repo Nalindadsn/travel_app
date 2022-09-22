@@ -30,9 +30,9 @@ const postHandler = async (req, res) => {
     numReviews: 0,
   });
 
-  const product = await newPost.save();
+  const post = await newPost.save();
   await db.disconnect();
-  res.send({ message: 'Post created successfully', product });
+  res.send({ message: 'Post created successfully', post });
 };
 const getHandler = async (req, res) => {
   await db.connect();

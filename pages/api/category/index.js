@@ -3,9 +3,9 @@ import db from '../../../utils/db';
 
 const handler = async (req, res) => {
   await db.connect();
-  const product = await Post.distinct('category');
+  const post = await Post.distinct('category');
   await db.disconnect();
-  res.send(product);
+  res.send(post);
 };
 
 export default handler;

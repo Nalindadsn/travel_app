@@ -89,15 +89,15 @@ export default function Search(props) {
     filterSearch({ page: pageNumber });
   };
 
-  const addToCartHandler = async (product) => {
-    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+  const addToCartHandler = async (post) => {
+    const existItem = state.cart.cartItems.find((x) => x._id === post._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/posts/${product._id}`);
+    const { data } = await axios.get(`/api/posts/${post._id}`);
     if (data.countInStock < quantity) {
       window.alert('Sorry. Post is out of stock');
       return;
     }
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });
     router.push('/cart');
   };
 
@@ -233,12 +233,12 @@ export default function Search(props) {
             ) : null}
           </div>
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-2 gap-6">
-            {posts.map((product) => (
-              <div key={product._id} className="group rounded overflow-hidden">
+            {posts.map((post) => (
+              <div key={post._id} className="group rounded overflow-hidden">
                 <div>
                   <PostItem
-                    product={product}
-                    key={product.slug}
+                    post={post}
+                    key={post.slug}
                     addToCartHandler={addToCartHandler}
                   ></PostItem>
                 </div>
@@ -324,7 +324,7 @@ export async function getServerSideProps({ query }) {
 
   const categories = await Post.find().distinct('category');
   const brands = await Post.find().distinct('brand');
-  const productDocs = await Post.find(
+  const postDocs = await Post.find(
     {
       ...queryFilter,
       ...categoryFilter,
@@ -348,7 +348,7 @@ export async function getServerSideProps({ query }) {
   });
   await db.disconnect();
 
-  const posts = productDocs.map(db.convertDocToObj);
+  const posts = postDocs.map(db.convertDocToObj);
 
   return {
     props: {

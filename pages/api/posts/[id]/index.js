@@ -3,9 +3,9 @@ import db from '../../../../utils/db';
 
 const handler = async (req, res) => {
   await db.connect();
-  const product = await Post.findById(req.query.id);
+  const post = await Post.findById(req.query.id);
   await db.disconnect();
-  res.send(product);
+  res.send(post);
 };
 
 export default handler;

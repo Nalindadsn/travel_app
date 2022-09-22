@@ -39,7 +39,7 @@ function reducer(state, action) {
 }
 export default function AdminPostEditScreen() {
   const { query } = useRouter();
-  const productId = query.id;
+  const postId = query.id;
 
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
     useReducer(reducer, {
@@ -57,7 +57,7 @@ export default function AdminPostEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/posts/${productId}`);
+        const { data } = await axios.get(`/api/admin/posts/${postId}`);
         dispatch({ type: 'FETCH_SUCCESS' });
         setValue('name', data.name);
         setValue('slug', data.slug);
@@ -72,7 +72,7 @@ export default function AdminPostEditScreen() {
       }
     };
     fetchData();
-  }, [productId, setValue]);
+  }, [postId, setValue]);
 
   const router = useRouter();
 
@@ -112,7 +112,7 @@ export default function AdminPostEditScreen() {
   }) => {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
-      await axios.put(`/api/admin/posts/${productId}`, {
+      await axios.put(`/api/admin/posts/${postId}`, {
         name,
         slug,
         price,
@@ -131,7 +131,7 @@ export default function AdminPostEditScreen() {
     }
   };
   return (
-    <Layout title={`Edit Post ${productId}`}>
+    <Layout title={`Edit Post ${postId}`}>
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
@@ -161,7 +161,7 @@ export default function AdminPostEditScreen() {
               className="mx-auto max-w-screen-md"
               onSubmit={handleSubmit(submitHandler)}
             >
-              <h1 className="mb-4 text-xl">{`Edit Post ${productId}`}</h1>
+              <h1 className="mb-4 text-xl">{`Edit Post ${postId}`}</h1>
               <div className="mb-4">
                 <label htmlFor="name">Name</label>
                 <input

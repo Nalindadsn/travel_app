@@ -30,7 +30,7 @@ function CartScreen() {
                 {cartItems.map((item) => (
                   <tr key={item.slug} className="border-b hover:bg-gray-100">
                     <td>
-                      <Link href={`/product/${item.slug}`}>
+                      <Link href={`/post/${item.slug}`}>
                         <a className="flex items-center hover:text-gray-900 ml-2">
                           <Image
                             src={item.image}

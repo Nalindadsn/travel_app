@@ -12,15 +12,15 @@ export default function Home({ topRatedposts, featuredposts }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
 
-  const addToCartHandler = async (product) => {
-    const existItem = cart.cartItems.find((x) => x.slug === product.slug);
+  const addToCartHandler = async (post) => {
+    const existItem = cart.cartItems.find((x) => x.slug === post.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/posts/${product._id}`);
+    const { data } = await axios.get(`/api/posts/${post._id}`);
 
     if (data.countInStock < quantity) {
       return toast.error('Sorry. Post is out of stock');
     }
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });
 
     toast.success('Post added to the cart');
   };
@@ -30,10 +30,10 @@ export default function Home({ topRatedposts, featuredposts }) {
       <Slider featured={featuredposts} />
       <br />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 ">
-        {topRatedposts.map((product) => (
+        {topRatedposts.map((post) => (
           <PostItem
-            product={product}
-            key={product.slug}
+            post={post}
+            key={post.slug}
             addToCartHandler={addToCartHandler}
           ></PostItem>
         ))}

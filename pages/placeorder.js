@@ -106,7 +106,7 @@ export default function PlaceOrderScreen() {
                   {cartItems.map((item) => (
                     <tr key={item._id} className="border-b">
                       <td>
-                        <Link href={`/product/${item.slug}`}>
+                        <Link href={`/post/${item.slug}`}>
                           <a className="flex items-center">
                             <Image
                               src={item.image}
