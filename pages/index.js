@@ -111,11 +111,11 @@ export default function Home({ topRatedposts, featuredposts }) {
                     </div>
                   </div>
                   <div>
-                    <img
+                    {/* <img
                       src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
                       alt="beach"
                       className="bg_common"
-                    />
+                    /> */}
                   </div>
                 </main>
               </li>
@@ -137,11 +137,11 @@ export default function Home({ topRatedposts, featuredposts }) {
                     </div>
                   </div>
                   <div>
-                    <img
+                    {/* <img
                       src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
                       alt="tea Plantation sri Lanka"
                       className="bg_common"
-                    />
+                    /> */}
                   </div>
                 </main>
               </li>
