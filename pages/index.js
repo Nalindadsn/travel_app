@@ -35,7 +35,7 @@ export default function Home({ topRatedposts, featuredposts }) {
         <main className="flex flex-col justify-around pl-20">
           <div className="text-5xl font-extrabold -mt-2">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 capitalize tracking-wider font_ animate__animated animate__fadeIn animate__delay-2s">
-              australia
+              {/* australia */}
             </span>
           </div>
 
@@ -45,15 +45,15 @@ export default function Home({ topRatedposts, featuredposts }) {
             </span>
 
             <p className="text-xs text-gray-300 w-96 font-medium mt-7">
-              Asia a contient so full of intrigue, adventure, solace and
-              spirtuality that it has fixated and confounded travellers for
-              centuries.
+              Sri Lanka, formerly known as Ceylon and officially the Democratic
+              Socialist Republic of Sri Lanka, is an island country in South
+              Asia.
             </p>
           </div>
 
           <div className="text-5xl font-extrabold">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
-              africa
+              Sri Lanka/ Coordinates 7.8731° N, 80.7718° E
             </span>
           </div>
         </main>
