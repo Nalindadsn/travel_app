@@ -10,7 +10,7 @@ import { Store } from '../utils/Store';
 import DropdownLink from './DropdownLink';
 import { useRouter } from 'next/router';
 import SelectCom from './SelectCom';
-import NavCatCom from './NavCatCom';
+// import NavCatCom from './NavCatCom';
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
   const router = useRouter();
@@ -114,7 +114,7 @@ export default function Layout({ title, children }) {
               </div>
               <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
                 <form className="flex items-center" onSubmit={submitHandler}>
-                  <div className="inline-block relative w-44">
+                  <div className="inline-block relative ">
                     <select
                       onChange={categoryChangeHandler}
                       className="block appearance-none w-full bg-white border border-lime-400 hover:border-lime-500 px-4 py-2.5 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline"
@@ -123,7 +123,7 @@ export default function Layout({ title, children }) {
                       <SelectCom />
                     </select>
 
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-lime-700">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 ml-2 text-lime-700">
                       <svg
                         className="fill-current h-4 w-4"
                         xmlns="http://www.w3.org/2000/svg"
@@ -179,59 +179,56 @@ export default function Layout({ title, children }) {
                       )}
                     </a>
                   </Link>
-                  {status === 'loading' ? (
-                    'Loading'
-                  ) : session?.user ? (
-                    <Menu as="div" className="relative inline-block  z-50">
-                      <Menu.Button className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black ">
-                        Hello, {session.user.name}
-                      </Menu.Button>
-                      <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
-                        <Menu.Item>
-                          <DropdownLink
-                            className="dropdown-link"
-                            href="/profile"
-                          >
-                            Profile
-                          </DropdownLink>
-                        </Menu.Item>
-                        <Menu.Item>
-                          <DropdownLink
-                            className="dropdown-link"
-                            href="/order-history"
-                          >
-                            Order History
-                          </DropdownLink>
-                        </Menu.Item>
-                        {session.user.isAdmin && (
-                          <Menu.Item>
-                            <DropdownLink
-                              className="dropdown-link"
-                              href="/admin/dashboard"
-                            >
-                              Admin Dashboard
-                            </DropdownLink>
-                          </Menu.Item>
-                        )}
-                        <Menu.Item>
-                          <a
-                            className="dropdown-link"
-                            href="#"
-                            onClick={logoutClickHandler}
-                          >
-                            Logout
-                          </a>
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Menu>
-                  ) : (
-                    <Link href="/login">
-                      <a className="p-2 text-white hover:border-white hover:text-white border border-lime-300">
-                        Login
-                      </a>
-                    </Link>
-                  )}
                 </div>
+                {status === 'loading' ? (
+                  'Loading'
+                ) : session?.user ? (
+                  <Menu as="div" className="relative inline-block  z-50">
+                    <Menu.Button className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black ">
+                      Hello, {session.user.name}
+                    </Menu.Button>
+                    <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                      <Menu.Item>
+                        <DropdownLink className="dropdown-link" href="/profile">
+                          Profile
+                        </DropdownLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <DropdownLink
+                          className="dropdown-link"
+                          href="/order-history"
+                        >
+                          Order History
+                        </DropdownLink>
+                      </Menu.Item>
+                      {session.user.isAdmin && (
+                        <Menu.Item>
+                          <DropdownLink
+                            className="dropdown-link"
+                            href="/admin/dashboard"
+                          >
+                            Admin Dashboard
+                          </DropdownLink>
+                        </Menu.Item>
+                      )}
+                      <Menu.Item>
+                        <a
+                          className="dropdown-link"
+                          href="#"
+                          onClick={logoutClickHandler}
+                        >
+                          Logout
+                        </a>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Menu>
+                ) : (
+                  <Link href="/login">
+                    <a className="p-2 text-white hover:border-white hover:text-white border border-lime-300">
+                      Login
+                    </a>
+                  </Link>
+                )}
                 <button className="focus:outline-none bg-gray-100 text-gray-400 hover:text-gray-800 w-7 h-7 rounded-full flex items-center justify-center">
                   <svg
                     className="w-4 h-4"
@@ -252,167 +249,9 @@ export default function Layout({ title, children }) {
             </main>
           </nav>
         </header>
-        <section
-          className=" bg_asia grid grid-cols-2"
-          style={{
-            height: '36rem',
-            backgroundImage:
-              "url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <main className="flex flex-col justify-around pl-20">
-            <div className="text-5xl font-extrabold -mt-2">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 capitalize tracking-wider font_ animate__animated animate__fadeIn animate__delay-2s">
-                australia
-              </span>
-            </div>
 
-            <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
-              <span className="bg-clip-text text-transparent text-gray-100 capitalize font_">
-                Sri Lanka
-              </span>
-
-              <p className="text-xs text-gray-300 w-96 font-medium mt-7">
-                Asia a contient so full of intrigue, adventure, solace and
-                spirtuality that it has fixated and confounded travellers for
-                centuries.
-              </p>
-            </div>
-
-            <div className="text-5xl font-extrabold">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
-                africa
-              </span>
-            </div>
-          </main>
-
-          <main className="pr-5 mb-10">
-            <section className="py-10 mt-10">
-              <ul className="flex items-center space-x-4">
-                <li className="card animate__animated animate__fadeIn animate__delay-5s">
-                  <main className="space-y-3">
-                    <div className="space-y-2">
-                      <h4 className="text-sm capitalize text-gray-200 w-full">
-                        Kelingking beach, thailand
-                      </h4>
-                      <div>
-                        <ul className="flex items-center space-x-1">
-                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="bg_bali">
-                      <div className="m-3 float-right bg-gray-100 w-7 h-7 rounded-full flex items-center justify-center">
-                        <button className="focus:outline-none text-gray-400 hover:text-gray-500">
-                          <svg
-                            className="w-5 h-5"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </main>
-                </li>
-
-                <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
-                  <main className="space-y-3">
-                    <div className="space-y-2">
-                      <h4 className="text-sm capitalize text-gray-200 w-full">
-                        Ao Phara Nang Beach, thailand
-                      </h4>
-                      <div>
-                        <ul className="flex items-center space-x-1">
-                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div>
-                      <img
-                        src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
-                        alt="beach"
-                        className="bg_common"
-                      />
-                    </div>
-                  </main>
-                </li>
-
-                <li className="mt-10 card animate__animated animate__fadeIn animate__delay-3s">
-                  <main className="space-y-3">
-                    <div className="space-y-2">
-                      <h4 className="text-sm capitalize text-gray-200 w-full">
-                        Tea Plantation, Sri Lanka
-                      </h4>
-                      <div>
-                        <ul className="flex items-center space-x-1">
-                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div>
-                      <img
-                        src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
-                        alt="tea Plantation sri Lanka"
-                        className="bg_common"
-                      />
-                    </div>
-                  </main>
-                </li>
-              </ul>
-            </section>
-
-            <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
-              <button className="focus:outline-none w-9 h-9 bg-transparent rounded-full border border-gray-400 flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-gray-300"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </button>
-
-              <button className="focus:outline-none w-9 h-9 bg-transparent rounded-full border border-gray-400 flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-gray-300"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </main>
-        </section>
         {/* //////////////////////////////////////////////// */}
-        <header className="py-4 shadow-sm bg-lime-500 lg:bg-lime-500">
+        {/* <header className="py-4 shadow-sm bg-lime-500 lg:bg-lime-500">
           <div className=" flex items-center justify-between">
             <Link href="/">
               <a className="block w-32">Travel App</a>
@@ -535,8 +374,8 @@ export default function Layout({ title, children }) {
               )}
             </div>
           </div>
-        </header>
-        <header>
+        </header> */}
+        {/* <header>
           <nav className="bg-lime-600 hidden lg:block">
             <div className="">
               <div className="flex">
@@ -590,8 +429,8 @@ export default function Layout({ title, children }) {
               </div>
             </div>
           </nav>
-        </header>
-        <main className=" mt-4 px-4  relative ">
+        </header> */}
+        <main className="  relative ">
           <Loading />
           {children}
         </main>
