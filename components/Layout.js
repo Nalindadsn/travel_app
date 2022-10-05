@@ -84,6 +84,295 @@ export default function Layout({ title, children }) {
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between ">
+        {/* ///////////////////////////////////////////////// */}
+
+        <header className="px-7 py-3.5">
+          <nav className="animate__animated animate__fadeInLeft">
+            <main className="flex items-center justify-between">
+              <div className="flex items-center">
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+                <h1 className="text-md text-white">AroundMe</h1>
+              </div>
+              <div className="flex items-center space-x-5">
+                <button className="focus:outline-none bg-gray-100 text-gray-400 hover:text-gray-800 w-7 h-7 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </button>
+                <div>
+                  <Link href="/cart">
+                    <a className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black">
+                      My Fovourites
+                      {cartItemsCount > 0 && (
+                        <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                          {cartItemsCount}
+                        </span>
+                      )}
+                    </a>
+                  </Link>
+                  {status === 'loading' ? (
+                    'Loading'
+                  ) : session?.user ? (
+                    <Menu as="div" className="relative inline-block  z-50">
+                      <Menu.Button className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black ">
+                        Hello, {session.user.name}
+                      </Menu.Button>
+                      <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                        <Menu.Item>
+                          <DropdownLink
+                            className="dropdown-link"
+                            href="/profile"
+                          >
+                            Profile
+                          </DropdownLink>
+                        </Menu.Item>
+                        <Menu.Item>
+                          <DropdownLink
+                            className="dropdown-link"
+                            href="/order-history"
+                          >
+                            Order History
+                          </DropdownLink>
+                        </Menu.Item>
+                        {session.user.isAdmin && (
+                          <Menu.Item>
+                            <DropdownLink
+                              className="dropdown-link"
+                              href="/admin/dashboard"
+                            >
+                              Admin Dashboard
+                            </DropdownLink>
+                          </Menu.Item>
+                        )}
+                        <Menu.Item>
+                          <a
+                            className="dropdown-link"
+                            href="#"
+                            onClick={logoutClickHandler}
+                          >
+                            Logout
+                          </a>
+                        </Menu.Item>
+                      </Menu.Items>
+                    </Menu>
+                  ) : (
+                    <Link href="/login">
+                      <a className="p-2 text-white hover:border-white hover:text-white border border-lime-300">
+                        Login
+                      </a>
+                    </Link>
+                  )}
+                </div>
+                <button className="focus:outline-none bg-gray-100 text-gray-400 hover:text-gray-800 w-7 h-7 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </main>
+          </nav>
+        </header>
+        <section
+          className=" bg_asia grid grid-cols-2"
+          style={{
+            height: '36rem',
+            backgroundImage:
+              "url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <main className="flex flex-col justify-around pl-20">
+            <div className="text-5xl font-extrabold -mt-2">
+              <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 capitalize tracking-wider font_ animate__animated animate__fadeIn animate__delay-2s">
+                australia
+              </span>
+            </div>
+
+            <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
+              <span className="bg-clip-text text-transparent text-gray-100 capitalize font_">
+                Sri Lanka
+              </span>
+
+              <p className="text-xs text-gray-300 w-96 font-medium mt-7">
+                Asia a contient so full of intrigue, adventure, solace and
+                spirtuality that it has fixated and confounded travellers for
+                centuries.
+              </p>
+            </div>
+
+            <div className="text-5xl font-extrabold">
+              <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
+                africa
+              </span>
+            </div>
+          </main>
+
+          <main className="pr-5 mb-10">
+            <section className="py-10 mt-10">
+              <ul className="flex items-center space-x-4">
+                <li className="card animate__animated animate__fadeIn animate__delay-5s">
+                  <main className="space-y-3">
+                    <div className="space-y-2">
+                      <h4 className="text-sm capitalize text-gray-200 w-full">
+                        Kelingking beach, thailand
+                      </h4>
+                      <div>
+                        <ul className="flex items-center space-x-1">
+                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="bg_bali">
+                      <div className="m-3 float-right bg-gray-100 w-7 h-7 rounded-full flex items-center justify-center">
+                        <button className="focus:outline-none text-gray-400 hover:text-gray-500">
+                          <svg
+                            className="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </main>
+                </li>
+
+                <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
+                  <main className="space-y-3">
+                    <div className="space-y-2">
+                      <h4 className="text-sm capitalize text-gray-200 w-full">
+                        Ao Phara Nang Beach, thailand
+                      </h4>
+                      <div>
+                        <ul className="flex items-center space-x-1">
+                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div>
+                      <img
+                        src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
+                        alt="beach"
+                        className="bg_common"
+                      />
+                    </div>
+                  </main>
+                </li>
+
+                <li className="mt-10 card animate__animated animate__fadeIn animate__delay-3s">
+                  <main className="space-y-3">
+                    <div className="space-y-2">
+                      <h4 className="text-sm capitalize text-gray-200 w-full">
+                        Tea Plantation, Sri Lanka
+                      </h4>
+                      <div>
+                        <ul className="flex items-center space-x-1">
+                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                          <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div>
+                      <img
+                        src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
+                        alt="tea Plantation sri Lanka"
+                        className="bg_common"
+                      />
+                    </div>
+                  </main>
+                </li>
+              </ul>
+            </section>
+
+            <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
+              <button className="focus:outline-none w-9 h-9 bg-transparent rounded-full border border-gray-400 flex items-center justify-center">
+                <svg
+                  className="w-6 h-6 text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+
+              <button className="focus:outline-none w-9 h-9 bg-transparent rounded-full border border-gray-400 flex items-center justify-center">
+                <svg
+                  className="w-6 h-6 text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </main>
+        </section>
+        {/* //////////////////////////////////////////////// */}
         <header className="py-4 shadow-sm bg-lime-500 lg:bg-lime-500">
           <div className=" flex items-center justify-between">
             <Link href="/">
@@ -208,7 +497,6 @@ export default function Layout({ title, children }) {
             </div>
           </div>
         </header>
-
         <header>
           <nav className="bg-lime-600 hidden lg:block">
             <div className="">

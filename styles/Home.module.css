@@ -114,3 +114,96 @@
     flex-direction: column;
   }
 }
+
+.bg_asia {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: brightness(90%);
+}
+.font_ {
+  font-family: 'lato', sans-serif;
+}
+h4,
+p {
+  font-family: 'Inter', sans-serif;
+}
+.bg_bali {
+  height: 17.5rem;
+  width: 12.5rem;
+  background-image: url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  z-index: -1;
+  border-radius: 10px;
+}
+.bg_common {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 10px;
+}
+.card {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.card:hover {
+  cursor: pointer;
+  transition: 0.9s;
+  transform: rotateY(180deg);
+}
+.bg_africa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(90%);
+}
+.bg_alahram {
+  height: 17.5rem;
+  width: 12.5rem;
+  background-image: url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg');
+  background-position: left center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+  border-radius: 10px;
+}
+.bg_autralia::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(70%);
+}
+.bg_barrier_reif {
+  height: 17.5rem;
+  width: 12.5rem;
+  background-image: url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  z-index: -1;
+  border-radius: 10px;
+}
