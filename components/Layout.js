@@ -112,23 +112,62 @@ export default function Layout({ title, children }) {
                 </svg>
                 <h1 className="text-md text-white">AroundMe</h1>
               </div>
-              <div className="flex items-center space-x-5">
-                <button className="focus:outline-none bg-gray-100 text-gray-400 hover:text-gray-800 w-7 h-7 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+              <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
+                <form className="flex items-center" onSubmit={submitHandler}>
+                  <div className="inline-block relative w-44">
+                    <select
+                      onChange={categoryChangeHandler}
+                      className="block appearance-none w-full bg-white border border-lime-400 hover:border-lime-500 px-4 py-2.5 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                      <option value="">All</option>
+                      <SelectCom />
+                    </select>
+
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-lime-700">
+                      <svg
+                        className="fill-current h-4 w-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="relative w-full">
+                    <div className="flex absolute inset-y-0 left-0 items-center  pointer-events-none"></div>
+                    <input
+                      id="simple-search"
+                      className="bg-lime-50 border border-lime-300 text-lime-900 text-sm focus:ring-lime-500 focus:border-lime-500 block w-full  p-2.5  dark:bg-lime-700 dark:border-lime-600 dark:placeholder-lime-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
+                      placeholder="Search..."
+                      onChange={queryChangeHandler}
+                      required
+                      type="text"
+                      name="max"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="p-2.5 ml-1 text-sm font-medium text-white bg-lime-700 rounded-lg border border-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    ></path>
-                  </svg>
-                </button>
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      ></path>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+
+              <div className="flex items-center space-x-5">
                 <div>
                   <Link href="/cart">
                     <a className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black">
