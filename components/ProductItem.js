@@ -122,8 +122,6 @@ export default function ProductItem({ product, addToCartHandler }) {
           </p>
         </div>
 
-        <p className="mb-2">{product.brand}</p>
-
         <div className="flex item-center justify-between mt-3">
           <h1 className="text-gray-700 font-bold text-xl">${product.price}</h1>
 
@@ -132,7 +130,7 @@ export default function ProductItem({ product, addToCartHandler }) {
             type="button"
             onClick={() => addToCartHandler(product)}
           >
-            Add to cart
+            SAVE
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Link from 'next/link';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
@@ -32,7 +33,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         style={{
           height: '36rem',
           backgroundImage:
-            "url('https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg')",
+            "url('https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -49,7 +50,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
               Sri Lanka
             </span>
 
-            <p className="text-xs text-gray-300 w-96 font-medium mt-7">
+            <p className="text-xs text-gray-300 w-96 font-medium mt-7  drop-shadow-lg shadow-black">
               Sri Lanka, formerly known as Ceylon and officially the Democratic
               Socialist Republic of Sri Lanka, is an island country in South
               Asia.
@@ -63,47 +64,48 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           </div>
         </main>
 
-        <main className="pr-5 mb-10">
-          <section className="py-10 mt-10">
-            <ul className="flex items-center space-x-4">
-              <li className="card animate__animated animate__fadeIn animate__delay-5s">
-                <main className="space-y-3">
-                  <div className="space-y-2">
-                    <h4 className="text-sm capitalize text-gray-200 w-full">
-                      Kelingking beach, thailand
-                    </h4>
-                    <div>
-                      <ul className="flex items-center space-x-1">
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="bg_bali">
-                    <div className="m-3 float-right bg-gray-100 w-7 h-7 rounded-full flex items-center justify-center">
-                      <button className="focus:outline-none text-gray-400 hover:text-gray-500">
-                        <svg
-                          className="w-5 h-5"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"></path>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </main>
-              </li>
+        <main className="pr-5 mb-15">
+          <section className="">
+            <header>
+              <nav className="mb-8 hidden lg:block">
+                <div className="container">
+                  <div className="flex">
+                    <div className=""></div>
 
+                    <div className="flex items-right  float-right flex-grow pl-12">
+                      <div className="w-full text-right">
+                        <Link href="/">
+                          <a className="text-white hover:border-white hover:text-white border-b border-lisgt-900 px-2 transition">
+                            Home
+                          </a>
+                        </Link>
+                        <Link href="/search">
+                          <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                            Shop
+                          </a>
+                        </Link>
+                        <Link href="about">
+                          <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                            About us
+                          </a>
+                        </Link>
+                        <Link href="contact">
+                          <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                            Contact us
+                          </a>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </header>
+            <ul className=" items-center space-x-4 xl:flex lg:flex md:flex  hidden ">
               <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
                 <main className="space-y-3">
                   <div className="space-y-2">
                     <h4 className="text-sm capitalize text-gray-200 w-full">
-                      Ao Phara Nang Beach, thailand
+                      text
                     </h4>
                     <div>
                       <ul className="flex items-center space-x-1">
@@ -116,20 +118,45 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                     </div>
                   </div>
                   <div>
-                    {/* <img
-                      src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
+                    <img
+                      src="https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg"
                       alt="beach"
                       className="bg_common"
-                    /> */}
+                    />
+                  </div>
+                </main>
+              </li>
+              <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
+                <main className="space-y-3">
+                  <div className="space-y-2">
+                    <h4 className="text-sm capitalize text-gray-200 w-full">
+                      text
+                    </h4>
+                    <div>
+                      <ul className="flex items-center space-x-1">
+                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
+                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <img
+                      src="https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg"
+                      alt="beach"
+                      className="bg_common"
+                    />
                   </div>
                 </main>
               </li>
 
-              <li className="mt-10 card animate__animated animate__fadeIn animate__delay-3s">
-                <main className="space-y-3">
+              <li className="mt-10 card animate__animated animate__fadeIn animate__delay-3s ">
+                <main className="space-y-3 ">
                   <div className="space-y-2">
                     <h4 className="text-sm capitalize text-gray-200 w-full">
-                      Tea Plantation, Sri Lanka
+                      text
                     </h4>
                     <div>
                       <ul className="flex items-center space-x-1">
@@ -142,11 +169,11 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                     </div>
                   </div>
                   <div>
-                    {/* <img
-                      src="https://res.cloudinary.com/masterdevs/image/upload/v1664983448/asia_g906aw.jpg"
+                    <img
+                      src="https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg"
                       alt="tea Plantation sri Lanka"
                       className="bg_common"
-                    /> */}
+                    />
                   </div>
                 </main>
               </li>
