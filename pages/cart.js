@@ -40,14 +40,13 @@ function CartScreen() {
                           <Image
                             src={item.image}
                             alt={item.name}
-                            width={50}
-                            height={50}
+                            width={150}
+                            height={150}
                           ></Image>
                           &nbsp;
                           {item.name}
                         </a>
                       </Link>
-                      <h4 className="ml-2">{item.brand}</h4>
                     </td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>

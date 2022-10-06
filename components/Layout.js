@@ -34,7 +34,7 @@ export default function Layout({ title, children }) {
   };
 
   useEffect(() => {
-    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+    setCartItemsCount(cart.cartItems.length);
   }, [cart.cartItems]);
   const logoutClickHandler = () => {
     Cookies.remove('cart');
