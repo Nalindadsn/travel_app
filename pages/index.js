@@ -39,7 +39,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           backgroundPosition: 'center',
         }}
       >
-        <main className="flex flex-col justify-around pl-20">
+        <main className="flex flex-col justify-around pl-5">
           <div className="text-5xl font-extrabold -mt-2">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 capitalize tracking-wider font_ animate__animated animate__fadeIn animate__delay-2s">
               {/* australia */}
