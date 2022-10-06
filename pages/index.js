@@ -39,19 +39,13 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           backgroundPosition: 'center',
         }}
       >
-        <main className="flex flex-col justify-around pl-5">
-          <div className="text-5xl font-extrabold -mt-2">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 capitalize tracking-wider font_ animate__animated animate__fadeIn animate__delay-2s">
-              {/* australia */}
-            </span>
-          </div>
-
+        <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
-            <span className="bg-clip-text text-transparent text-gray-100 capitalize font_">
+            <span className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3">
               Sri Lanka
             </span>
 
-            <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black">
+            <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
               Sri Lanka, formerly known as Ceylon and officially the Democratic
               Socialist Republic of Sri Lanka, is an island country in South
               Asia.
@@ -59,9 +53,11 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           </div>
 
           <div className="text-5xl font-extrabold">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
-              Sri Lanka/ Coordinates 7.8731° N, 80.7718° E
-            </span>
+            <div className=" ml-3 bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
+              {`Sri Lanka/ Coordinates 
+                  7.8731° N, 80.7718° E
+             `}
+            </div>
           </div>
         </main>
 
