@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
 import ProductItem from '../components/ProductItem';
-import Slider from '../components/Slider';
+
 import SliderMain from '../components/Slider2';
 import Product from '../models/Product';
 import db from '../utils/db';
@@ -100,81 +100,6 @@ export default function Home({ topRatedProducts, featuredProducts }) {
             </header>
             <ul className=" items-center space-x-4 xl:flex lg:flex md:flex  hidden ">
               <SliderMain featured={featuredProducts} />
-              {/* <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
-                <main className="space-y-3">
-                  <div className="space-y-2">
-                    <h4 className="text-sm capitalize text-gray-200 w-full">
-                      text
-                    </h4>
-                    <div>
-                      <ul className="flex items-center space-x-1">
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      src="https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg"
-                      alt="beach"
-                      className="bg_common"
-                    />
-                  </div>
-                </main>
-              </li>
-              <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
-                <main className="space-y-3">
-                  <div className="space-y-2">
-                    <h4 className="text-sm capitalize text-gray-200 w-full">
-                      text
-                    </h4>
-                    <div>
-                      <ul className="flex items-center space-x-1">
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      src="https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg"
-                      alt="beach"
-                      className="bg_common"
-                    />
-                  </div>
-                </main>
-              </li>
-              <li className="mt-10 card animate__animated animate__fadeIn animate__delay-3s ">
-                <main className="space-y-3 ">
-                  <div className="space-y-2">
-                    <h4 className="text-sm capitalize text-gray-200 w-full">
-                      text
-                    </h4>
-                    <div>
-                      <ul className="flex items-center space-x-1">
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-200"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                        <li className="w-2 h-2 rounded-full bg-gray-300"></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      src="https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg"
-                      alt="tea Plantation sri Lanka"
-                      className="bg_common"
-                    />
-                  </div>
-                </main>
-              </li> */}
             </ul>
           </section>
 
@@ -193,7 +118,6 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         </main>
       </section>
 
-      <Slider featured={featuredProducts} />
       <br />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 ">
         {topRatedProducts.map((product) => (
