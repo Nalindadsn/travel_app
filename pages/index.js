@@ -46,9 +46,9 @@ export default function Home({ topRatedProducts, featuredProducts }) {
             </span>
 
             <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
-              Sri Lanka, formerly known as Ceylon and officially the Democratic
-              Socialist Republic of Sri Lanka, is an island country in South
-              Asia.
+              Sri Lanka, formerly known as Ceylon
+              <br /> and officially the Democratic Socialist Republic of Sri
+              Lanka, is an island country in South Asia.
             </p>
           </div>
 
