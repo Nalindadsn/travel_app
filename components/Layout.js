@@ -109,7 +109,7 @@ export default function Layout({ title, children }) {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   ></path>
                 </svg>
-                <h1 className="text-md text-white">AroundMe</h1>
+                <h1 className="text-md ">Travel </h1>
               </div>
               <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
                 <form className="flex items-center" onSubmit={submitHandler}>
