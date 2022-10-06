@@ -128,7 +128,7 @@ export default function ProductItem({ product, addToCartHandler }) {
             type="button"
             onClick={() => addToCartHandler(product)}
           >
-            SAVE
+            SAVE <i className="fa fa-clock-o"></i>
           </button>
         </div>
       </div>
