@@ -182,7 +182,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
               Find Location
               <Link href="/map">
                 <a>
-                  <i className="ml-3   inline-flex items-center justify-center w-8 h-8 mr-2 text-white transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-800">
+                  <i className="ml-3  mt-5 inline-flex items-center justify-center w-8 h-8 mr-2 text-white transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-800">
                     <i className=" fa fa-map text-yellow-500  "></i>
                   </i>
                 </a>
