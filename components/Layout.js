@@ -231,7 +231,7 @@ export default function Layout({ title, children }) {
                   </Menu>
                 ) : (
                   <Link href="/login">
-                    <a className="p-2 text-white hover:border-white hover:text-white border border-lime-300">
+                    <a className="p-2 text-gray-800 hover:border-gray-700 hover:bg-gray-800 hover:text-white border border-gray-300">
                       Login
                     </a>
                   </Link>
