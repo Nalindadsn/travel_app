@@ -94,7 +94,7 @@ export default function Layout({ title, children }) {
             <main className="flex items-center justify-between">
               <div className="flex items-center">
                 <svg
-                  className="w-5 h-5 text-white"
+                  className="w-5 h-5 text-red-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -113,7 +113,11 @@ export default function Layout({ title, children }) {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   ></path>
                 </svg>
-                <h1 className="text-md ">Travel </h1>
+                <span className="text-md">
+                  <Link href="/">
+                    <a>Travel</a>
+                  </Link>
+                </span>
               </div>
               <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
                 <form className="flex items-center" onSubmit={submitHandler}>
