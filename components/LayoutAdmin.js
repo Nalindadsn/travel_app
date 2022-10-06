@@ -36,16 +36,16 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + ' - Travel App' : 'Travel App'}</title>
-        <meta name="description" content="Travel App Website" />
+        <title>{title ? title + ' - Amazona' : 'Amazona'}</title>
+        <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
       <div className="flex min-h-screen flex-col justify-between ">
-        <header className="py-4 shadow-sm bg-lime-500 lg:bg-lime-500">
+        <header className="py-4 shadow-sm bg-gray-900 lg:bg-gray-900">
           <div className="container flex items-center justify-between">
             <Link href="/">
-              <a className="block w-32">Travel App</a>
+              <a className="block w-32">Ecommerce</a>
             </Link>
 
             <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
@@ -53,7 +53,7 @@ export default function Layout({ title, children }) {
             <form onSubmit={submitHandler}>
               <input
                 name="query"
-                placeholder="Search posts"
+                placeholder="Search products"
                 onChange={queryChangeHandler}
               />
               <button type="submit">search</button>
@@ -144,15 +144,15 @@ export default function Layout({ title, children }) {
                     <input
                       type="search"
                       id="search-dropdown"
-                      className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-lime-500 focus:border-lime-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-lime-500"
+                      className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                       name="query"
-                      placeholder="Search posts"
+                      placeholder="Search products"
                       onChange={queryChangeHandler}
                       required
                     />
                     <button
                       type="submit"
-                      className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-lime-700 rounded-r-lg border border-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+                      className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       <svg
                         aria-hidden="true"
@@ -239,7 +239,7 @@ export default function Layout({ title, children }) {
         </header>
 
         <header>
-          <nav className="bg-lime-600 hidden lg:block">
+          <nav className="bg-gray-800 hidden lg:block">
             <div className="container">
               <div className="flex">
                 <div className="px-8 py-1 bg-primary flex items-center cursor-pointer group relative">
@@ -296,7 +296,7 @@ export default function Layout({ title, children }) {
           {children}
         </main>
         <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p>Copyright © 2022 Travel App</p>
+          <p>Copyright © 2022 Amazona</p>
         </footer>
       </div>
     </>

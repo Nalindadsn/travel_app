@@ -109,6 +109,10 @@ function OrderScreen() {
     shippingAddress,
     paymentMethod,
     orderItems,
+    itemsPrice,
+    taxPrice,
+    shippingPrice,
+    totalPrice,
     isPaid,
     paidAt,
     isDelivered,
@@ -119,7 +123,7 @@ function OrderScreen() {
       .create({
         purchase_units: [
           {
-            amount: { value: '' },
+            amount: { value: totalPrice },
           },
         ],
       })
@@ -201,6 +205,7 @@ function OrderScreen() {
                   <tr>
                     <th className="px-5 text-left">Item</th>
                     <th className="    p-5 text-right">Quantity</th>
+                    <th className="  p-5 text-right">Price</th>
                     <th className="p-5 text-right">Subtotal</th>
                   </tr>
                 </thead>
@@ -208,7 +213,7 @@ function OrderScreen() {
                   {orderItems.map((item) => (
                     <tr key={item._id} className="border-b">
                       <td>
-                        <Link href={`/post/${item.slug}`}>
+                        <Link href={`/product/${item.slug}`}>
                           <a className="flex items-center">
                             <Image
                               src={item.image}
@@ -222,7 +227,10 @@ function OrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right"></td>
+                      <td className="p-5 text-right">${item.price}</td>
+                      <td className="p-5 text-right">
+                        ${item.quantity * item.price}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -236,21 +244,25 @@ function OrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
+                    <div>${itemsPrice}</div>
                   </div>
                 </li>{' '}
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Tax</div>
+                    <div>${taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
+                    <div>${shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
+                    <div>${totalPrice}</div>
                   </div>
                 </li>
                 {!isPaid && (

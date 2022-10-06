@@ -45,13 +45,13 @@ export default function Slider({ featured }) {
       }}
       className="mySwiper bg-white"
     >
-      {featured.map((post) => (
-        <SwiperSlide key={post._id}>
+      {featured.map((product) => (
+        <SwiperSlide key={product._id}>
           <Image
             width="300"
             height="300"
-            src={post.image}
-            alt={post.name}
+            src={product.image}
+            alt={product.name}
             className="rounded shadow object-cover h-80 w-full p-2 m-4"
           />{' '}
         </SwiperSlide>

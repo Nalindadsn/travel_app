@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 export default function ProductItem({ product, addToCartHandler }) {
   return (
-    <div className="card bg-white relateve">
+    <div className="card bg-white">
       <Link href={`/product/${product.slug}`}>
         <a>
           <img

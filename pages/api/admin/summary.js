@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/react';
 import Order from '../../../models/Order';
-import Post from '../../../models/Post';
+import Product from '../../../models/Product';
 import User from '../../../models/User';
 import db from '../../../utils/db';
 
@@ -14,7 +14,7 @@ const handler = async (req, res) => {
   await db.connect();
 
   const ordersCount = await Order.countDocuments();
-  const postsCount = await Post.countDocuments();
+  const productsCount = await Product.countDocuments();
   const usersCount = await User.countDocuments();
 
   const ordersPriceGroup = await Order.aggregate([
@@ -38,7 +38,7 @@ const handler = async (req, res) => {
   ]);
 
   await db.disconnect();
-  res.send({ ordersCount, postsCount, usersCount, ordersPrice, salesData });
+  res.send({ ordersCount, productsCount, usersCount, ordersPrice, salesData });
 };
 
 export default handler;

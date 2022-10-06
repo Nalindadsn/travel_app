@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 //import Pagination from '../components/Pagination';
 import Pagination from 'react-js-pagination';
 
-import PostItem from '../components/PostItem';
-import Post from '../models/Post';
+import ProductItem from '../components/ProductItem';
+import Product from '../models/Product';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
 
@@ -19,18 +19,22 @@ export default function Search(props) {
   const {
     query = 'all',
     category = 'all',
+    brand = 'all',
+    price = 'all',
     rating = 'all',
     sort = 'featured',
   } = router.query;
-  const { posts, countposts, categories } = props;
+  const { products, countProducts, categories, brands } = props;
 
   const filterSearch = ({
     page,
     category,
+    brand,
     sort,
     min,
     max,
     searchQuery,
+    price,
     rating,
   }) => {
     const path = router.pathname;
@@ -39,6 +43,8 @@ export default function Search(props) {
     if (searchQuery) query.searchQuery = searchQuery;
     if (sort) query.sort = sort;
     if (category) query.category = category;
+    if (brand) query.brand = brand;
+    if (price) query.price = price;
     if (rating) query.rating = rating;
     if (min) query.min ? query.min : query.min === 0 ? 0 : min;
     if (max) query.max ? query.max : query.max === 0 ? 0 : max;
@@ -70,7 +76,9 @@ export default function Search(props) {
   //   const pageHandler = (e, page) => {
   //     filterSearch({ page });
   //   };
-
+  const brandHandler = (e) => {
+    filterSearch({ brand: e.target.value, page: 1 });
+  };
   const sortHandler = (e) => {
     filterSearch({ sort: e.target.value, page: 1 });
   };
@@ -80,22 +88,47 @@ export default function Search(props) {
 
   const { state, dispatch } = useContext(Store);
 
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(10000);
+
+  const priceHandlerA = (e) => {
+    e.preventDefault();
+    if (e.target.name === 'min') {
+      //alert('min');
+      setMinValue(e.target.value);
+      //alert(minValue);
+    }
+    if (e.target.name === 'max') {
+      //alert('max');
+
+      setMaxValue(e.target.value);
+      //alert(maxValue);
+    }
+    setTimeout(() => {
+      //router.push('/');
+      filterSearch({ price: minValue + '-' + maxValue, page: 1 });
+    }, 1000);
+  };
+
   const handlePagination = (pageNumber) => {
     setAPage(pageNumber);
     // window.location.href will reload entire page
     // router.push(`/?page=${pageNumber}`);
     filterSearch({ page: pageNumber });
   };
-
-  const addToCartHandler = async (post) => {
-    const existItem = state.cart.cartItems.find((x) => x._id === post._id);
+  useEffect(() => {
+    setCategoriesIds([]);
+    //here you will have correct value in userInput
+  }, [minValue, maxValue]);
+  const addToCartHandler = async (product) => {
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/posts/${post._id}`);
+    const { data } = await axios.get(`/api/products/${product._id}`);
     if (data.countInStock < quantity) {
-      window.alert('Sorry. Post is out of stock');
+      window.alert('Sorry. Product is out of stock');
       return;
     }
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
     router.push('/cart');
   };
 
@@ -103,7 +136,7 @@ export default function Search(props) {
     <Layout title="Search">
       <div className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative">
         <div className="col-span-1 bg-white   pb-6 shadow rounded overflow-hidden absolute lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
-          <div className="bg-lime-500 px-4 py-2 font-bold text-white">
+          <div className="bg-gray-900 px-4 py-2 font-bold text-white">
             FILTER
           </div>
           <div className="divide-gray-200 divide-y space-y-5 relative px-4">
@@ -166,6 +199,93 @@ export default function Search(props) {
 
             <div className="pt-4">
               <h3 className="text-gray-800 mb-3 uppercase font-medium">
+                Brands
+              </h3>
+              <div className="space-y-2">
+                <select
+                  value={brand}
+                  onChange={brandHandler}
+                  className="w-full"
+                >
+                  <option value="all">All</option>
+                  {brands &&
+                    brands.map((brand) => (
+                      <option key={brand} value={brand}>
+                        {brand}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+            <div className="pt-4">
+              <h3 className="text-gray-800 mb-3 uppercase font-medium">
+                PRICE
+              </h3>
+              <div className="space-y-2">
+                {/* <select
+                  value={price}
+                  onChange={priceHandler}
+                  className="w-full"
+                >
+                  <option value="all">All</option>
+                  {prices.map((price) => (
+                    <option key={price.value} value={price.value}>
+                      {price.name}
+                    </option>
+                  ))}
+                </select> */}
+
+                <form className="flex items-center" onSubmit={priceHandlerA}>
+                  <div className="relative w-full mr-1">
+                    <div className="flex absolute inset-y-0 left-0 items-center  pointer-events-none"></div>
+                    <input
+                      value={minValue}
+                      onChange={(e) => setMinValue(e.target.value)}
+                      type="number"
+                      name="min"
+                      id="simple-search"
+                      className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Min"
+                      required
+                    />
+                  </div>
+                  <div className="relative w-full">
+                    <div className="flex absolute inset-y-0 left-0 items-center  pointer-events-none"></div>
+                    <input
+                      id="simple-search"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Max"
+                      required
+                      value={maxValue}
+                      onChange={(e) => setMaxValue(e.target.value)}
+                      type="number"
+                      name="max"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="p-2.5 ml-1 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      ></path>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div className="pt-4">
+              <h3 className="text-gray-800 mb-3 uppercase font-medium">
                 RATING
               </h3>
               <div className="space-y-2">
@@ -198,6 +318,8 @@ export default function Search(props) {
               className="w-44 text-sm text-gray-600 px-4 py-3 border-gray-300 shadow-sm rounded focus:ring-primary focus:border-primary"
             >
               <option value="featured">Featured</option>
+              <option value="lowest">Price: Low to High</option>
+              <option value="highest">Price: High to Low</option>
               <option value="toprated">Customer Reviews</option>
               <option value="newest">Newest Arrivals</option>
             </select>
@@ -211,34 +333,45 @@ export default function Search(props) {
             </div>
           </div>
           <div>
-            {posts.length === 0 ? 'No' : countposts} Results
+            {products.length === 0 ? 'No' : countProducts} Results
             {query !== 'all' && query !== '' && ' : ' + query}
             {category !== 'all' && ' : ' + category}
+            {brand !== 'all' && ' : ' + brand}
+            {price !== 'all' && ' : Price ' + price}
             {rating !== 'all' && ' : Rating ' + rating + ' & up'}
             {(query !== 'all' && query !== '') ||
-              category !== 'all' ||
-              rating !== 'all'}
+            category !== 'all' ||
+            brand !== 'all' ||
+            rating !== 'all' ||
+            price !== 'all' ? (
+              <button
+                onClick={() => router.push('/search')}
+                className="ml-2 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xs text-xs px-1 py-0 text-center  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+              >
+                X
+              </button>
+            ) : null}
           </div>
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-2 gap-6">
-            {posts.map((post) => (
-              <div key={post._id} className="group rounded overflow-hidden">
+            {products.map((product) => (
+              <div key={product._id} className="group rounded overflow-hidden">
                 <div>
-                  <PostItem
-                    post={post}
-                    key={post.slug}
+                  <ProductItem
+                    product={product}
+                    key={product.slug}
                     addToCartHandler={addToCartHandler}
-                  ></PostItem>
+                  ></ProductItem>
                 </div>
               </div>
             ))}
           </div>
-          {posts.length === 0 ? 'No' : countposts} Results
+          {products.length === 0 ? 'No' : countProducts} Results
           {/* <Pagination pages="2" /> */}
           <div className="d-flex justify-content-center mt-5 " id="pgn">
             <Pagination
               activePage={aPage}
               itemsCountPerPage={PAGE_SIZE}
-              totalItemsCount={countposts}
+              totalItemsCount={countProducts}
               onChange={handlePagination}
               nextPageText={'Next'}
               prevPageText={'Prev'}
@@ -260,6 +393,8 @@ export async function getServerSideProps({ query }) {
   const pageSize = query.pageSize || PAGE_SIZE;
   const page = query.page || 1;
   const category = query.category || '';
+  const brand = query.brand || '';
+  const price = query.price || '';
   const rating = query.rating || '';
   const sort = query.sort || '';
   const searchQuery = query.query || '';
@@ -274,6 +409,7 @@ export async function getServerSideProps({ query }) {
         }
       : {};
   const categoryFilter = category && category !== 'all' ? { category } : {};
+  const brandFilter = brand && brand !== 'all' ? { brand } : {};
   const ratingFilter =
     rating && rating !== 'all'
       ? {
@@ -283,21 +419,37 @@ export async function getServerSideProps({ query }) {
         }
       : {};
   // 10-50
+  const priceFilter =
+    price && price !== 'all'
+      ? {
+          price: {
+            $gte: Number(price.split('-')[0]),
+            $lte: Number(price.split('-')[1]),
+          },
+        }
+      : {};
 
   const order =
     sort === 'featured'
       ? { featured: -1 }
+      : sort === 'lowest'
+      ? { price: 1 }
+      : sort === 'highest'
+      ? { price: -1 }
       : sort === 'toprated'
       ? { rating: -1 }
       : sort === 'newest'
       ? { createdAt: -1 }
       : { _id: -1 };
 
-  const categories = await Post.find().distinct('category');
-  const postDocs = await Post.find(
+  const categories = await Product.find().distinct('category');
+  const brands = await Product.find().distinct('brand');
+  const productDocs = await Product.find(
     {
       ...queryFilter,
       ...categoryFilter,
+      ...priceFilter,
+      ...brandFilter,
       ...ratingFilter,
     },
     '-reviews'
@@ -307,23 +459,25 @@ export async function getServerSideProps({ query }) {
     .limit(pageSize)
     .lean();
 
-  const countposts = await Post.countDocuments({
+  const countProducts = await Product.countDocuments({
     ...queryFilter,
     ...categoryFilter,
-
+    ...priceFilter,
+    ...brandFilter,
     ...ratingFilter,
   });
   await db.disconnect();
 
-  const posts = postDocs.map(db.convertDocToObj);
+  const products = productDocs.map(db.convertDocToObj);
 
   return {
     props: {
-      posts,
-      countposts,
+      products,
+      countProducts,
       page,
-      pages: Math.ceil(countposts / pageSize),
+      pages: Math.ceil(countProducts / pageSize),
       categories,
+      brands,
     },
   };
 }
