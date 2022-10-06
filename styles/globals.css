@@ -182,3 +182,26 @@ textarea {
 #pgn .pagination .active a {
   @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-200 rounded;
 }
+#__next
+  > div.flex.min-h-screen.flex-col.justify-between
+  > main
+  > section
+  > main.pr-5.mb-15
+  > section
+  > ul
+  > div
+  > div.swiper-wrapper
+  > div.swiper-slide {
+  background: none;
+}
+#__next
+  > div.flex.min-h-screen.flex-col.justify-between
+  > main
+  > section
+  > main.pr-5.mb-15
+  > section
+  > ul
+  > div
+  > div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 0px;
+}

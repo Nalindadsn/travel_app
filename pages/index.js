@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
 import ProductItem from '../components/ProductItem';
 import Slider from '../components/Slider';
+import SliderMain from '../components/Slider2';
 import Product from '../models/Product';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
@@ -98,7 +99,8 @@ export default function Home({ topRatedProducts, featuredProducts }) {
               </nav>
             </header>
             <ul className=" items-center space-x-4 xl:flex lg:flex md:flex  hidden ">
-              <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
+              <SliderMain featured={featuredProducts} />
+              {/* <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s">
                 <main className="space-y-3">
                   <div className="space-y-2">
                     <h4 className="text-sm capitalize text-gray-200 w-full">
@@ -148,7 +150,6 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                   </div>
                 </main>
               </li>
-
               <li className="mt-10 card animate__animated animate__fadeIn animate__delay-3s ">
                 <main className="space-y-3 ">
                   <div className="space-y-2">
@@ -173,12 +174,12 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                     />
                   </div>
                 </main>
-              </li>
+              </li> */}
             </ul>
           </section>
 
           <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
-            <h2 className="font-bold text-white">
+            <h2 className="font-bold text-white text-xl">
               Find Location
               <Link href="/map">
                 <a>

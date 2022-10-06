@@ -177,10 +177,10 @@ export default function Layout({ title, children }) {
               <div className="flex items-center space-x-5">
                 <div>
                   <Link href="/cart">
-                    <a className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black">
+                    <a className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black rounded-full">
                       Saved
                       {cartItemsCount > 0 && (
-                        <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                        <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white rounded-full">
                           {cartItemsCount}
                         </span>
                       )}
@@ -191,8 +191,9 @@ export default function Layout({ title, children }) {
                   'Loading'
                 ) : session?.user ? (
                   <Menu as="div" className="relative inline-block  z-50">
-                    <Menu.Button className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black ">
-                      Hello, {session.user.name}
+                    <Menu.Button className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black  rounded-full ">
+                      Hello, {session.user.name}{' '}
+                      <i className="fa fa-chevron-down"></i>
                     </Menu.Button>
                     <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
                       <Menu.Item>
