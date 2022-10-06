@@ -21,6 +21,7 @@ function SelectCom() {
       {cat.map((a, index) => (
         <option className="user" key={index}>
           {a}
+          {`      `}
         </option>
       ))}
     </>

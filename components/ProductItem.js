@@ -123,8 +123,6 @@ export default function ProductItem({ product, addToCartHandler }) {
         </div>
 
         <div className="flex item-center justify-between mt-3">
-          <h1 className="text-gray-700 font-bold text-xl">${product.price}</h1>
-
           <button
             className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded"
             type="button"

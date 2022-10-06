@@ -116,9 +116,9 @@ export default function Layout({ title, children }) {
                   <div className="inline-block relative ">
                     <select
                       onChange={categoryChangeHandler}
-                      className="block appearance-none w-full bg-white border border-lime-400 hover:border-lime-500 px-4 py-2.5 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline"
+                      className="block appearance-none w-15 bg-white border border-lime-400 hover:border-lime-500 px-4 py-2.5 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline"
                     >
-                      <option value="">All</option>
+                      <option value=""> {`All         `}</option>
                       <SelectCom />
                     </select>
 

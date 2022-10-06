@@ -32,6 +32,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         className=" bg_asia grid grid-cols-2"
         style={{
           height: '36rem',
+          backgroundColor: '#333',
           backgroundImage:
             "url('https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg')",
           backgroundSize: 'cover',
