@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import Layout from '../components/Layout';
@@ -19,7 +18,8 @@ export default function Search(props) {
   const {
     query = 'all',
     category = 'all',
-
+    brand = 'all',
+    price = 'all',
     rating = 'all',
     sort = 'featured',
   } = router.query;
@@ -28,12 +28,12 @@ export default function Search(props) {
   const filterSearch = ({
     page,
     category,
-
+    brand,
     sort,
     min,
     max,
     searchQuery,
-
+    price,
     rating,
   }) => {
     const path = router.pathname;
@@ -42,6 +42,8 @@ export default function Search(props) {
     if (searchQuery) query.searchQuery = searchQuery;
     if (sort) query.sort = sort;
     if (category) query.category = category;
+    if (brand) query.brand = brand;
+    if (price) query.price = price;
     if (rating) query.rating = rating;
     if (min) query.min ? query.min : query.min === 0 ? 0 : min;
     if (max) query.max ? query.max : query.max === 0 ? 0 : max;
@@ -95,11 +97,7 @@ export default function Search(props) {
   const addToCartHandler = async (product) => {
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
-    if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
-      return;
-    }
+
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
     router.push('/cart');
   };
@@ -109,7 +107,7 @@ export default function Search(props) {
       <div className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative">
         <div className="col-span-1 bg-white   pb-6 shadow rounded overflow-hidden absolute lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block">
           <div className="bg-gray-900 px-4 py-2 font-bold text-white">
-            <i className="fa fa-filter"></i> FILTER
+            FILTER
           </div>
           <div className="divide-gray-200 divide-y space-y-5 relative px-4">
             <div className="relative">
@@ -195,6 +193,7 @@ export default function Search(props) {
         <div className="col-span-3">
           <div className="mb-4 flex items-center">
             <button className="bg-primary border border-primary text-white px-10 py-3 font-medium rounded uppercase hover:bg-transparent hover:text-primary transition lg:hidden text-sm mr-3 focus:outline-none">
+              <i className="fa fa-filter"></i>
               Filter
             </button>
             <select
@@ -203,18 +202,30 @@ export default function Search(props) {
               className="w-44 text-sm text-gray-600 px-4 py-3 border-gray-300 shadow-sm rounded focus:ring-primary focus:border-primary"
             >
               <option value="featured">Featured</option>
-              <option value="toprated"> Reviews</option>
+              <option value="toprated">Customer Reviews</option>
               <option value="newest">Newest Arrivals</option>
             </select>
+            <div className="flex gap-2 ml-auto">
+              <div className="border border-primary w-10 h-9 flex items-center justify-center text-white bg-primary rounded cursor-pointer">
+                <i className="fas fa-th"></i>
+              </div>
+              <div className="border border-gray-300 w-10 h-9 flex items-center justify-center text-gray-600 rounded cursor-pointer">
+                <i className="fas fa-list"></i>
+              </div>
+            </div>
           </div>
           <div>
             {products.length === 0 ? 'No' : countProducts} Results
             {query !== 'all' && query !== '' && ' : ' + query}
             {category !== 'all' && ' : ' + category}
+            {brand !== 'all' && ' : ' + brand}
+            {price !== 'all' && ' : Price ' + price}
             {rating !== 'all' && ' : Rating ' + rating + ' & up'}
             {(query !== 'all' && query !== '') ||
             category !== 'all' ||
-            rating !== 'all' ? (
+            brand !== 'all' ||
+            rating !== 'all' ||
+            price !== 'all' ? (
               <button
                 onClick={() => router.push('/search')}
                 className="ml-2 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xs text-xs px-1 py-0 text-center  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
@@ -264,6 +275,8 @@ export async function getServerSideProps({ query }) {
   const pageSize = query.pageSize || PAGE_SIZE;
   const page = query.page || 1;
   const category = query.category || '';
+  const brand = query.brand || '';
+  const price = query.price || '';
   const rating = query.rating || '';
   const sort = query.sort || '';
   const searchQuery = query.query || '';
@@ -278,6 +291,7 @@ export async function getServerSideProps({ query }) {
         }
       : {};
   const categoryFilter = category && category !== 'all' ? { category } : {};
+  const brandFilter = brand && brand !== 'all' ? { brand } : {};
   const ratingFilter =
     rating && rating !== 'all'
       ? {
@@ -287,19 +301,37 @@ export async function getServerSideProps({ query }) {
         }
       : {};
   // 10-50
+  const priceFilter =
+    price && price !== 'all'
+      ? {
+          price: {
+            $gte: Number(price.split('-')[0]),
+            $lte: Number(price.split('-')[1]),
+          },
+        }
+      : {};
 
   const order =
     sort === 'featured'
+      ? { featured: -1 }
+      : sort === 'lowest'
+      ? { price: 1 }
+      : sort === 'highest'
+      ? { price: -1 }
+      : sort === 'toprated'
       ? { rating: -1 }
       : sort === 'newest'
       ? { createdAt: -1 }
       : { _id: -1 };
 
   const categories = await Product.find().distinct('category');
+  const brands = await Product.find().distinct('brand');
   const productDocs = await Product.find(
     {
       ...queryFilter,
       ...categoryFilter,
+      ...priceFilter,
+      ...brandFilter,
       ...ratingFilter,
     },
     '-reviews'
@@ -312,6 +344,8 @@ export async function getServerSideProps({ query }) {
   const countProducts = await Product.countDocuments({
     ...queryFilter,
     ...categoryFilter,
+    ...priceFilter,
+    ...brandFilter,
     ...ratingFilter,
   });
   await db.disconnect();
@@ -325,6 +359,7 @@ export async function getServerSideProps({ query }) {
       page,
       pages: Math.ceil(countProducts / pageSize),
       categories,
+      brands,
     },
   };
 }
