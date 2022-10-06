@@ -85,7 +85,7 @@ export default function ProductScreen(props) {
       <div className="py-2">
         <Link href="/">back to products</Link>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-2 bg-white p-2">
+      <div className="grid md:grid-cols-3 md:gap-2 bg-white p-2">
         <div className="md:col-span-2" ref={lazyRoot}>
           <Image
             src={product.image}
@@ -102,7 +102,6 @@ export default function ProductScreen(props) {
             {product.name}
           </h1>
           <h3>Category: {product.category}</h3>
-          <h3>Brand: {product.brand}</h3>
 
           {/* //////////////////////////////////////////// */}
 
@@ -300,113 +299,11 @@ export default function ProductScreen(props) {
           {/* ///////////////////////////////////////////////// */}
 
           <div className="card p-5">
-            <div className="mb-2 flex justify-between">
-              <div>Price</div>
-              <div>${product.price}</div>
-            </div>
-            <div className="mb-2 flex justify-between">
-              <div>Status</div>
-              <div>{product.countInStock > 0 ? 'In stock' : 'Unavailable'}</div>
-            </div>
-            <button
-              className="primary-button w-full"
-              onClick={addToCartHandler}
-            >
-              Add to cart
+            <div className="mb-2 flex justify-between"></div>
+
+            <button className="primary-button " onClick={addToCartHandler}>
+              Save
             </button>
-          </div>
-        </div>
-        <div>
-          <div className=" bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <div className="flex justify-between items-center   px-5 pt-5">
-              <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                Delivery
-              </h5>
-              <a
-                href="#"
-                className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-              >
-                INFO
-              </a>
-            </div>
-            <div className="flow-root">
-              <ul
-                role="list"
-                className="divide-y divide-gray-200 dark:divide-gray-700 mb-4 "
-              >
-                <li className="pt-3 pb-0 sm:pt-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">i</div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        Location
-                      </p>
-                      <p className="text-sm text-gray-500  dark:text-gray-400">
-                        {product.deliveryLocation}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li className="pt-3 pb-0 sm:pt-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">i</div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        Cash on Delivery
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {product.cashOnDelivery === true
-                          ? 'Available'
-                          : 'Not Available'}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <hr />
-              <div className="flex justify-between items-center mt-4  px-5 t-5">
-                <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                  Service
-                </h5>
-                <a
-                  href="#"
-                  className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-                >
-                  INFO
-                </a>
-              </div>
-              <ul
-                role="list"
-                className="divide-y divide-gray-200 dark:divide-gray-700 mb-4  "
-              >
-                <li className="pt-3 pb-0 sm:pt-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">i</div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        Returns
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {product.saleReturns}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li className="pt-3 pb-0 sm:pt-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">i</div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        Warranty
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {product.warranty}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
         <hr />
