@@ -8,7 +8,7 @@ import {
 import { useRef, useState } from 'react';
 import Layout from '../components/Layout';
 
-const center = { lat: 6.9271, lng: 79.8612 };
+const center = { lat: 7.8731, lng: 80.7718 };
 
 function App() {
   const { isLoaded } = useJsApiLoader({
