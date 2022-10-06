@@ -311,7 +311,7 @@ export default function Layout({ title, children }) {
             </a>
           </Link>
         </header> */}
-        <main className=" m-auto mt-0 px-0  relative ">
+        <main className="  relative ">
           <Loading />
           {children}
         </main>
