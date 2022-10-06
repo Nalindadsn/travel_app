@@ -20,7 +20,8 @@ const postHandler = async (req, res) => {
   const newPost = new Post({
     name: 'sample name',
     slug: 'sample-name-' + Math.random(),
-    image: '/images/shirt1.jpg',
+    image:
+      'https://res.cloudinary.com/masterdevs/image/upload/v1658803729/qirrex2rrk8bq1yzwxew.png',
     category: 'sample category',
     countInStock: 0,
     description: 'sample description',

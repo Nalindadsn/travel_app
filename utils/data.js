@@ -19,7 +19,8 @@ const data = {
       name: 'Free Shirt',
       slug: 'free-shirt',
       category: 'Shirts',
-      image: '/images/shirt1.jpg',
+      image:
+        'https://res.cloudinary.com/masterdevs/image/upload/v1658803729/qirrex2rrk8bq1yzwxew.png',
       price: 70,
       brand: 'Nike',
       rating: 4.5,
