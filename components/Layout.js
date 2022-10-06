@@ -77,7 +77,7 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + ' - Amazona' : 'Amazona'}</title>
+        <title>{title ? title + ' - Travel' : 'Travel'}</title>
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -201,14 +201,7 @@ export default function Layout({ title, children }) {
                           Profile
                         </DropdownLink>
                       </Menu.Item>
-                      <Menu.Item>
-                        <DropdownLink
-                          className="dropdown-link"
-                          href="/order-history"
-                        >
-                          Order History
-                        </DropdownLink>
-                      </Menu.Item>
+
                       {session.user.isAdmin && (
                         <Menu.Item>
                           <DropdownLink
@@ -232,7 +225,7 @@ export default function Layout({ title, children }) {
                   </Menu>
                 ) : (
                   <Link href="/login">
-                    <a className="p-2 text-gray-800 hover:border-gray-700 hover:bg-gray-800 hover:text-white border border-gray-300">
+                    <a className="p-2 text-gray-800 hover:border-gray-700 hover:bg-gray-800 hover:text-white border border-gray-300 rounded-full">
                       Login
                     </a>
                   </Link>
