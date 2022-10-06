@@ -16,18 +16,18 @@ function CartScreen() {
   };
 
   return (
-    <Layout title="Shopping Cart">
-      <h1 className="mb-4 text-xl">Shopping Cart</h1>
-      <Link href="/">Go shopping</Link>
+    <Layout title="Favourite List">
+      <h1 className="mb-4 text-xl">Favourite Places</h1>
+      <Link href="/">Go to Home</Link>
       {cartItems.length === 0 ? (
-        <div>Cart is empty.</div>
+        <div>Favourite List is empty.</div>
       ) : (
         <div className="grid md:grid-cols-4 ">
           <div className="overflow-x-auto md:col-span-4">
             <table className="min-w-full ">
               <thead className="border-b w-full">
                 <tr>
-                  <th className="p-5 text-left">Item</th>
+                  <th className="p-5 text-left">Place</th>
                   <th className="p-5">Action</th>
                 </tr>
               </thead>
