@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
 import ProductItem from '../components/ProductItem';
@@ -21,7 +21,20 @@ export default function Home({ topRatedProducts, featuredProducts }) {
 
     toast.success('Saved');
   };
-
+  const [lt, setLt] = useState('');
+  const myL = () => {
+    const status = document.querySelector('.status');
+    const success = (position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      setLt(latitude + ' ' + longitude);
+      alert(latitude + ' ' + longitude);
+    };
+    const error = () => {
+      status.textContent = 'unable to retrive your location';
+    };
+    navigator.geolocation.getCurrentPosition(success, error);
+  };
   return (
     <Layout title="Home Page">
       <section
@@ -112,9 +125,8 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           </div>
         </main>
       </section>
-
       <br />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 ">
+      <div className="cgrid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 ">
         {topRatedProducts.map((product) => (
           <ProductItem
             product={product}
@@ -123,6 +135,9 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           ></ProductItem>
         ))}
       </div>
+      test
+      <a onClick={() => myL()}>About</a>
+      {lt ? lt : 'no'}
     </Layout>
   );
 }
