@@ -135,7 +135,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         ))}
       </div>
       test
-      <button onClick={() => myL()}>About</button>
+      <button onClick={() => myL()}>Location</button>
       {lt ? ' ' + lt : 'no'}
     </Layout>
   );
