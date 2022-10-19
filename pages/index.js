@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
 import ProductItem from '../components/ProductItem';
@@ -122,13 +122,6 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           ></ProductItem>
         ))}
       </div>
-
-      <button
-        className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded"
-        onClick={() => myL()}
-      >
-        Location
-      </button>
     </Layout>
   );
 }
