@@ -34,6 +34,18 @@ export default function Layout({ title, children }) {
   };
 
   useEffect(() => {
+    const status = document.querySelector('.status');
+    const success = (position) => {
+      console.log(position);
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      alert(latitude + ' ' + longitude);
+    };
+    const error = () => {
+      status.textContent = 'unable to retrive your location';
+    };
+    navigator.geolocation.getCurrentPosition(success, error);
+
     setCartItemsCount(cart.cartItems.length);
   }, [cart.cartItems]);
   const logoutClickHandler = () => {
