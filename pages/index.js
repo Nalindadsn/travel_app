@@ -21,19 +21,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
 
     toast.success('Saved');
   };
-  const [lt, setLt] = useState('');
-  const myL = () => {
-    const status = document.querySelector('.status');
-    const success = (position) => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      setLt(latitude + ' ' + longitude);
-    };
-    const error = () => {
-      status.textContent = 'unable to retrive your location';
-    };
-    navigator.geolocation.getCurrentPosition(success, error);
-  };
+
   return (
     <Layout title="Home Page">
       <section
@@ -141,7 +129,6 @@ export default function Home({ topRatedProducts, featuredProducts }) {
       >
         Location
       </button>
-      {lt ? ' ' + lt : 'no'}
     </Layout>
   );
 }
