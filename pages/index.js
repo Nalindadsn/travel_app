@@ -28,7 +28,6 @@ export default function Home({ topRatedProducts, featuredProducts }) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       setLt(latitude + ' ' + longitude);
-      alert(latitude + ' ' + longitude);
     };
     const error = () => {
       status.textContent = 'unable to retrive your location';
@@ -136,8 +135,8 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         ))}
       </div>
       test
-      <a onClick={() => myL()}>About</a>
-      {lt ? lt : 'no'}
+      <button onClick={() => myL()}>About</button>
+      {lt ? ' ' + lt : 'no'}
     </Layout>
   );
 }
