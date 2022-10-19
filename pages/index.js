@@ -134,8 +134,13 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           ></ProductItem>
         ))}
       </div>
-      test
-      <button onClick={() => myL()}>Location</button>
+
+      <button
+        className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded"
+        onClick={() => myL()}
+      >
+        Location
+      </button>
       {lt ? ' ' + lt : 'no'}
     </Layout>
   );
