@@ -37,7 +37,7 @@ export default function Layout({ title, children }) {
     <>
       <Head>
         <title>{title ? title + ' - Travel' : 'Travel'}</title>
-        <meta name="description" content="Ecommerce Website" />
+        <meta name="description" content="Travel  Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
@@ -45,7 +45,7 @@ export default function Layout({ title, children }) {
         <header className="py-4 shadow-sm bg-gray-900 lg:bg-gray-900">
           <div className="container flex items-center justify-between">
             <Link href="/">
-              <a className="block w-32">Ecommerce</a>
+              <a className="block w-32">Travel </a>
             </Link>
 
             <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">

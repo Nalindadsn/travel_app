@@ -78,7 +78,7 @@ export default function Layout({ title, children }) {
     <>
       <Head>
         <title>{title ? title + ' - Travel' : 'Travel'}</title>
-        <meta name="description" content="Ecommerce Website" />
+        <meta name="description" content="places Website" />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"
