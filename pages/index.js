@@ -154,21 +154,37 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         <div className="container px-5 py-24 mx-auto flex">
           <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10">
             <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-              Feedback
+              Sri Lanka
             </h2>
-            <p className="leading-relaxed mb-5 text-gray-600"></p>
-            <input
-              className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
-              placeholder="Email"
-              type="email"
-            />
-            <textarea
-              className="bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none"
-              placeholder="Message"
-            ></textarea>
-            <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-              Button
-            </button>
+            <hr />
+            <table>
+              <tr>
+                <td className="font-bold">Capital</td>
+                <td>: Sri Jayawardenepura Kotte</td>
+              </tr>
+              <tr>
+                <td className="font-bold">Largest city</td>
+                <td>: Colombo</td>
+              </tr>
+              <tr>
+                <td className="font-bold">Official languages</td>
+                <td>: Sinhala , Tamil</td>
+              </tr>
+              <tr>
+                <td className="font-bold">Religion </td>
+                <td>
+                  : 70.2% Buddhism (official)[5]
+                  <br />
+                  12.6% Hinduism
+                  <br />
+                  9.7% Islam
+                  <br />
+                  7.4% Christianity
+                  <br />
+                  0.1% Other/None
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </section>
