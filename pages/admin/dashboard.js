@@ -106,7 +106,6 @@ function AdminDashboardScreen() {
                   <Link href="/admin/users">View users</Link>
                 </div>
               </div>
-              <h2 className="text-xl">Sales Report</h2>
               Welcome to travel app
             </div>
           )}
