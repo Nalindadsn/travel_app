@@ -130,6 +130,13 @@ export default function Home({ topRatedProducts, featuredProducts }) {
           </div>
         ))}
       </div>
+      <div className="text-center pt-10 pb-5">
+        <Link href="/search">
+          <a className="bg-gray-500 px-4 py-2 text-white rounded-full">
+            See More
+          </a>
+        </Link>
+      </div>
     </Layout>
   );
 }
