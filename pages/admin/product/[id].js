@@ -189,9 +189,8 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="price">Price</label>
                 <input
-                  type="text"
+                  type="hidden"
                   className="w-full"
                   id="price"
                   {...register('price', {
@@ -242,9 +241,8 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="brand">brand</label>
                 <input
-                  type="text"
+                  type="hidden"
                   className="w-full"
                   id="brand"
                   {...register('brand', {
@@ -256,9 +254,8 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="countInStock">countInStock</label>
                 <input
-                  type="text"
+                  type="hidden"
                   className="w-full"
                   id="countInStock"
                   {...register('countInStock', {
@@ -273,14 +270,13 @@ export default function AdminProductEditScreen() {
               </div>
               <div className="mb-4">
                 <label htmlFor="countInStock">description</label>
-                <input
-                  type="text"
+                <textarea
                   className="w-full"
                   id="description"
                   {...register('description', {
                     required: 'Please enter description',
                   })}
-                />
+                ></textarea>
                 {errors.description && (
                   <div className="text-red-500">
                     {errors.description.message}

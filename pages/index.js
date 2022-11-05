@@ -114,7 +114,10 @@ export default function Home({ topRatedProducts, featuredProducts }) {
       </section>
       <br />
 
-      <div className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6">
+      <div
+        className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6"
+        style={{ marginLeft: '5%', marginRight: '5%' }}
+      >
         {topRatedProducts.map((product) => (
           <div key={product._id} className="group rounded overflow-hidden">
             <div>
