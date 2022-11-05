@@ -79,10 +79,16 @@ export default function ProductScreen(props) {
   }
   return (
     <Layout title={product.name}>
-      <div className="py-2 bg-white">
+      <div
+        className="py-2 bg-white"
+        style={{ marginLeft: '5%', marginRight: '5%' }}
+      >
         <Link href="/">back to Home</Link>
       </div>
-      <div className="grid md:grid-cols-3 md:gap-2 bg-white p-2">
+      <div
+        className="grid md:grid-cols-3 md:gap-2 bg-white p-2"
+        style={{ marginLeft: '5%', marginRight: '5%' }}
+      >
         <div className="md:col-span-2" ref={lazyRoot}>
           <Image
             src={product.image}
@@ -306,11 +312,18 @@ export default function ProductScreen(props) {
         <hr />
         {/* ////////////////////////////// */}
       </div>
-      <div className="bg-white p-2">
+      <div
+        className="bg-white p-2"
+        style={{ marginLeft: '5%', marginRight: '5%' }}
+      >
         <p>Description: {product.description}</p>{' '}
       </div>
       {session && !session.user.isAdmin ? (
-        <form onSubmit={submitHandler} className="bg-white p-2 mt-4">
+        <form
+          onSubmit={submitHandler}
+          className="bg-white p-2 mt-4"
+          style={{ marginLeft: '5%', marginRight: '5%' }}
+        >
           <div className="flex flex-wrap -mx-3 mb-6">
             <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">
               Write a customer review
@@ -362,8 +375,12 @@ export default function ProductScreen(props) {
           to write a review
         </p>
       )}
-      <hr />
-      <div className="p-4 p-2 mt-2 bg-white">
+
+      <div
+        className="p-4 p-2 mt-2 bg-white"
+        style={{ marginLeft: '5%', marginRight: '5%' }}
+      >
+        <hr />
         {reviews.map((a) => (
           <article key={a._id} className="card p-4 p-2 bg-white">
             <div className="flex items-center mb-4 space-x-4 ">

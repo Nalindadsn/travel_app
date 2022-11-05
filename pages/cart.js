@@ -17,12 +17,22 @@ function CartScreen() {
 
   return (
     <Layout title="Favourite List">
-      <h1 className="mb-4 text-xl">Favourite Places</h1>
-      <Link href="/">Go to Home</Link>
+      <h1
+        className="mb-4 text-xl"
+        style={{ marginLeft: '5%', marginRight: '5%' }}
+      >
+        Favourite Places
+      </h1>
+      <div style={{ marginLeft: '5%', marginRight: '5%' }}>
+        <Link href="/">Go to Home</Link>
+      </div>
       {cartItems.length === 0 ? (
         <div>Favourite List is empty.</div>
       ) : (
-        <div className="grid md:grid-cols-4 ">
+        <div
+          className="grid md:grid-cols-4 "
+          style={{ marginLeft: '5%', marginRight: '5%' }}
+        >
           <div className="overflow-x-auto md:col-span-4">
             <table className="min-w-full ">
               <thead className="border-b w-full">
