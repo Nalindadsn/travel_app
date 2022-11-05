@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useReducer } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../../components/LayoutAdmin';
@@ -10,10 +11,15 @@ function reducer(state, action) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true, error: '' };
     case 'FETCH_SUCCESS':
-      return { ...state, loading: false, users: action.payload, error: '' };
+      return { ...state, loading: false, products: action.payload, error: '' };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
-
+    case 'CREATE_REQUEST':
+      return { ...state, loadingCreate: true };
+    case 'CREATE_SUCCESS':
+      return { ...state, loadingCreate: false };
+    case 'CREATE_FAIL':
+      return { ...state, loadingCreate: false };
     case 'DELETE_REQUEST':
       return { ...state, loadingDelete: true };
     case 'DELETE_SUCCESS':
@@ -22,29 +28,49 @@ function reducer(state, action) {
       return { ...state, loadingDelete: false };
     case 'DELETE_RESET':
       return { ...state, loadingDelete: false, successDelete: false };
+
     default:
-      return state;
+      state;
   }
 }
+export default function AdminProdcutsScreen() {
+  const router = useRouter();
 
-function AdminUsersScreen() {
-  const [{ loading, error, users, successDelete, loadingDelete }, dispatch] =
-    useReducer(reducer, {
-      loading: true,
-      users: [],
-      error: '',
-    });
+  const [
+    { loading, error, products, loadingCreate, successDelete, loadingDelete },
+    dispatch,
+  ] = useReducer(reducer, {
+    loading: true,
+    products: [],
+    error: '',
+  });
 
+  const createHandler = async () => {
+    if (!window.confirm('Are you sure?')) {
+      return;
+    }
+    try {
+      dispatch({ type: 'CREATE_REQUEST' });
+      const { data } = await axios.post(`/api/admin/products`);
+      dispatch({ type: 'CREATE_SUCCESS' });
+      toast.success('Product created successfully');
+      router.push(`/admin/product/${data.product._id}`);
+    } catch (err) {
+      dispatch({ type: 'CREATE_FAIL' });
+      toast.error(getError(err));
+    }
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/users`);
+        const { data } = await axios.get(`/api/admin/products`);
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
+
     if (successDelete) {
       dispatch({ type: 'DELETE_RESET' });
     } else {
@@ -52,23 +78,22 @@ function AdminUsersScreen() {
     }
   }, [successDelete]);
 
-  const deleteHandler = async (userId) => {
+  const deleteHandler = async (productId) => {
     if (!window.confirm('Are you sure?')) {
       return;
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
-      await axios.delete(`/api/admin/users/${userId}`);
+      await axios.delete(`/api/admin/products/${productId}`);
       dispatch({ type: 'DELETE_SUCCESS' });
-      toast.success('User deleted successfully');
+      toast.success('Product deleted successfully');
     } catch (err) {
       dispatch({ type: 'DELETE_FAIL' });
       toast.error(getError(err));
     }
   };
-
   return (
-    <Layout title="Users">
+    <Layout title="Admin Products">
       <div className="grid md:grid-cols-4 md:gap-5">
         <div className="bg-white p-2">
           <ul>
@@ -76,18 +101,27 @@ function AdminUsersScreen() {
               <Link href="/admin/dashboard">Dashboard</Link>
             </li>
             <li>
-              <Link href="/admin/places">places</Link>
+              <Link href="/admin/places">
+                <a className="font-bold">places</a>
+              </Link>
             </li>
             <li>
-              <Link href="/admin/users">
-                <a className="font-bold">Users</a>
-              </Link>
+              <Link href="/admin/users">Users</Link>
             </li>
           </ul>
         </div>
         <div className="overflow-x-auto md:col-span-3 relative">
-          <h1 className="mb-4 text-xl">Users</h1>
-          {loadingDelete && <div>Deleting...</div>}
+          <div className="flex justify-between">
+            <h1 className="mb-4 text-xl">Products</h1>
+            {loadingDelete && <div>Deleting item...</div>}
+            <button
+              disabled={loadingCreate}
+              onClick={createHandler}
+              className="primary-button"
+            >
+              {loadingCreate ? 'Loading' : 'Create'}
+            </button>
+          </div>
           {loading ? (
             <div className="spinner-wrapper">
               <div className="spinner"></div>
@@ -101,24 +135,29 @@ function AdminUsersScreen() {
                   <tr>
                     <th className="px-5 text-left">ID</th>
                     <th className="p-5 text-left">NAME</th>
-                    <th className="p-5 text-left">EMAIL</th>
-                    <th className="p-5 text-left">ADMIN</th>
+                    <th className="p-5 text-left">CATEGORY</th>
+                    <th className="p-5 text-left">RATING</th>
                     <th className="p-5 text-left">ACTIONS</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((user) => (
-                    <tr key={user._id} className="border-b">
-                      <td className=" p-5 ">{user._id.substring(20, 24)}</td>
-                      <td className=" p-5 ">{user.name}</td>
-                      <td className=" p-5 ">{user.email}</td>
-                      <td className=" p-5 ">{user.isAdmin ? 'YES' : 'NO'}</td>
+                  {products.map((product) => (
+                    <tr key={product._id} className="border-b">
+                      <td className=" p-5 ">{product._id.substring(20, 24)}</td>
+                      <td className=" p-5 ">{product.name}</td>
+                      <td className=" p-5 ">{product.category}</td>
+                      <td className=" p-5 ">{product.rating}</td>
                       <td className=" p-5 ">
+                        <Link href={`/admin/product/${product._id}`}>
+                          <a type="button" className="default-button">
+                            Edit
+                          </a>
+                        </Link>
                         &nbsp;
                         <button
-                          type="button"
+                          onClick={() => deleteHandler(product._id)}
                           className="default-button"
-                          onClick={() => deleteHandler(user._id)}
+                          type="button"
                         >
                           Delete
                         </button>
@@ -134,6 +173,4 @@ function AdminUsersScreen() {
     </Layout>
   );
 }
-
-AdminUsersScreen.auth = { adminOnly: true };
-export default AdminUsersScreen;
+AdminProdcutsScreen.auth = { adminOnly: true };

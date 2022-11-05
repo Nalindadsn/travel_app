@@ -80,7 +80,7 @@ export default function ProductScreen(props) {
   return (
     <Layout title={product.name}>
       <div className="py-2 bg-white">
-        <Link href="/">back to products</Link>
+        <Link href="/">back to Home</Link>
       </div>
       <div className="grid md:grid-cols-3 md:gap-2 bg-white p-2">
         <div className="md:col-span-2" ref={lazyRoot}>
