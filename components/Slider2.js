@@ -51,8 +51,8 @@ export default function SliderMain({ featured }) {
           <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s bg-gray-800">
             <main className="space-y-3 px-1">
               <div className="space-y-2">
-                <h4 className="text-sm capitalize text-gray-200 w-full text-left font-bold">
-                  text
+                <h4 className="text-sm capitalize text-gray-200 w-full text-left font-bold ">
+                  {product.name}
                 </h4>
                 <div>
                   <ul className="flex items-center space-x-1">
