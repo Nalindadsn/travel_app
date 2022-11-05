@@ -113,13 +113,18 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         </main>
       </section>
       <br />
-      <div className="cgrid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 ">
+
+      <div className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6">
         {topRatedProducts.map((product) => (
-          <ProductItem
-            product={product}
-            key={product.slug}
-            addToCartHandler={addToCartHandler}
-          ></ProductItem>
+          <div key={product._id} className="group rounded overflow-hidden">
+            <div>
+              <ProductItem
+                product={product}
+                key={product.slug}
+                addToCartHandler={addToCartHandler}
+              ></ProductItem>
+            </div>
+          </div>
         ))}
       </div>
     </Layout>
