@@ -200,14 +200,7 @@ export default function Layout({ title, children }) {
                         Profile
                       </DropdownLink>
                     </Menu.Item>
-                    <Menu.Item>
-                      <DropdownLink
-                        className="dropdown-link"
-                        href="/order-history"
-                      >
-                        Order History
-                      </DropdownLink>
-                    </Menu.Item>
+
                     {session.user.isAdmin && (
                       <Menu.Item>
                         <DropdownLink
