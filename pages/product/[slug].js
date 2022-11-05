@@ -88,8 +88,8 @@ export default function ProductScreen(props) {
             src={product.image}
             alt={product.name}
             lazyRoot={lazyRoot}
-            width={640}
-            height={640}
+            width={1024}
+            height={683}
             layout="responsive"
             priority={42}
           ></Image>
