@@ -123,8 +123,8 @@ export default function AdminProductEditScreen() {
         description,
       });
       dispatch({ type: 'UPDATE_SUCCESS' });
-      toast.success('Product updated successfully');
-      router.push('/admin/products');
+      toast.success('Place updated successfully');
+      router.push('/admin/places');
     } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: getError(err) });
       toast.error(getError(err));
@@ -139,11 +139,8 @@ export default function AdminProductEditScreen() {
               <Link href="/admin/dashboard">Dashboard</Link>
             </li>
             <li>
-              <Link href="/admin/orders">Orders</Link>
-            </li>
-            <li>
-              <Link href="/admin/products">
-                <a className="font-bold">Products</a>
+              <Link href="/admin/places">
+                <a className="font-bold">places</a>
               </Link>
             </li>
             <li>

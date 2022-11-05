@@ -235,68 +235,6 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
 
-        {/* //////////////////////////////////////////////// */}
-
-        {/* <header>
-          <nav className="bg-gray-800 hidden lg:block">
-            <div className="container">
-              <div className="flex">
-                <div className="px-8 py-1 bg-primary flex items-center cursor-pointer group relative">
-                  <span className="text-white">
-                    <i className="fas fa-bars"></i>
-                  </span>
-                  <span className="capitalize ml-2 text-white">
-                    All categories
-                  </span>
-                  <div className="absolute left-0 top-full w-full divide-gray-300 divide-dashed divide-y bg-white shadow-md py-3 invisible opacity-0 group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
-                    <NavCatCom />
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between flex-grow pl-12">
-                  <div className="flex items-center space-x-1 text-base capitalize">
-                    <Link href="/">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
-                        Home
-                      </a>
-                    </Link>
-                    <Link href="/search">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
-                        Shop
-                      </a>
-                    </Link>
-                    <Link href="about">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
-                        About us
-                      </a>
-                    </Link>
-                    <Link href="contact">
-                      <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
-                        Contact us
-                      </a>
-                    </Link>
-                  </div>
-                  {status === 'loading' ? (
-                    'Loading'
-                  ) : !session?.user ? (
-                    <Link href="/register">
-                      <a className="ml-auto justify-self-end text-gray-200 hover:text-white transition">
-                        Register
-                      </a>
-                    </Link>
-                  ) : (
-                    ''
-                  )}
-                </div>
-              </div>
-            </div>
-          </nav>
-          <Link href="/search">
-            <a className="text-white bg-gray-900 hover:border-white hover:text-white border border-gray-800 px-2 transition">
-              Shop
-            </a>
-          </Link>
-        </header> */}
         <main className="  relative ">
           <Loading />
           {children}
