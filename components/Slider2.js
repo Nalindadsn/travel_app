@@ -47,7 +47,6 @@ export default function SliderMain({ featured }) {
     >
       {featured.map((product) => (
         <SwiperSlide key={product._id}>
-          {console.log(featured)}
           <li className="mt-10 card animate__animated animate__fadeIn animate__delay-4s bg-gray-800">
             <main className="space-y-3 px-1">
               <div className="space-y-2">

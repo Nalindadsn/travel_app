@@ -100,10 +100,14 @@ export default function Home({ topRatedProducts, featuredProducts }) {
 
           <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
             <h2 className="font-bold text-white text-xl">
-              Find Location
+              <Link href="/map">
+                <a className="text-white hover:text-yellow-500 drop-shadow-lg">
+                  Find Location
+                </a>
+              </Link>
               <Link href="/map">
                 <a>
-                  <i className="ml-3  mt-5 inline-flex items-center justify-center w-8 h-8 mr-2 text-white transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-800">
+                  <i className=" blink ml-3  mt-5 inline-flex items-center justify-center w-8 h-8 mr-2 text-white transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-800">
                     <i className=" fa fa-map text-yellow-500  "></i>
                   </i>
                 </a>
@@ -158,32 +162,34 @@ export default function Home({ topRatedProducts, featuredProducts }) {
             </h2>
             <hr />
             <table>
-              <tr>
-                <td className="font-bold">Capital</td>
-                <td>: Sri Jayawardenepura Kotte</td>
-              </tr>
-              <tr>
-                <td className="font-bold">Largest city</td>
-                <td>: Colombo</td>
-              </tr>
-              <tr>
-                <td className="font-bold">Official languages</td>
-                <td>: Sinhala , Tamil</td>
-              </tr>
-              <tr>
-                <td className="font-bold">Religion </td>
-                <td>
-                  : 70.2% Buddhism (official)[5]
-                  <br />
-                  12.6% Hinduism
-                  <br />
-                  9.7% Islam
-                  <br />
-                  7.4% Christianity
-                  <br />
-                  0.1% Other/None
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td className="font-bold">Capital</td>
+                  <td>: Sri Jayawardenepura Kotte</td>
+                </tr>
+                <tr>
+                  <td className="font-bold">Largest city</td>
+                  <td>: Colombo</td>
+                </tr>
+                <tr>
+                  <td className="font-bold">Official languages</td>
+                  <td>: Sinhala , Tamil</td>
+                </tr>
+                <tr>
+                  <td className="font-bold">Religion </td>
+                  <td>
+                    : 70.2% Buddhism (official)[5]
+                    <br />
+                    12.6% Hinduism
+                    <br />
+                    9.7% Islam
+                    <br />
+                    7.4% Christianity
+                    <br />
+                    0.1% Other/None
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
