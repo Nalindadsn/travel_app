@@ -97,21 +97,21 @@ export default function Home({ topRatedProducts, featuredProducts }) {
               <SliderMain featured={featuredProducts} />
             </ul>
           </section>
-          <section class="section--working w-full my-8 py-16">
-            <div class="container mx-auto px-3 sm:px-4 h-full">
-                <div class="flex mb-4 h-full flex-col md:flex-row">
-                    <div class="w-full md:w-1/2 relative order-2 md:order-2">
-                        <a href="">
-                            <div class="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
-                                <h3 class="font-semibold text-main-blue text-lg mb-4 font-regular">OPPORTUNITIES</h3>
-                                <h4 class="text-3xl font-semibold tracking-tight text-gray-900 mb-4">Working with us</h4>
-                                <p class="text-gray-700 mb-4">Our expertise extends from receiving and managing cargo at the quayside to ship planning and the subsequent loading,
+          <section className="section--working w-full my-8 py-16">
+            <div className="container mx-auto px-3 sm:px-4 h-full">
+                <div className="flex mb-4 h-full flex-col md:flex-row">
+                    <div className="w-full md:w-1/2 relative order-2 md:order-2">
+                        <div>
+                            <div className="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
+                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">OPPORTUNITIES</h3>
+                                <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">Working with us</h4>
+                                <p className="text-gray-700 mb-4">Our expertise extends from receiving and managing cargo at the quayside to ship planning and the subsequent loading,
                                 discharge and distribution of cargoes.</p>
-                                <p class="text-teal-400 font-semibold text-lg">See open vacancies</p>
+                                <p className="text-teal-400 font-semibold text-lg">See open vacancies</p>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                    <div class="w-full md:w-1/2 section--working__image h-full bg-cover order-1 md:order-2"></div>
+                    <div className="w-full md:w-1/2 section--working__image h-full bg-cover order-1 md:order-2"></div>
                 </div>
             </div>
         </section>
