@@ -118,12 +118,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
       </section>
       <br />
 
-      <div
-        className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6"
-        style={{ marginLeft: '5%', marginRight: '5%' }}
-      >
-        
-        <section className="section--working w-full my-8 py-16">
+        <section className="section--working w-full my-8 py-16"  style={{ marginLeft: '5%', marginRight: '5%' }}>
             <div className="container mx-auto px-3 sm:px-4 h-full">
                 <div className="flex mb-4 h-full flex-col md:flex-row">
                     <div className="w-full md:w-1/2 relative order-2 md:order-2">
@@ -141,6 +136,11 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                 </div>
             </div>
         </section>
+      <div
+        className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6"
+        style={{ marginLeft: '5%', marginRight: '5%' }}
+      >
+        
         {topRatedProducts.map((product) => (
           <div key={product._id} className="group rounded overflow-hidden">
             <div>
