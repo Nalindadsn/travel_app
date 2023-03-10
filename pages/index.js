@@ -97,24 +97,6 @@ export default function Home({ topRatedProducts, featuredProducts }) {
               <SliderMain featured={featuredProducts} />
             </ul>
           </section>
-          <section className="section--working w-full my-8 py-16">
-            <div className="container mx-auto px-3 sm:px-4 h-full">
-                <div className="flex mb-4 h-full flex-col md:flex-row">
-                    <div className="w-full md:w-1/2 relative order-2 md:order-2">
-                        <div>
-                            <div className="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
-                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">OPPORTUNITIES</h3>
-                                <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">Working with us</h4>
-                                <p className="text-gray-700 mb-4">Our expertise extends from receiving and managing cargo at the quayside to ship planning and the subsequent loading,
-                                discharge and distribution of cargoes.</p>
-                                <p className="text-teal-400 font-semibold text-lg">See open vacancies</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="w-full md:w-1/2 section--working__image h-full bg-cover order-1 md:order-2"></div>
-                </div>
-            </div>
-        </section>
 
           <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
             <h2 className="font-bold text-white text-xl">
@@ -140,6 +122,25 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6"
         style={{ marginLeft: '5%', marginRight: '5%' }}
       >
+        
+        <section className="section--working w-full my-8 py-16">
+            <div className="container mx-auto px-3 sm:px-4 h-full">
+                <div className="flex mb-4 h-full flex-col md:flex-row">
+                    <div className="w-full md:w-1/2 relative order-2 md:order-2">
+                        <div>
+                            <div className="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
+                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">OPPORTUNITIES</h3>
+                                <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">Working with us</h4>
+                                <p className="text-gray-700 mb-4">Our expertise extends from receiving and managing cargo at the quayside to ship planning and the subsequent loading,
+                                discharge and distribution of cargoes.</p>
+                                <p className="text-teal-400 font-semibold text-lg">See open vacancies</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full md:w-1/2 section--working__image h-full bg-cover order-1 md:order-2"></div>
+                </div>
+            </div>
+        </section>
         {topRatedProducts.map((product) => (
           <div key={product._id} className="group rounded overflow-hidden">
             <div>
