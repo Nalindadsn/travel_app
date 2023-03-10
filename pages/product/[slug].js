@@ -369,7 +369,8 @@ export default function ProductScreen(props) {
           </div>
         </form>
       ) : (
-        <p variant="h2">
+        <p variant="h2"  className="bg-white p-2 mt-4"
+        style={{ marginLeft: '5%', marginRight: '5%' }}>
           Please{' '}
           <Link href={`/login?redirect=/product/${product.slug}`}>login</Link>{' '}
           to write a review
