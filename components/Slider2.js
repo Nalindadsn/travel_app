@@ -12,6 +12,7 @@ import Image from 'next/image';
 // import './styles.css';
 
 export default function SliderMain({ featured }) {
+
   return (
     <Swiper
       autoplay={{
@@ -64,13 +65,28 @@ export default function SliderMain({ featured }) {
                 </div>
               </div>
               <div>
+              {product.image.substring(0,23)=="https://www.youtube.com" ? (
+            
+            <Image
+            width="300"
+            height="300"
+            src="https://res.cloudinary.com/masterdevs/image/upload/v1678550390/video_logo_iwv7ux.jpg"
+            alt={product.name}
+            className="rounded shadow object-cover h-80 w-full p-2 m-4"
+          />
+            ):(
+
                 <Image
                   width="300"
                   height="300"
                   src={product.image}
                   alt={product.name}
                   className="rounded shadow object-cover h-80 w-full p-2 m-4"
-                />{' '}
+                />
+            )}
+                
+                
+                {' '}
               </div>
             </main>
           </li>
