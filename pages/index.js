@@ -77,14 +77,14 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                             Places
                           </a>
                         </Link>
-                        <Link href="about">
+                        <Link href="imageGallery">
                           <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
-                            About us
+                            Images
                           </a>
                         </Link>
-                        <Link href="contact">
+                        <Link href="videoGallery">
                           <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
-                            Contact us
+                            Videos
                           </a>
                         </Link>
                       </div>
