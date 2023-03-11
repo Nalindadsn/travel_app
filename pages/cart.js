@@ -52,7 +52,8 @@ function CartScreen() {
             <div className=" w-100 ml-2">
     <iframe src="https://www.youtube.com/embed/r9jwGansp1E" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
     &nbsp;
-                          {item.name}
+    <Link href={`/product/${item.slug}`}><a className="flex items-center hover:text-gray-900 ml-2">{item.name}</a></Link>
+                          
   </div>
             ):(
   
