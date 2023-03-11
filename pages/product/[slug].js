@@ -102,12 +102,12 @@ const isYoutube=product.image.substring(0,23)=="https://www.youtube.com"
                             Places
                           </a>
                         </Link>
-                        <Link href="imageGallery">
+                        <Link href="/imageGallery">
                           <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
                             Images
                           </a>
                         </Link>
-                        <Link href="videoGallery">
+                        <Link href="/videoGallery">
                           <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
                             Videos
                           </a>
