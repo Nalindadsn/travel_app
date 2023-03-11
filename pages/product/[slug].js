@@ -70,6 +70,9 @@ export default function ProductScreen(props) {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
   const lazyRoot = React.useRef(null);
+
+const isYoutube=product.image.substring(0,23)=="https://www.youtube.com"
+
   useEffect(() => {
     // async () => {
     fetchReviews();
@@ -90,7 +93,15 @@ export default function ProductScreen(props) {
         style={{ marginLeft: '5%', marginRight: '5%' }}
       >
         <div className="md:col-span-2" ref={lazyRoot}>
-          <Image
+
+          {isYoutube ? (
+            
+          <div className="aspect-w-16 aspect-h-9">
+  <iframe src="https://www.youtube.com/embed/r9jwGansp1E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+          ):(
+
+            <Image
             src={product.image}
             alt={product.name}
             lazyRoot={lazyRoot}
@@ -98,7 +109,10 @@ export default function ProductScreen(props) {
             height={683}
             layout="responsive"
             priority={42}
-          ></Image>
+          ></Image> 
+          )}
+        
+         
         </div>
         <div>
           <h1 className="text-xl font-bold leading-none text-gray-900 dark:text-white pb-5">

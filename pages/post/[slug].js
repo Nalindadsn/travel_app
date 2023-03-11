@@ -94,6 +94,8 @@ export default function Postscreen(props) {
             layout="responsive"
             priority={42}
           ></Image>
+
+
         </div>
         <div>
           <h1 className="text-xl font-bold leading-none text-gray-900 dark:text-white pb-5">

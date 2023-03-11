@@ -2,9 +2,21 @@
 import Link from 'next/link';
 import React from 'react';
 export default function ProductItem({ product, addToCartHandler }) {
+
+  
+const isYoutube=product.image.substring(0,23)=="https://www.youtube.com"
+
+
   return (
     <div className="card bg-white">
       <Link href={`/product/${product.slug}`}>
+      {isYoutube ? (
+            
+            <div className="aspect-w-16 aspect-h-9">
+    <iframe src="https://www.youtube.com/embed/r9jwGansp1E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+            ):(
+  
         <a>
           <img
             src={product.image}
@@ -12,6 +24,9 @@ export default function ProductItem({ product, addToCartHandler }) {
             className="rounded shadow object-cover h-64 w-full"
           />
         </a>
+
+            )}
+
       </Link>
       <div className="flex flex-col  p-5">
         <Link href={`/product/${product.slug}`}>

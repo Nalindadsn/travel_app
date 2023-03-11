@@ -22,11 +22,8 @@ const postHandler = async (req, res) => {
     slug: 'sample-name-' + Math.random(),
     image:
       'https://res.cloudinary.com/masterdevs/image/upload/v1658803729/qirrex2rrk8bq1yzwxew.png',
-    category: 'sample category',
-    countInStock: 0,
-    description: 'sample description',
-    rating: 0,
-    numReviews: 0,
+    category: 'sample ',
+
   });
 
   const post = await newPost.save();
