@@ -38,7 +38,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
             <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3">
-              Sri Lanka
+              Dream Safari
             </div>
 
             {/* <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
@@ -149,11 +149,11 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                     <div className="w-full md:w-1/2 relative order-2 md:order-2">
                         <div>
                             <div className="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
-                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">OPPORTUNITIES</h3>
-                                <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">Working with us</h4>
-                                <p className="text-gray-700 mb-4">Our expertise extends from receiving and managing cargo at the quayside to ship planning and the subsequent loading,
-                                discharge and distribution of cargoes.</p>
-                                <p className="text-teal-400 font-semibold text-lg">See open vacancies</p>
+                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">TRAVEL</h3>
+                                <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">WE ARE</h4>
+                                <p className="text-gray-700 mb-4">Dream 
+Safari is a Dynamic Travel and Destination promoting Company. Mainly focusing on Sabaragamuwa and Uva Provinces in Sri Lanka. Our Safari Tours are well managed and structured for any type of traveller.</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
             marginWidth="0"
             title="map"
             scrolling="no"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4047271.299976242!2d78.46169489521603!3d7.851731513542368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1667671838120!5m2!1sen!2slk"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3964.654725732252!2d80.8865113147703!3d6.438369995341943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMjYnMTguMSJOIDgwwrA1MycxOS4zIkU!5e0!3m2!1sen!2slk!4v1678545713915!5m2!1sen!2slk"
             style={{ filter: ' grayscale(1) contrast(1.2) opacity(0.4)' }}
           ></iframe>
         </div>
