@@ -51,6 +51,8 @@ function CartScreen() {
             
             <div className=" w-100 ml-2">
     <iframe src="https://www.youtube.com/embed/r9jwGansp1E" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+    &nbsp;
+                          {item.name}
   </div>
             ):(
   
