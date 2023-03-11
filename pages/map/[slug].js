@@ -428,7 +428,7 @@ export default function PostScreen(props) {
         <form onSubmit={submitHandler} className="bg-white p-2 mt-4">
           <div className="flex flex-wrap -mx-3 mb-6">
             <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">
-              Write a customer review
+              Write a review
             </h2>
             <div className="w-full md:w-full px-3 mb-2 mt-2">
               review
