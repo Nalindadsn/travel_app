@@ -65,25 +65,25 @@ export default function Home({ topRatedProducts, featuredProducts }) {
                   <div className="flex">
                     <div className=""></div>
 
-                    <div className="flex items-right  float-right flex-grow pl-12">
+                    <div className="flex items-right   float-right flex-grow pl-12">
                       <div className="w-full text-right">
                         <Link href="/">
-                          <a className="text-white hover:border-white hover:text-white border-b border-lisgt-900 px-2 transition">
+                          <a className="text-white inline-block hover:border-white hover:text-white border-b border-lisgt-900 px-2 transition">
                             Home
                           </a>
                         </Link>
                         <Link href="/search">
-                          <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                          <a className="text-white inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
                             Places
                           </a>
                         </Link>
                         <Link href="imageGallery">
-                          <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                          <a className="text-white inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
                             Images
                           </a>
                         </Link>
                         <Link href="videoGallery">
-                          <a className="text-white hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                          <a className="text-white inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
                             Videos
                           </a>
                         </Link>
