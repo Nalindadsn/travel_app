@@ -60,7 +60,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         <main className="pr-5 mb-15">
           <section className="">
             <header>
-              <nav className="mb-8 hidden lg:block">
+              <nav className="mb-8 ">
                 <div className="container">
                   <div className="flex">
                     <div className=""></div>

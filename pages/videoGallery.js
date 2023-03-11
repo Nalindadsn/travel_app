@@ -8,6 +8,7 @@ import ProductItem from "../components/ProductItem";
 import Product from "../models/Product";
 import db from "../utils/db";
 import { Store } from "../utils/Store";
+import Link from "next/link";
 
 const PAGE_SIZE = 9;
 
@@ -111,6 +112,34 @@ export default function Search(props) {
         className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative"
         style={{ marginLeft: "5%", marginRight: "5%" }}
       >
+                          <div className="flex">
+                    <div className=""></div>
+
+                    <div className="flex items-right  float-right flex-grow pl-12">
+                      <div className="w-full text-right">
+                        <Link href="/">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-lisgt-900 px-2 transition">
+                            Home
+                          </a>
+                        </Link>
+                        <Link href="/search">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
+                            Places
+                          </a>
+                        </Link>
+                        <Link href="imageGallery">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
+                            Images
+                          </a>
+                        </Link>
+                        <Link href="videoGallery">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
+                            Videos
+                          </a>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
         <div
           className={`col-span-1 bg-white   pb-6 shadow rounded overflow-hidden absolute lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block ${
             !checked ? "hidden" : "block"

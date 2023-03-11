@@ -82,10 +82,40 @@ const isYoutube=product.image.substring(0,23)=="https://www.youtube.com"
   }
   return (
     <Layout title={product.name}>
+      
       <div
         className="py-2 bg-white"
         style={{ marginLeft: '5%', marginRight: '5%' }}
       >
+                  <div className="flex">
+                    <div className=""></div>
+
+                    <div className="flex items-right  float-right flex-grow pl-12">
+                      <div className="w-full text-right">
+                        <Link href="/">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-lisgt-900 px-2 transition">
+                            Home
+                          </a>
+                        </Link>
+                        <Link href="/search">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
+                            Places
+                          </a>
+                        </Link>
+                        <Link href="imageGallery">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
+                            Images
+                          </a>
+                        </Link>
+                        <Link href="videoGallery">
+                          <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
+                            Videos
+                          </a>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
         <Link href="/">back to Home</Link>
       </div>
       <div
