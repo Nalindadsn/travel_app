@@ -137,8 +137,7 @@ export default function Search(props) {
                     </div>
                   </div>
       <div
-        className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative"
-        style={{ paddingLeft: "5%", paddingRight: "5%" }}
+        className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative" style={{ paddingLeft: "5%", paddingRight: "5%" }}
       >
                           
         <div
