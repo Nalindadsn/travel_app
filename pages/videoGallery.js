@@ -108,11 +108,7 @@ export default function Search(props) {
 
   return (
     <Layout title="Search">
-      <div
-        className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative"
-        style={{ marginLeft: "5%", marginRight: "5%" }}
-      >
-                          <div className="flex">
+          <div className="flex"  style={{ marginLeft: "5%", marginRight: "5%" }}>
                     <div className=""></div>
 
                     <div className="flex items-right  float-right flex-grow pl-12">
@@ -140,6 +136,11 @@ export default function Search(props) {
                       </div>
                     </div>
                   </div>
+      <div
+        className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start relative"
+        style={{ paddingLeft: "5%", paddingRight: "5%" }}
+      >
+                          
         <div
           className={`col-span-1 bg-white   pb-6 shadow rounded overflow-hidden absolute lg:static left-4 top-16 z-10 w-72 lg:w-full lg:block ${
             !checked ? "hidden" : "block"
