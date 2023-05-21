@@ -4,8 +4,8 @@ import Layout from "../components/Layout";
 //import Pagination from '../components/Pagination';
 import Pagination from "react-js-pagination";
 
-import ProductItem from "../components/ProductItem";
-import Product from "../models/Product";
+import PostItem from "../components/PostItem";
+import Post from "../models/Post";
 import db from "../utils/db";
 import { Store } from "../utils/Store";
 import Link from "next/link";
@@ -24,7 +24,7 @@ export default function Search(props) {
     rating = "all",
     sort = "featured",
   } = router.query;
-  const { products, countProducts, categories } = props;
+  const { products, countPosts, categories } = props;
 
   const filterSearch = ({
     page,
@@ -98,7 +98,7 @@ export default function Search(props) {
     setCategoriesIds([]);
     //here you will have correct value in userInput
   }, []);
-  const addToCartHandler = async (product) => {
+  const addToSaveHandler = async (product) => {
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
@@ -271,7 +271,7 @@ export default function Search(props) {
             </div>
           </div>
           <div>
-            {products.length === 0 ? "No" : countProducts} Results
+            {products.length === 0 ? "No" : countPosts} Results
             {query !== "all" && query !== "" && " : " + query}
             {category !== "all" && " : " + category}
             {brand !== "all" && " : " + brand}
@@ -294,22 +294,22 @@ export default function Search(props) {
             {products.map((product) => (
               <div key={product._id} className="group rounded overflow-hidden">
                 <div>
-                  <ProductItem
-                    product={product}
+                  <PostItem
+                    post={product}
                     key={product.slug}
-                    addToCartHandler={addToCartHandler}
-                  ></ProductItem>
+                    addToSaveHandler={addToSaveHandler}
+                  ></PostItem>
                 </div>
               </div>
             ))}
           </div>
-          {products.length === 0 ? "No" : countProducts} Results
+          {products.length === 0 ? "No" : countPosts} Results
           {/* <Pagination pages="2" /> */}
           <div className="d-flex justify-content-center mt-5 " id="pgn">
             <Pagination
               activePage={aPage}
               itemsCountPerPage={PAGE_SIZE}
-              totalItemsCount={countProducts}
+              totalItemsCount={countPosts}
               onChange={handlePagination}
               nextPageText={"Next"}
               prevPageText={"Prev"}
@@ -380,9 +380,9 @@ export async function getServerSideProps({ query }) {
       ? { createdAt: -1 }
       : { _id: -1 };
 
-  const categories = await Product.find({image:{'$regex':'https://res.cloudinary.com','$options':'i'}}).distinct("category");
-  const brands = await Product.find({image:{'$regex':'https://res.cloudinary.com','$options':'i'}}).distinct("brand");
-  const productDocs = await Product.find(
+  const categories = await Post.find({image:{'$regex':'https://res.cloudinary.com','$options':'i'}}).distinct("category");
+  const brands = await Post.find({image:{'$regex':'https://res.cloudinary.com','$options':'i'}}).distinct("brand");
+  const productDocs = await Post.find(
     {
       image:{'$regex':'https://res.cloudinary.com','$options':'i'},
       ...queryFilter,
@@ -398,7 +398,7 @@ export async function getServerSideProps({ query }) {
     .limit(pageSize)
     .lean();
 
-  const countProducts = await Product.countDocuments({
+  const countPosts = await Post.countDocuments({
   image:{'$regex':'https://res.cloudinary.com','$options':'i'},
     ...queryFilter,
     ...categoryFilter,
@@ -413,9 +413,9 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       products,
-      countProducts,
+      countPosts,
       page,
-      pages: Math.ceil(countProducts / pageSize),
+      pages: Math.ceil(countPosts / pageSize),
       categories,
       brands,
     },

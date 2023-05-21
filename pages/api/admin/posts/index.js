@@ -21,19 +21,24 @@ const postHandler = async (req, res) => {
     name: 'sample name',
     slug: 'sample-name-' + Math.random(),
     image:
-      'https://res.cloudinary.com/masterdevs/image/upload/v1658803729/qirrex2rrk8bq1yzwxew.png',
-    category: 'sample ',
-
+      'https://res.cloudinary.com/masterdevs/image/upload/v1640231057/codeaddon/codeaddon-image-icon_kr49bo.jpg',
+    price: 0,
+    category: 'sample category',
+    brand: 'sample brand',
+    countInStock: 0,
+    description: 'sample description',
+    rating: 0,
+    numReviews: 0,
   });
 
-  const post = await newPost.save();
+  const product = await newPost.save();
   await db.disconnect();
-  res.send({ message: 'Post created successfully', post });
+  res.send({ message: 'Post created successfully', product });
 };
 const getHandler = async (req, res) => {
   await db.connect();
-  const posts = await Post.find({});
+  const products = await Post.find({});
   await db.disconnect();
-  res.send(posts);
+  res.send(products);
 };
 export default handler;

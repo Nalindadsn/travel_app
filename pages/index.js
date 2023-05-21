@@ -2,22 +2,22 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
-import ProductItem from '../components/ProductItem';
+import PostItem from '../components/PostItem';
 
 import SliderMain from '../components/Slider2';
-import Product from '../models/Product';
+import Post from '../models/Post';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
 
-export default function Home({ topRatedProducts, featuredProducts }) {
+export default function Home({ topRatedPosts, featuredPosts }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
 
-  const addToCartHandler = async (product) => {
-    const existItem = cart.cartItems.find((x) => x.slug === product.slug);
+  const addToSaveHandler = async (post) => {
+    const existItem = cart.cartItems.find((x) => x.slug === post.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });
 
     toast.success('Saved');
   };
@@ -94,7 +94,7 @@ export default function Home({ topRatedProducts, featuredProducts }) {
               </nav>
             </header>
             <ul className=" items-center space-x-4 xl:flex lg:flex md:flex  hidden ">
-              <SliderMain featured={featuredProducts} />
+              <SliderMain featured={featuredPosts} />
             </ul>
           </section>
 
@@ -123,14 +123,14 @@ export default function Home({ topRatedProducts, featuredProducts }) {
         style={{ marginLeft: '5%', marginRight: '5%' }}
       >
         
-        {topRatedProducts.map((product) => (
-          <div key={product._id} className="group rounded overflow-hidden">
+        {topRatedPosts.map((post) => (
+          <div key={post._id} className="group rounded overflow-hidden">
             <div>
-              <ProductItem
-                product={product}
-                key={product.slug}
-                addToCartHandler={addToCartHandler}
-              ></ProductItem>
+              <PostItem
+                post={post}
+                key={post.slug}
+                addToSaveHandler={addToSaveHandler}
+              ></PostItem>
             </div>
           </div>
         ))}
@@ -221,13 +221,13 @@ Safari is a Dynamic Travel and Destination promoting Company. Mainly focusing on
 
 export async function getServerSideProps() {
   await db.connect();
-  const featuredProductsDocs = await Product.find(
+  const featuredPostsDocs = await Post.find(
     { isFeatured: true },
     '-reviews'
   )
     .lean()
     .limit(5);
-  const topRatedProductsDocs = await Product.find({}, '-reviews')
+  const topRatedPostsDocs = await Post.find({}, '-reviews')
     .lean()
     .sort({
       rating: -1,
@@ -236,8 +236,8 @@ export async function getServerSideProps() {
   await db.disconnect();
   return {
     props: {
-      featuredProducts: featuredProductsDocs.map(db.convertDocToObj),
-      topRatedProducts: topRatedProductsDocs.map(db.convertDocToObj),
+      featuredPosts: featuredPostsDocs.map(db.convertDocToObj),
+      topRatedPosts: topRatedPostsDocs.map(db.convertDocToObj),
     },
   };
 }

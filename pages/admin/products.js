@@ -11,7 +11,7 @@ function reducer(state, action) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true, error: '' };
     case 'FETCH_SUCCESS':
-      return { ...state, loading: false, products: action.payload, error: '' };
+      return { ...state, loading: false, posts: action.payload, error: '' };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
     case 'CREATE_REQUEST':
@@ -37,11 +37,11 @@ export default function AdminProdcutsScreen() {
   const router = useRouter();
 
   const [
-    { loading, error, products, loadingCreate, successDelete, loadingDelete },
+    { loading, error, posts, loadingCreate, successDelete, loadingDelete },
     dispatch,
   ] = useReducer(reducer, {
     loading: true,
-    products: [],
+    posts: [],
     error: '',
   });
 
@@ -51,7 +51,7 @@ export default function AdminProdcutsScreen() {
     }
     try {
       dispatch({ type: 'CREATE_REQUEST' });
-      const { data } = await axios.post(`/api/admin/products`);
+      const { data } = await axios.post(`/api/admin/posts`);
       dispatch({ type: 'CREATE_SUCCESS' });
       toast.success('Product created successfully');
       router.push(`/admin/product/${data.product._id}`);
@@ -64,7 +64,7 @@ export default function AdminProdcutsScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/products`);
+        const { data } = await axios.get(`/api/admin/posts`);
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -84,7 +84,7 @@ export default function AdminProdcutsScreen() {
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
-      await axios.delete(`/api/admin/products/${productId}`);
+      await axios.delete(`/api/admin/posts/${productId}`);
       dispatch({ type: 'DELETE_SUCCESS' });
       toast.success('Product deleted successfully');
     } catch (err) {
@@ -104,7 +104,7 @@ export default function AdminProdcutsScreen() {
               <Link href="/admin/orders">Orders</Link>
             </li>
             <li>
-              <Link href="/admin/products">
+              <Link href="/admin/posts">
                 <a className="font-bold">Products</a>
               </Link>
             </li>
@@ -146,7 +146,7 @@ export default function AdminProdcutsScreen() {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map((product) => (
+                  {posts.map((product) => (
                     <tr key={product._id} className="border-b">
                       <td className=" p-5 ">{product._id.substring(20, 24)}</td>
                       <td className=" p-5 ">{product.name}</td>

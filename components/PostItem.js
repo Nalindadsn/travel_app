@@ -1,10 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React from 'react';
-export default function PostItem({ post, addToCartHandler }) {
+export default function PostItem({ post, addToSaveHandler }) {
+
+  
+const isYoutube=post.image.substring(0,23)=="https://www.youtube.com"
+
+
   return (
     <div className="card bg-white">
       <Link href={`/post/${post.slug}`}>
+      {isYoutube ? (
+            
+            <div className="aspect-w-16 aspect-h-9">
+    <iframe src={post.image} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+  </div>
+            ):(
+  
         <a>
           <img
             src={post.image}
@@ -12,6 +24,9 @@ export default function PostItem({ post, addToCartHandler }) {
             className="rounded shadow object-cover h-64 w-full"
           />
         </a>
+
+            )}
+
       </Link>
       <div className="flex flex-col  p-5">
         <Link href={`/post/${post.slug}`}>
@@ -124,11 +139,11 @@ export default function PostItem({ post, addToCartHandler }) {
 
         <div className="flex item-center justify-between mt-3">
           <button
-            className="px-3 py-2 bg-lime-600 text-white text-xs font-bold uppercase rounded"
+            className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded"
             type="button"
-            onClick={() => addToCartHandler(post)}
+            onClick={() => addToSaveHandler(post)}
           >
-            Add to Favourite
+            SAVE <i className="fa fa-clock-o"></i>
           </button>
         </div>
       </div>
