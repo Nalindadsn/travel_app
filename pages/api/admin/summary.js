@@ -12,13 +12,13 @@ const handler = async (req, res) => {
 
   await db.connect();
 
-  const productsCount = await Post.countDocuments();
+  const postsCount = await Post.countDocuments();
   const usersCount = await User.countDocuments();
 
 
 
   await db.disconnect();
-  res.send({  productsCount, usersCount,  });
+  res.send({  postsCount, usersCount,  });
 };
 
 export default handler;

@@ -39,7 +39,7 @@ function reducer(state, action) {
 }
 export default function AdminPostEditScreen() {
   const { query } = useRouter();
-  const productId = query.id;
+  const postId = query.id;
 
   const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
     useReducer(reducer, {
@@ -57,7 +57,7 @@ export default function AdminPostEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/posts/${productId}`);
+        const { data } = await axios.get(`/api/admin/posts/${postId}`);
         dispatch({ type: 'FETCH_SUCCESS' });
         setValue('name', data.name);
         setValue('slug', data.slug);
@@ -65,14 +65,13 @@ export default function AdminPostEditScreen() {
         setValue('image', data.image);
         setValue('category', data.category);
         setValue('brand', data.brand);
-        setValue('countInStock', data.countInStock);
         setValue('description', data.description);
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
     fetchData();
-  }, [productId, setValue]);
+  }, [postId, setValue]);
 
   const router = useRouter();
 
@@ -107,19 +106,17 @@ export default function AdminPostEditScreen() {
     category,
     image,
     brand,
-    countInStock,
     description,
   }) => {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
-      await axios.put(`/api/admin/posts/${productId}`, {
+      await axios.put(`/api/admin/posts/${postId}`, {
         name,
         slug,
         price,
         category,
         image,
         brand,
-        countInStock,
         description,
       });
       dispatch({ type: 'UPDATE_SUCCESS' });
@@ -131,7 +128,7 @@ export default function AdminPostEditScreen() {
     }
   };
   return (
-    <Layout title={`Edit Post - ${productId}`}>
+    <Layout title={`Edit Post - ${postId}`}>
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
@@ -158,7 +155,7 @@ export default function AdminPostEditScreen() {
               className="mx-auto max-w-screen-md"
               onSubmit={handleSubmit(submitHandler)}
             >
-              <h1 className="mb-4 text-xl">{`Edit Post ${productId}`}</h1>
+              <h1 className="mb-4 text-xl">{`Edit Post ${postId}`}</h1>
               <div className="mb-4">
                 <label htmlFor="name">Name</label>
                 <input
@@ -253,36 +250,8 @@ export default function AdminPostEditScreen() {
                   <div className="text-red-500">{errors.brand.message}</div>
                 )}
               </div>
-              <div className="mb-4">
-                <input
-                  type="hidden"
-                  className="w-full"
-                  id="countInStock"
-                  {...register('countInStock', {
-                    required: 'Please enter countInStock',
-                  })}
-                />
-                {errors.countInStock && (
-                  <div className="text-red-500">
-                    {errors.countInStock.message}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="countInStock">description</label>
-                <textarea
-                  className="w-full"
-                  id="description"
-                  {...register('description', {
-                    required: 'Please enter description',
-                  })}
-                ></textarea>
-                {errors.description && (
-                  <div className="text-red-500">
-                    {errors.description.message}
-                  </div>
-                )}
-              </div>
+              
+          
               <div className="mb-4">
                 <button disabled={loadingUpdate} className="primary-button">
                   {loadingUpdate ? 'Loading' : 'Update'}

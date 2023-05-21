@@ -63,7 +63,6 @@ export default function AdminPostEditScreen() {
         setValue('slug', data.slug);
         setValue('image', data.image);
         setValue('category', data.category);
-        setValue('countInStock', data.countInStock);
         setValue('description', data.description);
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -103,7 +102,6 @@ export default function AdminPostEditScreen() {
     slug,
     category,
     image,
-    countInStock,
     description,
   }) => {
     try {
@@ -113,7 +111,6 @@ export default function AdminPostEditScreen() {
         slug,
         category,
         image,
-        countInStock,
         description,
       });
       dispatch({ type: 'UPDATE_SUCCESS' });
@@ -225,24 +222,9 @@ export default function AdminPostEditScreen() {
                 )}
               </div>
 
+            
               <div className="mb-4">
-                <label htmlFor="countInStock">countInStock</label>
-                <input
-                  type="text"
-                  className="w-full"
-                  id="countInStock"
-                  {...register('countInStock', {
-                    required: 'Please enter countInStock',
-                  })}
-                />
-                {errors.countInStock && (
-                  <div className="text-red-500">
-                    {errors.countInStock.message}
-                  </div>
-                )}
-              </div>
-              <div className="mb-4">
-                <label htmlFor="countInStock">description</label>
+                <label htmlFor="description">description</label>
                 <input
                   type="text"
                   className="w-full"

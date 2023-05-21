@@ -54,7 +54,7 @@ export default function AdminProdcutsScreen() {
       const { data } = await axios.post(`/api/admin/posts`);
       dispatch({ type: 'CREATE_SUCCESS' });
       toast.success('Product created successfully');
-      router.push(`/admin/product/${data.product._id}`);
+      router.push(`/admin/post/${data.post._id}`);
     } catch (err) {
       dispatch({ type: 'CREATE_FAIL' });
       toast.error(getError(err));
@@ -78,13 +78,13 @@ export default function AdminProdcutsScreen() {
     }
   }, [successDelete]);
 
-  const deleteHandler = async (productId) => {
+  const deleteHandler = async (postId) => {
     if (!window.confirm('Are you sure?')) {
       return;
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
-      await axios.delete(`/api/admin/posts/${productId}`);
+      await axios.delete(`/api/admin/posts/${postId}`);
       dispatch({ type: 'DELETE_SUCCESS' });
       toast.success('Product deleted successfully');
     } catch (err) {
@@ -146,23 +146,23 @@ export default function AdminProdcutsScreen() {
                   </tr>
                 </thead>
                 <tbody>
-                  {posts.map((product) => (
-                    <tr key={product._id} className="border-b">
-                      <td className=" p-5 ">{product._id.substring(20, 24)}</td>
-                      <td className=" p-5 ">{product.name}</td>
-                      <td className=" p-5 ">${product.price}</td>
-                      <td className=" p-5 ">{product.category}</td>
-                      <td className=" p-5 ">{product.countInStock}</td>
-                      <td className=" p-5 ">{product.rating}</td>
+                  {posts.map((post) => (
+                    <tr key={post._id} className="border-b">
+                      <td className=" p-5 ">{post._id.substring(20, 24)}</td>
+                      <td className=" p-5 ">{post.name}</td>
+                      <td className=" p-5 ">${post.price}</td>
+                      <td className=" p-5 ">{post.category}</td>
+                      <td className=" p-5 ">{post.countInStock}</td>
+                      <td className=" p-5 ">{post.rating}</td>
                       <td className=" p-5 ">
-                        <Link href={`/admin/product/${product._id}`}>
+                        <Link href={`/admin/post/${post._id}`}>
                           <a type="button" className="default-button">
                             Edit
                           </a>
                         </Link>
                         &nbsp;
                         <button
-                          onClick={() => deleteHandler(product._id)}
+                          onClick={() => deleteHandler(post._id)}
                           className="default-button"
                           type="button"
                         >

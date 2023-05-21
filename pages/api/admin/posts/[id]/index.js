@@ -19,23 +19,22 @@ const handler = async (req, res) => {
 };
 const getHandler = async (req, res) => {
   await db.connect();
-  const product = await Post.findById(req.query.id);
+  const post = await Post.findById(req.query.id);
   await db.disconnect();
-  res.send(product);
+  res.send(post);
 };
 const putHandler = async (req, res) => {
   await db.connect();
-  const product = await Post.findById(req.query.id);
-  if (product) {
-    product.name = req.body.name;
-    product.slug = req.body.slug;
-    product.price = req.body.price;
-    product.category = req.body.category;
-    product.image = req.body.image;
-    product.brand = req.body.brand;
-    product.countInStock = req.body.countInStock;
-    product.description = req.body.description;
-    await product.save();
+  const post = await Post.findById(req.query.id);
+  if (post) {
+    post.name = req.body.name;
+    post.slug = req.body.slug;
+    post.price = req.body.price;
+    post.category = req.body.category;
+    post.image = req.body.image;
+    post.brand = req.body.brand;
+    post.description = req.body.description;
+    await post.save();
     await db.disconnect();
     res.send({ message: 'Post updated successfully' });
   } else {
@@ -45,9 +44,9 @@ const putHandler = async (req, res) => {
 };
 const deleteHandler = async (req, res) => {
   await db.connect();
-  const product = await Post.findById(req.query.id);
-  if (product) {
-    await product.remove();
+  const post = await Post.findById(req.query.id);
+  if (post) {
+    await post.remove();
     await db.disconnect();
     res.send({ message: 'Post deleted successfully' });
   } else {

@@ -25,20 +25,19 @@ const postHandler = async (req, res) => {
     price: 0,
     category: 'sample category',
     brand: 'sample brand',
-    countInStock: 0,
     description: 'sample description',
     rating: 0,
     numReviews: 0,
   });
 
-  const product = await newPost.save();
+  const post = await newPost.save();
   await db.disconnect();
-  res.send({ message: 'Post created successfully', product });
+  res.send({ message: 'Post created successfully', post });
 };
 const getHandler = async (req, res) => {
   await db.connect();
-  const products = await Post.find({});
+  const posts = await Post.find({});
   await db.disconnect();
-  res.send(products);
+  res.send(posts);
 };
 export default handler;

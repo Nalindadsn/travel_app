@@ -52,13 +52,13 @@ function CartScreen() {
             <div className=" w-100 ml-2">
     <iframe src={item.image} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
     &nbsp;
-    <Link href={`/product/${item.slug}`}><a className="flex items-center hover:text-gray-900 ml-2">{item.name}</a></Link>
+    <Link href={`/post/${item.slug}`}><a className="flex items-center hover:text-gray-900 ml-2">{item.name}</a></Link>
                           
   </div>
             ):(
   
 
-                      <Link href={`/product/${item.slug}`}>
+                      <Link href={`/post/${item.slug}`}>
                         <a className="flex items-center hover:text-gray-900 ml-2">
                           <Image
                             src={item.image}

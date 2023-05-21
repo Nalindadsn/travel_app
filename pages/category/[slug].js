@@ -11,15 +11,13 @@ export default function Home({ posts }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
 
-  const addToSaveHandler = async (product) => {
-    const existItem = cart.cartItems.find((x) => x.slug === product.slug);
+  const addToSaveHandler = async (post) => {
+    const existItem = cart.cartItems.find((x) => x.slug === post.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/posts/${product._id}`);
+    const { data } = await axios.get(`/api/posts/${post._id}`);
 
-    if (data.countInStock < quantity) {
-      return toast.error('Sorry. Post is out of stock');
-    }
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });
 
     toast.success('Post added to the cart');
   };
@@ -27,10 +25,10 @@ export default function Home({ posts }) {
   return (
     <Layout title="Home Page">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {posts.map((product) => (
+        {posts.map((post) => (
           <PostItem
-            post={product}
-            key={product.slug}
+            post={post}
+            key={post.slug}
             addToSaveHandler={addToSaveHandler}
           ></PostItem>
         ))}

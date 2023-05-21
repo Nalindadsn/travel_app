@@ -25,10 +25,10 @@ const getHandler = async (req, res) => {
   }
   //return res.status(401).send(session.user._id);
   await db.connect();
-  const product = await Post.findById(req.query.id);
+  const post = await Post.findById(req.query.id);
   await db.disconnect();
-  if (product) {
-    res.send(product.reviews);
+  if (post) {
+    res.send(post.reviews);
   } else {
     res.status(404).send({ message: 'Post not found' });
   }
@@ -43,14 +43,14 @@ const postHandler = async (req, res) => {
   await db.connect();
 
   // return 'test';
-  const product = await Post.findById(req.query.id);
-  // if (product) {
-  //   return res.send({ message: product });
+  const post = await Post.findById(req.query.id);
+  // if (post) {
+  //   return res.send({ message: post });
   // } else {
-  //   return res.send({ message: 'product' });
+  //   return res.send({ message: 'post' });
   // }
-  if (product) {
-    const existReview = product.reviews.find((x) => x.user == session.user._id);
+  if (post) {
+    const existReview = post.reviews.find((x) => x.user == session.user._id);
     //    if (existReview) {
     // } else {
     //   return res.send({ ar: 'test', message: existReview });
@@ -98,29 +98,29 @@ const postHandler = async (req, res) => {
         rating: Number(req.body.rating),
         comment: req.body.comment,
       };
-      product.reviews.push(review);
-      product.numReviews = product.reviews.length;
+      post.reviews.push(review);
+      post.numReviews = post.reviews.length;
 
-      product.numReviewsOne = product.reviews.filter(
+      post.numReviewsOne = post.reviews.filter(
         (r) => r.rating == 1
       ).length;
-      product.numReviewsTwo = product.reviews.filter(
+      post.numReviewsTwo = post.reviews.filter(
         (r) => r.rating == 2
       ).length;
-      product.numReviewsThree = product.reviews.filter(
+      post.numReviewsThree = post.reviews.filter(
         (r) => r.rating == 3
       ).length;
-      product.numReviewsFour = product.reviews.filter(
+      post.numReviewsFour = post.reviews.filter(
         (r) => r.rating == 4
       ).length;
-      product.numReviewsFive = product.reviews.filter(
+      post.numReviewsFive = post.reviews.filter(
         (r) => r.rating == 5
       ).length;
 
-      product.rating =
-        product.reviews.reduce((a, c) => c.rating + a, 0) /
-        product.reviews.length;
-      await product.save();
+      post.rating =
+        post.reviews.reduce((a, c) => c.rating + a, 0) /
+        post.reviews.length;
+      await post.save();
       await db.disconnect();
       res.status(201).send({
         message: 'Review submitted',

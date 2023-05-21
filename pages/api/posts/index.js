@@ -3,9 +3,9 @@ import db from '../../../utils/db';
 
 const handler = async (req, res) => {
   await db.connect();
-  const product = await Post.find({image:{'$regex':'https://www.youtube.com','$options':'i'}});
+  const post = await Post.find({image:{'$regex':'https://www.youtube.com','$options':'i'}});
   await db.disconnect();
-  res.send(product);
+  res.send(post);
 };
 
 export default handler;

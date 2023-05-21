@@ -7,7 +7,7 @@ const handler = async (req, res) => {
   await User.deleteMany();
   await User.insertMany(data.users);
   await Post.deleteMany();
-  await Post.insertMany(data.products);
+  await Post.insertMany(data.posts);
   await db.disconnect();
   res.send({ message: 'seeded successfully' });
 };
