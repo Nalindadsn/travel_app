@@ -99,11 +99,11 @@ export default function Search(props) {
     //here you will have correct value in userInput
   }, []);
   const addToSaveHandler = async (post) => {
-    const existItem = state.cart.cartItems.find((x) => x._id === post._id);
+    const existItem = state.save.saveItems.find((x) => x._id === post._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     dispatch({ type: "CART_ADD_ITEM", payload: { ...post, quantity } });
-    router.push("/cart");
+    router.push("/save");
   };
 
   return (

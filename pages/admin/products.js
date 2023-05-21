@@ -152,7 +152,6 @@ export default function AdminProdcutsScreen() {
                       <td className=" p-5 ">{post.name}</td>
                       <td className=" p-5 ">${post.price}</td>
                       <td className=" p-5 ">{post.category}</td>
-                      <td className=" p-5 ">{post.countInStock}</td>
                       <td className=" p-5 ">{post.rating}</td>
                       <td className=" p-5 ">
                         <Link href={`/admin/post/${post._id}`}>

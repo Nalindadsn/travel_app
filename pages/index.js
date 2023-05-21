@@ -11,10 +11,10 @@ import { Store } from '../utils/Store';
 
 export default function Home({ topRatedPosts, featuredPosts }) {
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
+  const { save } = state;
 
   const addToSaveHandler = async (post) => {
-    const existItem = cart.cartItems.find((x) => x.slug === post.slug);
+    const existItem = save.saveItems.find((x) => x.slug === post.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });

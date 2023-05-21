@@ -8,8 +8,8 @@ import { Store } from '../utils/Store';
 export default function PaymentScreen() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
-  const { shippingAddress, paymentMethod } = cart;
+  const { save } = state;
+  const { shippingAddress, paymentMethod } = save;
   const router = useRouter();
   const submitHandler = (e) => {
     e.preventDefault();
@@ -18,9 +18,9 @@ export default function PaymentScreen() {
     }
     dispatch({ type: 'SAVE_PAYMENT_METHOD', payload: selectedPaymentMethod });
     Cookies.set(
-      'cart',
+      'save',
       JSON.stringify({
-        ...cart,
+        ...save,
         paymentMethod: selectedPaymentMethod,
       })
     );

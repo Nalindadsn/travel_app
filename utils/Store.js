@@ -2,52 +2,52 @@ import { createContext, useReducer } from 'react';
 import Cookies from 'js-cookie';
 export const Store = createContext();
 const initialState = {
-  cart: Cookies.get('cart')
-    ? JSON.parse(Cookies.get('cart'))
-    : { cartItems: [], shippingAddress: {}, paymentMethod: '' },
+  save: Cookies.get('save')
+    ? JSON.parse(Cookies.get('save'))
+    : { saveItems: [], shippingAddress: {}, paymentMethod: '' },
 };
 function reducer(state, action) {
   switch (action.type) {
     case 'CART_ADD_ITEM': {
       const newItem = action.payload;
-      const existItem = state.cart.cartItems.find(
+      const existItem = state.save.saveItems.find(
         (item) => item.slug === newItem.slug
       );
-      const cartItems = existItem
-        ? state.cart.cartItems.map((item) =>
+      const saveItems = existItem
+        ? state.save.saveItems.map((item) =>
             item.name === existItem.name ? newItem : item
           )
-        : [...state.cart.cartItems, newItem];
-      Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
+        : [...state.save.saveItems, newItem];
+      Cookies.set('save', JSON.stringify({ ...state.save, saveItems }));
 
-      return { ...state, cart: { ...state.cart, cartItems } };
+      return { ...state, save: { ...state.save, saveItems } };
     }
     case 'CART_REMOVE_ITEM': {
-      const cartItems = state.cart.cartItems.filter(
+      const saveItems = state.save.saveItems.filter(
         (item) => item.slug !== action.payload.slug
       );
-      Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
-      return { ...state, cart: { ...state.cart, cartItems } };
+      Cookies.set('save', JSON.stringify({ ...state.save, saveItems }));
+      return { ...state, save: { ...state.save, saveItems } };
     }
     case 'CART_RESET':
       return {
         ...state,
-        cart: {
-          cartItems: [],
+        save: {
+          saveItems: [],
           shippingAddress: { location: {} },
           paymentMethod: '',
         },
       };
     case 'CART_CLEAR_ITEMS':
-      return { ...state, cart: { ...state.cart, cartItems: [] } };
+      return { ...state, save: { ...state.save, saveItems: [] } };
 
     case 'SAVE_SHIPPING_ADDRESS':
       return {
         ...state,
-        cart: {
-          ...state.cart,
+        save: {
+          ...state.save,
           shippingAddress: {
-            ...state.cart.shippingAddress,
+            ...state.save.shippingAddress,
             ...action.payload,
           },
         },
@@ -55,8 +55,8 @@ function reducer(state, action) {
     case 'SAVE_PAYMENT_METHOD':
       return {
         ...state,
-        cart: {
-          ...state.cart,
+        save: {
+          ...state.save,
           paymentMethod: action.payload,
         },
       };

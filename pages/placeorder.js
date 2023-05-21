@@ -12,13 +12,13 @@ import { Store } from '../utils/Store';
 
 export default function PlaceOrderScreen() {
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
-  const { cartItems, shippingAddress, paymentMethod } = cart;
+  const { save } = state;
+  const { saveItems, shippingAddress, paymentMethod } = save;
 
   const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
 
   const itemsPrice = round2(
-    cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
+    saveItems.reduce((a, c) => a + c.quantity * c.price, 0)
   ); // 123.4567 => 123.46
 
   const shippingPrice = itemsPrice > 200 ? 0 : 15;
@@ -38,7 +38,7 @@ export default function PlaceOrderScreen() {
     try {
       setLoading(true);
       const { data } = await axios.post('/api/orders', {
-        orderItems: cartItems,
+        orderItems: saveItems,
         shippingAddress,
         paymentMethod,
         itemsPrice,
@@ -49,10 +49,10 @@ export default function PlaceOrderScreen() {
       setLoading(false);
       dispatch({ type: 'CART_CLEAR_ITEMS' });
       Cookies.set(
-        'cart',
+        'save',
         JSON.stringify({
-          ...cart,
-          cartItems: [],
+          ...save,
+          saveItems: [],
         })
       );
       router.push(`/order/${data._id}`);
@@ -66,7 +66,7 @@ export default function PlaceOrderScreen() {
     <Layout title="Place Order">
       <CheckoutWizard activeStep={3} />
       <h1 className="mb-4 text-xl">Place Order</h1>
-      {cartItems.length === 0 ? (
+      {saveItems.length === 0 ? (
         <div>
           Cart is empty. <Link href="/">Go shopping</Link>
         </div>
@@ -103,7 +103,7 @@ export default function PlaceOrderScreen() {
                   </tr>
                 </thead>
                 <tbody>
-                  {cartItems.map((item) => (
+                  {saveItems.map((item) => (
                     <tr key={item._id} className="border-b">
                       <td>
                         <Link href={`/post/${item.slug}`}>
@@ -129,7 +129,7 @@ export default function PlaceOrderScreen() {
                 </tbody>
               </table>
               <div>
-                <Link href="/cart">Edit</Link>
+                <Link href="/save">Edit</Link>
               </div>
             </div>
           </div>

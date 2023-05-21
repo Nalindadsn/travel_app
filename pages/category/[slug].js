@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../../components/Layout';
@@ -9,17 +9,17 @@ import { Store } from '../../utils/Store';
 
 export default function Home({ posts }) {
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
+  const { save } = state;
 
   const addToSaveHandler = async (post) => {
-    const existItem = cart.cartItems.find((x) => x.slug === post.slug);
+    const existItem = save.saveItems.find((x) => x.slug === post.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/posts/${post._id}`);
+    //const { data } = await axios.get(`/api/posts/${post._id}`);
 
     
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });
 
-    toast.success('Post added to the cart');
+    toast.success('Post added to the save');
   };
 
   return (

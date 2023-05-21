@@ -14,8 +14,8 @@ export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
-  const [cartItemsCount, setCartItemsCount] = useState(0);
+  const { save } = state;
+  const [saveItemsCount, setCartItemsCount] = useState(0);
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('');
   const queryChangeHandler = (e) => {
@@ -34,10 +34,10 @@ export default function Layout({ title, children }) {
   };
 
   useEffect(() => {
-    setCartItemsCount(cart.cartItems.length);
-  }, [cart.cartItems]);
+    setCartItemsCount(save.saveItems.length);
+  }, [save.saveItems]);
   const logoutClickHandler = () => {
-    Cookies.remove('cart');
+    Cookies.remove('save');
     dispatch({ type: 'CART_RESET' });
     signOut({ callbackUrl: '/login' });
   };
@@ -176,12 +176,12 @@ export default function Layout({ title, children }) {
 
               <div className="flex items-center space-x-5">
                 <div>
-                  <Link href="/cart">
+                  <Link href="/save">
                     <a className="p-2 text-white  hover:text-white hover:bg-gray-800  bg-black rounded-full">
                       Saved
-                      {cartItemsCount > 0 && (
+                      {saveItemsCount > 0 && (
                         <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white rounded-full">
-                          {cartItemsCount}
+                          {saveItemsCount}
                         </span>
                       )}
                     </a>

@@ -30,11 +30,11 @@ export default function PostScreen(props) {
   const [loading, setLoading] = useState(false);
 
   const addToSaveHandler = async () => {
-    const existItem = state.cart.cartItems.find((x) => x.slug === post.slug);
+    const existItem = state.save.saveItems.find((x) => x.slug === post.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...post, quantity } });
-    router.push('/cart');
+    router.push('/save');
   };
   const submitHandler = async (e) => {
     e.preventDefault();

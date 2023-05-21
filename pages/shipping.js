@@ -15,8 +15,8 @@ export default function ShippingScreen() {
   } = useForm();
 
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;
-  const { shippingAddress } = cart;
+  const { save } = state;
+  const { shippingAddress } = save;
   const router = useRouter();
 
   useEffect(() => {
@@ -33,9 +33,9 @@ export default function ShippingScreen() {
       payload: { fullName, address, city, postalCode, country },
     });
     Cookies.set(
-      'cart',
+      'save',
       JSON.stringify({
-        ...cart,
+        ...save,
         shippingAddress: {
           fullName,
           address,
