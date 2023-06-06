@@ -100,18 +100,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
 
           <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
             <h2 className="font-bold text-white text-xl">
-              <Link href="/map">
-                <a className="text-white hover:text-yellow-500 drop-shadow-lg">
-                  Find Location
-                </a>
-              </Link>
-              <Link href="/map">
-                <a>
-                  <i className=" blink ml-3  mt-5 inline-flex items-center justify-center w-8 h-8 mr-2 text-white transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-800">
-                    <i className=" fa fa-map text-yellow-500  "></i>
-                  </i>
-                </a>
-              </Link>
+              
             </h2>
           </div>
         </main>
