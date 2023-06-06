@@ -242,17 +242,17 @@ export default function Layout({ title, children }) {
                         Home
                       </a>
                     </Link>
-                    <Link href="/search">
+                    <Link href="../search">
                       <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
                         Servicess
                       </a>
                     </Link>
-                    <Link href="about">
+                    <Link href="../about">
                       <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
                         About us
                       </a>
                     </Link>
-                    <Link href="contact">
+                    <Link href="../contact">
                       <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
                         Contact us
                       </a>
