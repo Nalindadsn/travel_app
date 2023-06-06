@@ -244,7 +244,7 @@ export default function Layout({ title, children }) {
                     </Link>
                     <Link href="/search">
                       <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
-                        places
+                        Servicess
                       </a>
                     </Link>
                     <Link href="about">
