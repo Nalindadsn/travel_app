@@ -102,7 +102,7 @@ export default function AdminProdcutsScreen() {
             </li>
             <li>
               <Link href="/admin/places">
-                <a className="font-bold">places</a>
+                <a className="font-bold">Services</a>
               </Link>
             </li>
             <li>
