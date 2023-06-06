@@ -38,7 +38,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
             <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 ">
-            <span style={{textShadow:"5px 5px 5px rgba(0,0,0,.5)"}}>  Company Name</span>
+            <span style={{color:"rgba(0,0,0,.8)"}}>  Company Name</span>
             </div>
 
             {/* <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
@@ -67,22 +67,22 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                     <div className="flex items-right   float-right flex-grow pl-12">
                       <div className="w-full text-right">
                         <Link href="/">
-                          <a className=" inline-block hover:border-white hover:text-white border-b border-lisgt-900 px-2 transition">
+                          <a className=" inline-block hover:border-gray hover:text-gray border-b border-lisgt-900 px-2 transition">
                             Home
                           </a>
                         </Link>
                         <Link href="/search">
-                          <a className=" inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                          <a className=" inline-block hover:border-gray hover:text-gray border-b border-light-800 px-2 transition">
                             Services
                           </a>
                         </Link>
                         <Link href="/about">
-                          <a className=" inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                          <a className=" inline-block hover:border-gray hover:text-gray border-b border-light-800 px-2 transition">
                             About Us
                           </a>
                         </Link>
                         <Link href="/contact">
-                          <a className=" inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
+                          <a className=" inline-block hover:border-gray hover:text-gray border-b border-light-800 px-2 transition">
                             Contact Us
                           </a>
                         </Link>
