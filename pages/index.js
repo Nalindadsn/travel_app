@@ -37,7 +37,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
       >
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
-            <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3">
+            <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 shadow-md">
               Company Name
             </div>
 
