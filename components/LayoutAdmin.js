@@ -36,7 +36,7 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + ' - Travel' : 'Travel'}</title>
+        <title>{title ? title + ' - global assets' : 'global assets'}</title>
         <meta name="description" content="Travel  Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
