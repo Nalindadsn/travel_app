@@ -76,7 +76,7 @@ function AdminUsersScreen() {
               <Link href="/admin/dashboard">Dashboard</Link>
             </li>
             <li>
-              <Link href="/admin/places">places</Link>
+              <Link href="/admin/places">Services</Link>
             </li>
             <li>
               <Link href="/admin/users">
