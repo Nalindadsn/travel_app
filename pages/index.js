@@ -43,8 +43,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
 
             {/* <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
               Sri Lanka, formerly known as Ceylon
-              <br /> and officially the Democratic Socialist Republic of Sri
-              Lanka, is an island country in South Asia.
+              <br /> Some text
             </p> */}
           </div>
 
@@ -74,17 +73,17 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                         </Link>
                         <Link href="/search">
                           <a className="text-white inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
-                            Places
+                            Services
                           </a>
                         </Link>
-                        <Link href="/imageGallery">
+                        <Link href="/about">
                           <a className="text-white inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
-                            Images
+                            About Us
                           </a>
                         </Link>
-                        <Link href="/videoGallery">
+                        <Link href="/contact">
                           <a className="text-white inline-block hover:border-white hover:text-white border-b border-light-800 px-2 transition">
-                            Videos
+                            Contact Us
                           </a>
                         </Link>
                       </div>
