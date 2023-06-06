@@ -38,7 +38,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
             <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 ">
-            <span style={{color:"rgba(0,0,0,.8)"}}>  Company Name</span>
+            <span style={{color:"rgba(0,0,0,.8)"}}> Global Assets</span>
             </div>
 
             {/* <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
