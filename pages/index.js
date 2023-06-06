@@ -30,14 +30,14 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           height: '36rem',
           backgroundColor: '#333',
           backgroundImage:
-            "url('https://res.cloudinary.com/masterdevs/image/upload/v1686038234/360_F_224497741_y1rCbGzkMojXEzZ1RJt7qw7I89otYltN_ue8tmt.jpg')",
+            "url('https://res.cloudinary.com/masterdevs/image/upload/v1686037553/4yBAzK_wft8th.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
-            <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 shadow-md">
+            <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 shadow-md drop-shadow-md">
               Company Name
             </div>
 
