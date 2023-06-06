@@ -122,7 +122,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6"
         style={{ marginLeft: '5%', marginRight: '5%' }}
       >
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Get back to growth with <span class="text-blue-600 dark:text-blue-500">the world's #1</span> CRM.</h1>
+        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Services</h1>
 
         {topRatedPosts.map((post) => (
           <div key={post._id} className="group rounded overflow-hidden">
