@@ -106,7 +106,7 @@ function AdminDashboardScreen() {
                   <Link href="/admin/users">View users</Link>
                 </div>
               </div>
-              Welcome to travel app
+              Welcome to global assets app
             </div>
           )}
         </div>
