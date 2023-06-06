@@ -30,7 +30,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           height: '36rem',
           backgroundColor: '#333',
           backgroundImage:
-            "url('https://res.cloudinary.com/masterdevs/image/upload/v1665031819/asia_aqo5gj.jpg')",
+            "url('https://res.cloudinary.com/masterdevs/image/upload/v1686037553/4yBAzK_wft8th.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
