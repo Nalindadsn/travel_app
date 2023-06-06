@@ -22,7 +22,7 @@ function CartScreen() {
         className="mb-4 text-xl"
         style={{ marginLeft: '5%', marginRight: '5%' }}
       >
-        Favourite Places
+        Favourite List
       </h1>
       <div style={{ marginLeft: '5%', marginRight: '5%' }}>
         <Link href="/">Go to Home</Link>
@@ -38,7 +38,7 @@ function CartScreen() {
             <table className="min-w-full ">
               <thead className="border-b w-full">
                 <tr>
-                  <th className="p-5 text-left">Place</th>
+                  <th className="p-5 text-left">Service</th>
                   <th className="p-5">Action</th>
                 </tr>
               </thead>
