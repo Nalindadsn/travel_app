@@ -38,7 +38,9 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
             <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 ">
-            <span> ABC Institute</span>
+            <span   style={{ 
+  boxShadow: "rgba(0, 0, 0, 0.02)" 
+}} > ABC Institute</span>
             </div>
 
             {/* <p  style={{ 
