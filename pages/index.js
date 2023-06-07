@@ -145,7 +145,6 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                                 <p className="text-gray-700 mb-4">
                                   What is Lorem Ipsum
                                   </p>
-                                
                             </div>
                         </div>
                     </div>
