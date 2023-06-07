@@ -332,7 +332,7 @@ export default function Layout({ title, children }) {
                 <div className="md:flex md:-mx-4 md:items-center">
                   <div className="md:flex-1 md:px-4 text-center md:text-left">
                     <p className="text-white">
-                      &copy; <strong>Travel</strong>
+                      &copy; <strong>ABC Institute</strong>
                     </p>
                   </div>
                   <div className="md:flex-1 md:px-4 text-center md:text-right">
