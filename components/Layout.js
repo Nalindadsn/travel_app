@@ -95,7 +95,7 @@ export default function Layout({ title, children }) {
               <div className="flex items-center">
                 <span className="text-md">
                   <Link href="/">
-                    <a>Global Assets</a>
+                    <a>ABC institute</a>
                   </Link>
                 </span>
               </div>
