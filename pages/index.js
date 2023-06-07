@@ -38,7 +38,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
             <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 ">
-            <span style={{color:"rgba(0,0,0,.8)"}}> ABC Institute</span>
+            <span style={{color:"rgba(0,0,0,.8)"}}> Global Assets</span>
             </div>
 
             {/* <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
@@ -48,9 +48,9 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           </div>
 
           <div className="text-5xl font-extrabold">
-            <div className=" ml-3 bg-white tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s" style={{textShadow:3px 3px 3px rgba(0,0,0,.5}}>
-              {`We' offreing a best courses
-              in Sri Lanka
+            <div className=" ml-3 bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
+              {`Sri Lanka/ Coordinates 
+                  7.8731° N, 80.7718° E
              `}
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                         </Link>
                         <Link href="/search">
                           <a className=" inline-block hover:border-gray hover:text-gray border-b border-light-800 px-2 transition">
-                            Courses
+                            Services
                           </a>
                         </Link>
                         <Link href="/about">
@@ -106,7 +106,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         </main>
       </section>
       <br />
-        <h1 className="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Courses</h1>
+        <h1 className="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Services</h1>
 
       <div
         className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6"
@@ -139,12 +139,10 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                     <div className="w-full md:w-1/2 relative order-2 md:order-2">
                         <div>
                             <div className="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
-                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">Education</h3>
+                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">TRAVEL</h3>
                                 <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">WE ARE</h4>
-                                <p className="text-gray-700 mb-4">
-                                  What is Lorem Ipsum
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                  </p>
+                                <p className="text-gray-700 mb-4">Dream 
+Safari is a Dynamic Travel and Destination promoting Company. Mainly focusing on Sabaragamuwa and Uva Provinces in Sri Lanka. Our Safari Tours are well managed and structured for any type of traveller.</p>
                                 
                             </div>
                         </div>
