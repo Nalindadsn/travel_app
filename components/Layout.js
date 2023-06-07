@@ -90,7 +90,7 @@ export default function Layout({ title, children }) {
         {/* ///////////////////////////////////////////////// */}
 
         <header className="px-7 py-3.5 shadow-md">
-          <nav className="animate__animated animate__fadeInLeft shadow-md" >
+          <nav className="animate__animated animate__fadeInLeft " >
             <main className="flex items-center justify-between">
               <div className="flex items-center">
                 <span className="text-md">
