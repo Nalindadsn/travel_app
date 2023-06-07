@@ -73,7 +73,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                         </Link>
                         <Link href="/search">
                           <a className=" inline-block hover:border-gray hover:text-gray border-b border-light-800 px-2 transition">
-                            Services
+                            Courses
                           </a>
                         </Link>
                         <Link href="/about">
