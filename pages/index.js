@@ -48,7 +48,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           </div>
 
           <div className="text-5xl font-extrabold">
-            <div className=" ml-3 bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
+            <div className=" ml-3 bg-white tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s" style={{textShadow:3px 3px 3px rgba(0,0,0,.5}}>
               {`We' offreing a best courses
               in Sri Lanka
              `}
