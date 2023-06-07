@@ -120,7 +120,7 @@ export default function Search(props) {
                         </Link>
                         <Link href="/search">
                           <a className="text-gray-700 hover:border-white hover:text-gray-900 border-b border-light-800 px-2 transition">
-                            Services
+                            Courses
                           </a>
                         </Link>
                         <Link href="/about">
