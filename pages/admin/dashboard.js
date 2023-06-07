@@ -77,7 +77,7 @@ function AdminDashboardScreen() {
             </li>
 
             <li>
-              <Link href="/admin/places">Services</Link>
+              <Link href="/admin/places">Courses</Link>
             </li>
             <li>
               <Link href="/admin/users">Users</Link>
@@ -98,7 +98,7 @@ function AdminDashboardScreen() {
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.postsCount} </p>
                   <p>Plcaes</p>
-                  <Link href="/admin/places">View Places</Link>
+                  <Link href="/admin/places">View Courses</Link>
                 </div>
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.usersCount} </p>
