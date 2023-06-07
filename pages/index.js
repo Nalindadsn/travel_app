@@ -38,7 +38,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
             <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 ">
-            <span style={{color:"rgba(255,255,255,.8)"}}> ABC Institute</span>
+            <span style={{textShadow:3px 3px 3px "#000",color:"rgba(255,255,255,.8)"}}> ABC Institute</span>
             </div>
 
             {/* <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
@@ -48,7 +48,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           </div>
 
           <div className="text-5xl font-extrabold">
-            <div className=" ml-3 bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
+            <div  style={{textShadow:3px 3px 3px "#000")"}} className=" ml-3 bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
               {`We'r offering best courses
                                   in Sri Lanka
              `}
