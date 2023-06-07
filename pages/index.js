@@ -141,11 +141,16 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                             <div className="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
                                 <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">TRAVEL</h3>
                                 <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">WE ARE</h4>
-                                <p className="text-gray-700 mb-4">Dream 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-                                
-                            </div>
+                                <p className="text-gray-700 mb-4">
+                                  Dream 
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, 
+ when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+ It has survived not only five centuries, but also the leap into electronic typesetting, 
+ remaining essentially unchanged. It was popularised in the 1960s with the release of 
+ Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+ software like Aldus PageMaker including versions of Lorem Ipsum.
+                          </div>
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 section--working__image h-full bg-cover order-1 md:order-2"></div>
