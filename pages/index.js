@@ -101,7 +101,6 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
             <h2 className="font-bold text-white text-xl">
               
-              
             </h2>
           </div>
         </main>
@@ -144,7 +143,9 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                                 <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">WE ARE</h4>
                                 <p className="text-gray-700 mb-4">
                                   What is Lorem Ipsum
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                   </p>
+                                
                             </div>
                         </div>
                     </div>
