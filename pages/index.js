@@ -38,9 +38,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         <main className="flex flex-col justify-around pl-0">
           <div className="text-7xl font-extrabold tracking-wider animate__animated animate__fadeIn animate__delay-3s">
             <div className="bg-clip-text text-transparent text-gray-100 capitalize font_ ml-3 ">
-            <span   style={{ 
-  boxShadow: "rgba(0, 0, 0, 0.02)" 
-}} > ABC Institute</span>
+            <span  className="drop-shadow-lg "> ABC Institute</span>
             </div>
 
             {/* <p  style={{ 
@@ -52,9 +50,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           </div>
 
           <div className="text-5xl font-extrabold">
-            <div className="text-white ml-3 "  style={{ 
-  boxShadow: "rgba(0, 0, 0, 0.02)" 
-}} >
+            <div className="text-white ml-3 drop-shadow-lg  ">
               Wer offering best courses
                                   in Sri Lanka
              
