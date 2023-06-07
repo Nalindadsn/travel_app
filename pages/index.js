@@ -41,7 +41,9 @@ export default function Home({ topRatedPosts, featuredPosts }) {
             <span> ABC Institute</span>
             </div>
 
-            {/* <p className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
+            {/* <p  style={{ 
+  boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" 
+}}  className="text-xs text-gray-300 w-96 font-medium mt-7 overflow-hidden  drop-shadow-lg shadow-black ml-3">
               Sri Lanka, formerly known as Ceylon
               <br /> Some text
             </p> */}
