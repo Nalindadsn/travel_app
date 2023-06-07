@@ -101,6 +101,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           <div className="flex items-center space-x-3 animate__animated animate__fadeIn animate__delay-5s">
             <h2 className="font-bold text-white text-xl">
               
+              
             </h2>
           </div>
         </main>
