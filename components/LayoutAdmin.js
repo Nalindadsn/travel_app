@@ -37,7 +37,7 @@ export default function Layout({ title, children }) {
     <>
       <Head>
         <title>{title ? title + ' - global assets' : 'global assets'}</title>
-        <meta name="description" content="Travel  Website" />
+        <meta name="description" content="Institute  Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ToastContainer position="bottom-center" limit={1} />
@@ -244,7 +244,7 @@ export default function Layout({ title, children }) {
                     </Link>
                     <Link href="../search">
                       <a className="text-white hover:border-white hover:text-white border border-gray-800 px-2 transition">
-                        Servicess
+                        Courses
                       </a>
                     </Link>
                     <Link href="../about">
