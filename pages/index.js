@@ -73,7 +73,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                         </Link>
                         <Link href="/search">
                           <a className=" inline-block hover:border-gray hover:text-gray border-b border-light-800 px-2 transition">
-                            Services
+                            Courses
                           </a>
                         </Link>
                         <Link href="/about">
@@ -139,10 +139,12 @@ export default function Home({ topRatedPosts, featuredPosts }) {
                     <div className="w-full md:w-1/2 relative order-2 md:order-2">
                         <div>
                             <div className="bg-white absolute bottom-0 right--4 shadow-full px-6 py-8 max-w-xl min-w-xl font-roboto scale-on-hover">
-                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">TRAVEL</h3>
+                                <h3 className="font-semibold text-main-blue text-lg mb-4 font-regular">Education</h3>
                                 <h4 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">WE ARE</h4>
-                                <p className="text-gray-700 mb-4">Dream 
-Safari is a Dynamic Travel and Destination promoting Company. Mainly focusing on Sabaragamuwa and Uva Provinces in Sri Lanka. Our Safari Tours are well managed and structured for any type of traveller.</p>
+                                <p className="text-gray-700 mb-4">
+                                  What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                  </p>
                                 
                             </div>
                         </div>
