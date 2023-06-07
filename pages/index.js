@@ -50,7 +50,9 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           </div>
 
           <div className="text-5xl font-extrabold">
-            <div className="text-white ml-3 ">
+            <div className="text-white ml-3 "  style={{ 
+  boxShadow: "rgba(0, 0, 0, 0.02)" 
+}} >
               Wer offering best courses
                                   in Sri Lanka
              
