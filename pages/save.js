@@ -38,7 +38,7 @@ function CartScreen() {
             <table className="min-w-full ">
               <thead className="border-b w-full">
                 <tr>
-                  <th className="p-5 text-left">Services</th>
+                  <th className="p-5 text-left">Courses</th>
                   <th className="p-5">Action</th>
                 </tr>
               </thead>
