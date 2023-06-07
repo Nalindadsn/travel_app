@@ -97,7 +97,7 @@ function AdminDashboardScreen() {
               <div className="grid grid-cols-1 md:grid-cols-4">
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.postsCount} </p>
-                  <p>Plcaes</p>
+                  <p>Courses</p>
                   <Link href="/admin/places">View Courses</Link>
                 </div>
                 <div className="card m-5 p-5">
