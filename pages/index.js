@@ -106,7 +106,7 @@ export default function Home({ topRatedPosts, featuredPosts }) {
         </main>
       </section>
       <br />
-        <h1 className="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Services</h1>
+        <h1 className="mb-4 text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Courses</h1>
 
       <div
         className="grid lg:grid-cols-3 xl:grid-cols-3 sm:grid-cols-2 gap-6"
