@@ -45,7 +45,7 @@ export default function Layout({ title, children }) {
         <header className="py-4 shadow-sm bg-gray-900 lg:bg-gray-900">
           <div className="container flex items-center justify-between">
             <Link href="/">
-              <a className="block w-32">Travel </a>
+              <a className="block w-32">ABC Institute </a>
             </Link>
 
             <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
