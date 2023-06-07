@@ -50,10 +50,10 @@ export default function Home({ topRatedPosts, featuredPosts }) {
           </div>
 
           <div className="text-5xl font-extrabold">
-            <div className="text-white ml-3 bg-clip-text text-transparent bg-gradient-to-b from-gray-200 tracking-wider capitalize font_ animate__animated animate__fadeIn animate__delay-2s">
-              {`We'r offering best courses
+            <div className="text-white ml-3 ">
+              Wer offering best courses
                                   in Sri Lanka
-             `}
+             
             </div>
           </div>
         </main>
